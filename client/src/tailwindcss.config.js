@@ -5,6 +5,7 @@ module.exports = {
       'display': ['Chewy', 'Candara', 'Verdana'],
       'body': ['Chewy', 'Candara', 'Verdana'],
       curly: ['Chewy', 'Candara', 'Verdana'],
+      test: ['Balsamiq Sans', 'Candara'],
     },
     extend: {                    
       colors: {
