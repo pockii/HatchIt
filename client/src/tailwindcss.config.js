@@ -4,8 +4,8 @@ module.exports = {
     fontFamily: {
       'display': ['Chewy', 'Candara', 'Verdana'],
       'body': ['Chewy', 'Candara', 'Verdana'],
+      curly: ['Chewy', 'Candara', 'Verdana'],
     },
-
     extend: {                    
       colors: {
           lightbluebg: "#D9F2FF",
@@ -23,12 +23,10 @@ module.exports = {
           // maybe choose 1 of the grays, anyway choose 1 gray and stick with it
           purplewindowbg: '#E7E9FF', // shop
       }
-    },
-    
+    }
   },
   variants: {
     fontFamily: ['responsive']
   },
   plugins: [],
-  
 }

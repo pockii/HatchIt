@@ -1,6 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
+  "main": "src/index.js",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -18,11 +19,13 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
+    "_prestart": "tailwind build ./src/css/index.css -c ./src/tailwindcss.config.js -o ./src/css/index.css",
     "start": "npm run build:style && react-scripts start",
+    "_prebuild": "tailwind build ./src/css/index.css -c ./src/tailwindcss.config.js -o ./src/css/index.css",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:style": "postcss src/css/index.css -o public/build/tailwind.css",
+    "build:style": "tailwind build src/css/index.css -c ./src/tailwindcss.config.js -o src/css/tailwind.css",
     "dev": "concurrently \"npm run client\" \"npm run server\""
   },
   "proxy": "http://localhost:5000/",
