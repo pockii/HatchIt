@@ -19,22 +19,22 @@ function App() {
           <label class="block text-darkblue sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-2" for="username">
             Username
           </label>
-          <input class="shadow appearance-none border rounded py-2 px-3 text-gray-700 sm:text-base md:text-lg lg:text-xl xl:text-2xl leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username"/>
+          <input class="appearance-none rounded py-2 px-3 text-gray-700 sm:text-base md:text-lg lg:text-xl xl:text-2xl leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username"/>
           </div>
 
           <div class="mb-6">
             <label class="block text-darkblue sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-2" for="password">
               Password
             </label>
-            <input class="shadow appearance-none rounded py-2 px-3 text-gray-m mb-3 sm:text-sm md:text-lg lg:text-xl xl:text-2xl leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******"/>
+            <input class="appearance-none rounded py-2 px-3 text-gray-m mb-3 sm:text-sm md:text-lg lg:text-xl xl:text-2xl leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******"/>
           </div>
 
           <div class="flex items-center justify-between">
-            <button class="bg-white border border-darkblue text-darkblue hover:bg-blue-700 text-white sm:text-base md:text-base lg:text-xl xl:text-2xl py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+            <button class="bg-white border border-darkblue text-darkblue hover:text-white hover:bg-darkblue sm:text-base md:text-base lg:text-xl xl:text-2xl py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
               Sign In
             </button>
-              <a class="inline-block align-baseline sm:text-xs md:text-sm lg:text-base xl:text-xl text-darkblue hover:text-blue-800" href="#">
-                Sign up
+              <a class="inline-block align-baseline sm:text-xs md:text-sm lg:text-base xl:text-xl text-darkblue hover:text-gray-500" href="#">
+                Sign Up
               </a>
           </div>
         </form>
