@@ -18,6 +18,13 @@ class Register extends Component {
     };
   }
 
+  componentDidMount() {
+    // If logged in and user navigates to Register page, should redirect them to home
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/home");
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({
@@ -80,7 +87,7 @@ class Register extends Component {
                   invalid: errors.name
                 })}
                 />
-                <span class="text-red-300">{errors.name}</span>
+                <span class="text-red-500">{errors.name}</span>
             </div>
 
             <div class="mb-6">
@@ -100,7 +107,7 @@ class Register extends Component {
                   invalid: errors.password
                 })}
                 />
-                <span class="text-red-300">{errors.password}</span>
+                <span class="text-red-500">{errors.password}</span>
             </div>
 
             <div class="mb-6">
@@ -119,7 +126,7 @@ class Register extends Component {
                 className={classnames("", {
                   invalid: errors.password2
                 })}/>
-                <span class="text-red-300">{errors.password2}</span>
+                <span class="text-red-500">{errors.password2}</span>
             </div>  
             
             <div class="flex items-center flex content-around md:justify-around lg:justify-between">

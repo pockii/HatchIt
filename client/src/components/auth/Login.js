@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import logo from '../pics/Logo2.png';
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { loginUser } from "../../actions/authActions";
+import classnames from "classnames";
 
 class Login extends Component {
   constructor() {
@@ -10,6 +14,24 @@ class Login extends Component {
       password: "",
       errors: {}
     };
+  }
+
+  componentDidMount() {
+    // If logged in and user navigates to Login page, should redirect them to home
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/home");
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push("/dashboard"); // push user to dashboard when they login
+    }
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors
+      });
+    }
   }
   
   onChange = e => {
@@ -24,7 +46,9 @@ class Login extends Component {
       password: this.state.password,
     };
 
-    console.log(userData);
+    this.props.loginUser(userData); 
+    // handle redirect within our component
+    // don't need to pass in this.props.history as a parameter
   };
 
   render() {
@@ -60,7 +84,14 @@ class Login extends Component {
                 error={errors.name} 
                 id="name" 
                 type="text" 
-                placeholder="Username"/>
+                placeholder="Username"
+                className={classnames("", {
+                  invalid: this.state.name.email || this.state.name.namenotfound
+                })}/>
+                <span class="text-red-500">
+                  {errors.name}
+                  {errors.namenotfound}
+                </span>
             </div>
 
             <div class="mb-6">
@@ -75,7 +106,14 @@ class Login extends Component {
                 error={errors.password} 
                 id="password" 
                 type="password" 
-                placeholder="******"/>
+                placeholder="******"
+                className={classnames("", {
+                  invalid: errors.password || errors.passwordincorrect
+                })}/>
+                <span class="text-red-500">
+                  {errors.password}
+                  {errors.passwordincorrect}
+                </span>
             </div>
   
             <div class="flex items-center flex content-around md:justify-around lg:justify-between">
@@ -95,4 +133,18 @@ class Login extends Component {
   }
 }
 
-export default Login;
+Login.propTypes = {
+  loginUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default connect(
+  mapStateToProps,
+  { loginUser }
+)(Login);
