@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
@@ -6565,6 +6567,10 @@ video {
 
 .font-curly{
   font-family: Chewy, Candara, Verdana;
+}
+
+.font-test{
+  font-family: Balsamiq Sans, Candara;
 }
 
 .font-hairline{
@@ -25107,6 +25113,10 @@ video {
 
   .sm\:font-curly{
     font-family: Chewy, Candara, Verdana;
+  }
+
+  .sm\:font-test{
+    font-family: Balsamiq Sans, Candara;
   }
 
   .sm\:font-hairline{
@@ -43652,6 +43662,10 @@ video {
     font-family: Chewy, Candara, Verdana;
   }
 
+  .md\:font-test{
+    font-family: Balsamiq Sans, Candara;
+  }
+
   .md\:font-hairline{
     font-weight: 100;
   }
@@ -62195,6 +62209,10 @@ video {
     font-family: Chewy, Candara, Verdana;
   }
 
+  .lg\:font-test{
+    font-family: Balsamiq Sans, Candara;
+  }
+
   .lg\:font-hairline{
     font-weight: 100;
   }
@@ -80736,6 +80754,10 @@ video {
 
   .xl\:font-curly{
     font-family: Chewy, Candara, Verdana;
+  }
+
+  .xl\:font-test{
+    font-family: Balsamiq Sans, Candara;
   }
 
   .xl\:font-hairline{

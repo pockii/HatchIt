@@ -1,46 +1,25 @@
-import React from 'react';
-import logo from './pics/Logo2.png';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import SignIn from "./components/auth/SignIn";
+import SignUp from "./components/auth/SignUp";
 
-function App() {
-  return (
-    <div class="bg-lightbluebg flex items-center h-screen grid sm:grid-row-8 md:grid-cols-8 gap-2 font-test">    
-      <div class="col-span-3 sm:col-span-2 md:col-span-3 lg:col-span-1 xl:col-span-4 inset-0">
-        <img class="object-contain w-full" src={logo} alt="Logo"></img>
-      </div>
-      <div class="w-7/12 rounded content center col-span-3 sm:col-span-2 md:col-span-3 lg:col-span-1 xl:col-span-4">
-          <p class="font-semibold text-center text-darkblue sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
-            Sign In
-          </p>
-          <p class="text-center text-darkblue sm:text-xs md:text-sm xl:text-base">
-            {"Here's your chance to care for a pet without the hassle!"}
-          </p>
-        <form class="content-center px-8 pt-6 pb-8 mb-4">
-          <div class="mb-4">
-          <label class="font-semibold block text-darkblue sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-1" for="username">
-            Username
-          </label>
-          <input class="appearance-none rounded py-2 px-3 text-gray-700 sm:text-base md:text-lg lg:text-xl xl:text-2xl leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username"/>
-          </div>
+import { Provider } from "react-redux";
+import store from "./store";
 
-          <div class="mb-6">
-            <label class="font-semibold block text-darkblue sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-1" for="password">
-              Password
-            </label>
-            <input class="appearance-none rounded py-2 px-3 text-gray-m mb-3 sm:text-sm md:text-lg lg:text-xl xl:text-2xl leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******"/>
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <Router>
+          <div className="App">
+            <SignIn />
+            <Route exact path="/register" component={SignUp} />
+          <Route exact path="/login" component={SignIn} />
           </div>
-
-          <div class="flex items-center justify-between">
-            <button class="bg-white border border-darkblue text-darkblue hover:text-white hover:bg-darkblue sm:text-base md:text-base lg:text-xl xl:text-2xl py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-              Sign In
-            </button>
-              <a class="inline-block align-baseline sm:text-xs md:text-sm lg:text-base xl:text-xl text-darkblue hover:text-gray-500" href="#">
-                Sign Up
-              </a>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
+        </Router>
+      </Provider>
+    );
+  }
 }
 
 export default App;
