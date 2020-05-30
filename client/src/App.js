@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import SignIn from "./components/auth/SignIn";
-import SignUp from "./components/auth/SignUp";
+import Register from "./components/auth/Register";
+import Login from "./components/auth/Login";
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -12,9 +12,8 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
-            <SignIn />
-            <Route exact path="/register" component={SignUp} />
-          <Route exact path="/login" component={SignIn} />
+            <Login />
+            <Route exact path="/register" component={Register} />
           </div>
         </Router>
       </Provider>
