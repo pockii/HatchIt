@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
-import { setCurrentUser, logoutUser } from "./actions/authActions";
 
+import { setCurrentUser, logoutUser } from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
 
@@ -21,8 +21,7 @@ if (localStorage.jwtToken) {
   const decoded = jwt_decode(token);
   // Set user and isAuthenticated
   store.dispatch(setCurrentUser(decoded));
-  
-  // Check for expired token
+    // Check for expired token
   const currentTime = Date.now() / 1000; // to get in milliseconds
   if (decoded.exp < currentTime) {
     // Logout user
@@ -39,7 +38,8 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
-            <Login />
+            <Route exact path="/" component={Login} />
+            <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Switch>
               <PrivateRoute exact path="/home" component={Home} />
