@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 
+import day from '../pics/day.svg';
+
 class Home extends Component {
   onLogoutClick = e => {
     e.preventDefault();
@@ -13,13 +15,18 @@ class Home extends Component {
     const { user } = this.props.auth;
     
     return (
-      <div>        
-            <button
-              class="inline-block align-baseline bg-white border border-darkblue text-darkblue hover:text-white hover:bg-darkblue sm:text-sm md:text-base lg:text-xl xl:text-2xl py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              onClick={this.onLogoutClick}
-              >
-              Logout
-            </button>        
+      <div class="bg-lightbluebg h-screen">  
+        <div class="h-0">
+          <img class="object-contain w-full" 
+            src={day} 
+            alt="Day"></img>
+        </div>
+        <button
+         class="absolute bottom-0 right-0 sm:text-xs md:text-sm lg:text-base xl:text-xl text-darkblue hover:text-gray-500"
+         onClick={this.onLogoutClick}
+        >
+         Logout
+        </button>        
       </div>
     );
   }
