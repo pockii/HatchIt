@@ -89,12 +89,12 @@ class Login extends Component {
                 className={classnames("", {
                   invalid: this.state.name.email || this.state.name.namenotfound
                 })}/>
-                <span class="text-red-500">
-                  {errors.name}
-                  {errors.namenotfound}
-                </span>
+              <p class="text-red-700 sm:text-xs md:text-sm lg:text-base xl:text-lg">
+                {errors.name}
+                {errors.namenotfound}
+              </p>
             </div>
-
+            
             <div class="mb-6">
               <label class="font-semibold block text-darkblue sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-1" 
                 for="password">
@@ -111,12 +111,12 @@ class Login extends Component {
                 className={classnames("", {
                   invalid: errors.password || errors.passwordincorrect
                 })}/>
-                <span class="text-red-500">
-                  {errors.password}
-                  {errors.passwordincorrect}
-                </span>
+              <p class="text-red-700 sm:text-xs md:text-sm lg:text-base xl:text-lg">
+                {errors.password}
+                {errors.passwordincorrect}
+              </p>
             </div>
-  
+
             <div class="flex items-center flex content-around md:justify-around lg:justify-between">
               <button class="bg-white border border-darkblue text-darkblue hover:text-white hover:bg-darkblue sm:text-sm md:text-base lg:text-xl xl:text-2xl py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
                 type="submit">

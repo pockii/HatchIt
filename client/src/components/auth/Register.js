@@ -87,7 +87,9 @@ class Register extends Component {
                   invalid: errors.name
                 })}
                 />
-                <span class="text-red-500">{errors.name}</span>
+                <p class="text-red-700 sm:text-xs md:text-sm lg:text-base xl:text-lg">
+                  {errors.name}
+                </p>
             </div>
 
             <div class="mb-6">
@@ -107,7 +109,9 @@ class Register extends Component {
                   invalid: errors.password
                 })}
                 />
-                <span class="text-red-500">{errors.password}</span>
+                <p class="text-red-700 sm:text-xs md:text-sm lg:text-base xl:text-lg">
+                 {errors.password}
+               </p>  
             </div>
 
             <div class="mb-6">
@@ -126,7 +130,9 @@ class Register extends Component {
                 className={classnames("", {
                   invalid: errors.password2
                 })}/>
-                <span class="text-red-500">{errors.password2}</span>
+                <p class="text-red-700 sm:text-xs md:text-sm lg:text-base xl:text-lg">
+                  {errors.password2}
+                </p>
             </div>  
             
             <div class="flex items-center flex content-around md:justify-around lg:justify-between">
