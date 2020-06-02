@@ -11,7 +11,7 @@ module.exports = function validateRegisterInput(data) {
   
   // Name checks
   if (Validator.isEmpty(data.name)) {
-    errors.name = "Name field is required";
+    errors.name = "Username field is required";
   }
   
   // Password checks
@@ -24,7 +24,7 @@ module.exports = function validateRegisterInput(data) {
   }
   
   if (!Validator.isLength(data.password, { min: 1, max: 20 })) {
-    errors.password = "Password must be at least 1 characters";
+    errors.password = "Password must have at least 1 character and at most 20 characters";
   }
   
   if (!Validator.equals(data.password, data.password2)) {
