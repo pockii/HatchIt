@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import State from "../state/State.js";
 
 import day from '../pics/day.svg';
 
@@ -21,6 +22,7 @@ class Home extends Component {
             src={day} 
             alt="Day"></img>
         </div>
+        <State />
         <button
          class="absolute bottom-0 right-0 sm:text-xs md:text-sm lg:text-base xl:text-xl text-darkblue hover:text-gray-500"
          onClick={this.onLogoutClick}
