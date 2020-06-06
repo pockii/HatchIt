@@ -1,20 +1,55 @@
 import React, { Component } from "react";
-import CoinsService from "./service/coins.service.js";
+import PropTypes from "prop-types";
+import { getCoins, updateCoins } from "../../actions/userdata.js";
 
 export default class Coins extends Component {
+    #min = 0;
+
     constructor(props) {
         super(props);
-        this.coins = this.coins.bind(this);
+        this.name = this.props.user.name;
+        this.state = {
+            coins: this.#min
+        }        
     }
 
     componentDidMount() {
-        this.getCoins(this.props.match.params.name);
+        this.setState({
+            coins: getCoins(this.name)
+        })
+    }
+
+    componentDidUpdate() {
+        updateCoins(this.name, this.state.coins);
+    }
+
+    increment(num) {
+        this.setState({
+            coins: this.state.coins + num
+        })
+    }
+
+    decrement(num) {
+        if (this.state.coins - num >= this.#min) {
+            this.setState({
+                coins: this.state.coins - num
+            })
+            return true;
+        } else {
+            return false;
+        }
+    }
+      
+    setMin() {
+        this.setState({
+            coins: this.#min
+        })
     }
 
     getCoins(name) {
-        CoinsService.getCoins(name)
+        this.props.getCoins(name)
           .then(response => {
-            console.log(response.coins);
+            return response;
           })
           .catch(err => {
             console.log(err);
@@ -22,13 +57,10 @@ export default class Coins extends Component {
     }
 
     updateCoins(name, newCoins) {
-        CoinsService.updateCoins(name, newCoins)
-          .then(response => {
-            console.log(response.coins);
-          })
-          .catch(err => {
-            console.log(err);
-          });
+        this.props.updateCoins(name, newCoins)
+            .catch(err => {
+              console.log(err);
+            });
     }
 
     render() {
@@ -46,9 +78,15 @@ export default class Coins extends Component {
                 </g>
                 </svg>
                 <span> 
-                    Coins
+                    {this.state.coins}
                 </span>
           </div>
         );
     }
 }
+
+Coins.propTypes = {
+    getCoins: PropTypes.func.isRequired,
+    updateCoins: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired
+};

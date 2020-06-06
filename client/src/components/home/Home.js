@@ -30,9 +30,9 @@ class Home extends Component {
         <State />
         
         <div class="flex flex-col absolute bottom-0 left-0 w-1/4 sm:text-xs md:text-sm lg:text-base xl:text-xl text-darkblue">
-          <Coins />
-          <Happiness />
-        </div>
+          <Coins user={user} />
+          <Happiness user={user} />
+        </div> 
 
         <div class="flex flex-col absolute right-0 bottom-0 sm:text-xs md:text-sm lg:text-base xl:text-xl text-darkblue">
 
