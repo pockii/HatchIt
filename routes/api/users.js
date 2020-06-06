@@ -102,6 +102,9 @@ router.post("/login", (req, res) => {
   });
 });
 
+// @route GET api/users/userdata
+// @desc return userdata
+// @access Public
 router.get("/userdata", (req, res) => {
   User.findOne({ name: req.body.name }).then(user => {
     // Check if user exists
@@ -113,6 +116,9 @@ router.get("/userdata", (req, res) => {
   });
 })
 
+// @route PUT api/users/userdata
+// @desc update userdata
+// @access Public
 router.put("/userdata", (req, res) => {
   if (!req.body) {
     return res.status(400).json({ message: "Data to update can not be empty!" });
