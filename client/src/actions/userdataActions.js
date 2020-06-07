@@ -2,7 +2,8 @@ import axios from "axios";
 
 import {
     GET_ERRORS,
-    GET_USERDATA
+    GET_USERDATA,
+    UPDATE_USERDATA
 } from "./types";
 
 // Get userdata with username
@@ -25,6 +26,9 @@ export const getUserData = (userData) => dispatch => {
 export const updateUserData = (newUserData) => dispatch => {
     axios
         .put("/api/users/userdata", newUserData)
+        .then(response => {
+            dispatch(updatingUserData());
+        })
         .catch(err =>
             dispatch({
             type: GET_ERRORS,
@@ -38,4 +42,10 @@ export const fetchUserData = userData => {
         type: GET_USERDATA,
         payload: userData
     }
+};
+
+export const updatingUserData = () => {
+    return {
+        type: UPDATE_USERDATA
+    };
 };

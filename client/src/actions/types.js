@@ -4,4 +4,5 @@ export const USER_LOADING = "USER_LOADING";
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
 
 export const GET_USERDATA = "GET_USERDATA";
+export const UPDATE_USERDATA = "UPDATE_USERDATA";
 
