@@ -1,84 +1,42 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { getHappiness, updateHappiness } from "../../actions/userdata.js";
 
-export default class Happiness extends Component {
+class Happiness extends Component {
     #max = 100;
     #min = 0;
     #minute = 60000;
 
-    constructor(props) {
-        super(props);
-        this.name = this.props.user.name;
-        this.state = {
-            happiness: this.#min
-        }   
-    }
-
     componentDidMount() {
-        this.setState({
-            happiness: getHappiness(this.name)
-        })
         setTimeout(this.decrement(1), this.#minute * 5);
     }
 
-    componentDidUpdate() {
-        updateHappiness(this.name, this.state.happiness);
-    }   
-
     increment(num) {
-        if (this.state.happiness + num <= this.#max) {
-            this.setState({
-                happiness: this.state.happiness + num
-            })
+        if (this.props.happiness + num <= this.#max) {
+            this.props.updateHappiness(this.props.happiness + num);
             return true;  
         } else {
-            this.setState({
-                happiness: this.#max
-            })
+            this.props.updateHappiness(this.#max);
             return false;
         }
     }
 
     decrement(num) {
-        if (this.state.happiness - num >= this.#min) {
-            this.setState({
-                happiness: this.state.happiness - num
-            })
+        if (this.props.happiness - num >= this.#min) {
+            this.props.updateHappiness(this.props.happiness - num);
             return true;
         } else {
-            this.setState({
-                happiness: this.#min
-            })
+            this.props.updateHappiness(this.#min);
             return false;
         }
     }      
     
     isMin() {
-        return this.state.happiness === this.#min;
+        return this.props.happiness === this.#min;
     }
      
     isMax() {
-        return this.state.happiness === this.#max;
+        return this.props.happiness === this.#max;
     }
-
-    getHappiness(name) {
-      this.props.getHappiness(name)
-          .then(response => {
-              return response;
-          })
-          .catch(err => {
-              console.log(err);
-          });
-    }
-
-    updateHappiness(name, newHappiness) {
-        this.props.updateHappiness(name, newHappiness)
-            .catch(err => {
-                console.log(err);
-            });
-    }
-
+    
     render() {
         return (          
             <div class="p-1 inline-flex flex items-center">
@@ -99,7 +57,7 @@ export default class Happiness extends Component {
               </svg>
               <div class="relative pt-4">
                   <div style={{width : 250}} class="overflow-hidden h-3 mb-4 text-xs flex rounded border border-darkblue bg-pink-100">
-                      <div style={{width : this.state.happiness/100*250}} class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-300"></div>
+                      <div style={{width : this.props.happiness/100*250}} class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-300"></div>
                   </div>
               </div>
           </div>
@@ -107,8 +65,4 @@ export default class Happiness extends Component {
     }
 }
 
-Happiness.propTypes = {
-    getHappiness: PropTypes.func.isRequired,
-    updateHappiness: PropTypes.func.isRequired,
-    errors: PropTypes.object.isRequired
-};
+export default Happiness;

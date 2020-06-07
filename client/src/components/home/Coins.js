@@ -1,39 +1,15 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { getCoins, updateCoins } from "../../actions/userdata.js";
 
-export default class Coins extends Component {
+class Coins extends Component {
     #min = 0;
 
-    constructor(props) {
-        super(props);
-        this.name = this.props.user.name;
-        this.state = {
-            coins: this.#min
-        }        
-    }
-
-    componentDidMount() {
-        this.setState({
-            coins: getCoins(this.name)
-        })
-    }
-
-    componentDidUpdate() {
-        updateCoins(this.name, this.state.coins);
-    }
-
     increment(num) {
-        this.setState({
-            coins: this.state.coins + num
-        })
+        this.props.updateCoins(this.props.coins + num);
     }
 
     decrement(num) {
-        if (this.state.coins - num >= this.#min) {
-            this.setState({
-                coins: this.state.coins - num
-            })
+        if (this.props.coins - num >= this.#min) {
+            this.props.updateCoins(this.props.coins - num);
             return true;
         } else {
             return false;
@@ -41,26 +17,7 @@ export default class Coins extends Component {
     }
       
     setMin() {
-        this.setState({
-            coins: this.#min
-        })
-    }
-
-    getCoins(name) {
-        this.props.getCoins(name)
-          .then(response => {
-            return response;
-          })
-          .catch(err => {
-            console.log(err);
-          });
-    }
-
-    updateCoins(name, newCoins) {
-        this.props.updateCoins(name, newCoins)
-            .catch(err => {
-              console.log(err);
-            });
+        this.props.updateCoins(this.#min);
     }
 
     render() {
@@ -78,15 +35,11 @@ export default class Coins extends Component {
                 </g>
                 </svg>
                 <span> 
-                    {this.state.coins}
+                    {this.props.coins}
                 </span>
           </div>
         );
     }
 }
 
-Coins.propTypes = {
-    getCoins: PropTypes.func.isRequired,
-    updateCoins: PropTypes.func.isRequired,
-    errors: PropTypes.object.isRequired
-};
+export default Coins;
