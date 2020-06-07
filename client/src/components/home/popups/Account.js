@@ -2,9 +2,12 @@ import React, { Component } from "react";
 
 export default class Account extends Component {
 
-  state = {
-    accountSeen: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      accountSeen: false,
+    };
+  }
 
   onAccountClick = () => {
     this.setState((state) => {
@@ -13,9 +16,7 @@ export default class Account extends Component {
   };
 
   onAccountExitClick = () => {
-    this.setState(() => {
-      return {accountSeen: false};
-    });
+    this.setState( {accountSeen: false} );
   };
 
   render() {
@@ -26,17 +27,15 @@ export default class Account extends Component {
           onClick={this.onAccountClick}
         >
           <svg 
-            class="w-6"
+            class="w-6 fill-current"
             viewBox="0 0 96 96" 
             xmlns="http://www.w3.org/2000/svg" 
             xlink="http://www.w3.org/1999/xlink" 
             id="Icons_User" 
             overflow="hidden">
             <g>
-            <circle cx="48" cy="30" r="16" fill="#203864"/>
-              <path 
-                d="M80 82 80 66C80 63.6 78.8 61.2 76.8 59.6 72.4 56 66.8 53.6 61.2 52 57.2 50.8 52.8 50 48 50 43.6 50 39.2 50.8 34.8 52 29.2 53.6 23.6 56.4 19.2 59.6 17.2 61.2 16 63.6 16 66L16 82 80 82Z" 
-                fill="#203864"/>
+            <circle cx="48" cy="30" r="16"/>
+              <path d="M80 82 80 66C80 63.6 78.8 61.2 76.8 59.6 72.4 56 66.8 53.6 61.2 52 57.2 50.8 52.8 50 48 50 43.6 50 39.2 50.8 34.8 52 29.2 53.6 23.6 56.4 19.2 59.6 17.2 61.2 16 63.6 16 66L16 82 80 82Z"/>
             </g>
           </svg>
           <span>Account</span>
@@ -50,7 +49,7 @@ export default class Account extends Component {
                 onClick={this.onAccountExitClick}
               >
                 <svg
-                  class="h-10 w-10"
+                  class="h-10 w-10 fill-current"
                   viewBox="0 0 96 96" 
                   xmlns="http://www.w3.org/2000/svg" 
                   xlink="http://www.w3.org/1999/xlink" 
@@ -58,7 +57,7 @@ export default class Account extends Component {
                     <path 
                       d="M83.4 21.1 74.9 12.6 48 39.5 21.1 12.6 12.6 21.1 39.5 48 12.6 74.9 21.1 83.4 48 56.5 74.9 83.4 83.4 74.9 56.5 48Z" 
                       stroke-width="0.229186" 
-                      fill="#203864"/>
+                      />
                 </svg>
               </button>
 
