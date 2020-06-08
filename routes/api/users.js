@@ -22,6 +22,7 @@ router.post("/register", (req, res) => {
   if (!isValid) {
     return res.status(400).json(errors);
   }
+    }
 
   User.findOne({ name: req.body.name }).then(user => {
     if (user) {

@@ -8,18 +8,15 @@ import {
 
 // Get userdata with username
 export const getUserData = (userData) => dispatch => {
-    axios
+    return axios
         .get("/api/users/userdata", userData)
         .then(response => {
             console.log("User data was retrieved sucessfully");
-            dispatch(fetchUserData(response.data));
+            dispatch(fetchUserData(response.data)); 
         })
-        .catch(err =>
-            dispatch({
-            type: GET_ERRORS,
-            payload: err.response.data
-            })
-        );
+        .catch(err => {
+            dispatch(getErrors(err));
+        });
 };
 
 // Put new userdata with username
@@ -29,12 +26,9 @@ export const updateUserData = (newUserData) => dispatch => {
         .then(response => {
             dispatch(updatingUserData());
         })
-        .catch(err =>
-            dispatch({
-            type: GET_ERRORS,
-            payload: err.response.data
-            })
-        );
+        .catch(err => {
+            dispatch(getErrors(err));
+        });
 };
 
 export const fetchUserData = userData => {
@@ -47,5 +41,13 @@ export const fetchUserData = userData => {
 export const updatingUserData = () => {
     return {
         type: UPDATE_USERDATA
+    };
+};
+
+// Get Errors 
+export const getErrors = err => {
+    return {
+      type: GET_ERRORS,
+      payload: err.response.data
     };
 };
