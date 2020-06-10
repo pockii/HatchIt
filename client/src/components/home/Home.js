@@ -38,6 +38,7 @@ class Home extends Component {
             coins: newCoins,
         };
         this.props.updateUserData(userData); 
+        this.props.getUserData(userData);
     }
 
     updateHappiness(newHappiness) {
@@ -46,6 +47,7 @@ class Home extends Component {
             happiness: newHappiness,
         };
         this.props.updateUserData(userData); 
+        this.props.getUserData(userData);
     }
 
     render() {
@@ -58,7 +60,6 @@ class Home extends Component {
                 </div>
 
                 <State />
-                <p> {this.name + " " + this.props.userdata.hasUserData + ""} </p>
               
                 <div class="flex flex-col absolute bottom-0 left-0 w-1/4 sm:text-xs md:text-sm lg:text-base xl:text-xl text-darkblue">
                     <Coins coins={this.props.userdata.user.coins} updateCoins={this.updateCoins} />
@@ -66,7 +67,7 @@ class Home extends Component {
                 </div> 
 
                 <div class="flex flex-col absolute right-0 bottom-0 sm:text-xs md:text-sm lg:text-base xl:text-xl text-darkblue">
-                    <Account />
+                    <Account name={this.name} />
                     <Logout onLogoutClick={this.onLogoutClick} />
                 </div>               
             </div>
