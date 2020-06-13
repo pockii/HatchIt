@@ -1,24 +1,9 @@
 import React, { Component } from "react";
 
 class Coins extends Component {
-    #min = 0;
-
-    increment(num) {
-        this.props.updateCoins(this.props.coins + num);
-    }
-
-    decrement(num) {
-        if (this.props.coins - num >= this.#min) {
-            this.props.updateCoins(this.props.coins - num);
-            return true;
-        } else {
-            return false;
-        }
-    }
-      
-    setMin() {
-        this.props.updateCoins(this.#min);
-    }
+    constructor(props) {
+        super(props);
+    }    
 
     render() {
         return (

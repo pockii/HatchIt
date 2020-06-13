@@ -30,8 +30,8 @@ export default class Account extends Component {
         return (
             <div>
                 <button
-                class="p-1 hover:text-gray-500 inline-flex flex items-center"
-                onClick={this.onAccountClick}
+                    class="p-1 hover:text-gray-500 inline-flex flex items-center"
+                    onClick={this.onAccountClick}
                 >
                 <svg 
                     class="w-6 fill-current"
@@ -94,17 +94,10 @@ export default class Account extends Component {
                             autoHideDuration={400}>
                             <p class="flex justify-center sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">  
                                 <p class="text-darkblue">
-                                    Username: {this.props.name}
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
+                                    Username: {this.props.user.name}<br/>
+                                    Coins: {this.props.user.coins}<br/>
+                                    Happiness Level: {this.props.user.happiness}<br/>
+                                    Total Happiness Gained: {this.props.user.totalHappinessGained} <br/>
                                     <br/>
                                     <br/>
                                     <br/>

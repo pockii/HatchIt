@@ -1,42 +1,10 @@
 import React, { Component } from "react";
 
 class Happiness extends Component {
-    #max = 100;
-    #min = 0;
-    #minute = 60000;
+    constructor(props) {
+        super(props);
+    }    
 
-    componentDidMount() {
-        setTimeout(this.decrement(1), this.#minute * 5);
-    }
-
-    increment(num) {
-        if (this.props.happiness + num <= this.#max) {
-            this.props.updateHappiness(this.props.happiness + num);
-            return true;  
-        } else {
-            this.props.updateHappiness(this.#max);
-            return false;
-        }
-    }
-
-    decrement(num) {
-        if (this.props.happiness - num >= this.#min) {
-            this.props.updateHappiness(this.props.happiness - num);
-            return true;
-        } else {
-            this.props.updateHappiness(this.#min);
-            return false;
-        }
-    }      
-    
-    isMin() {
-        return this.props.happiness === this.#min;
-    }
-     
-    isMax() {
-        return this.props.happiness === this.#max;
-    }
-    
     render() {
         return (          
             <div class="p-1 inline-flex flex items-center">
