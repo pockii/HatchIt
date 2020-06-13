@@ -8,13 +8,16 @@ const app = express();
 // Bodyparser middleware
 app.use(
   bodyParser.urlencoded({
-    extended: false
+    extended: true
   })
 );
 app.use(bodyParser.json());
 
 // DB Config
 const db = require("./config/keys").mongoURI;
+
+// Debug
+mongoose.set('debug', true);
 
 // Connect to MongoDB
 mongoose
