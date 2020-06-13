@@ -2,45 +2,25 @@ import axios from "axios";
 
 import {
     GET_ERRORS,
-    GET_USERDATA,
     UPDATE_USERDATA
 } from "./types";
 
-// Get userdata with username
-export const getUserData = (userData) => dispatch => {
-    return axios
-        .get("/api/users/userdata", userData)
-        .then(response => {
-            console.log("User data was retrieved sucessfully");
-            dispatch(fetchUserData(response.data)); 
-        })
-        .catch(err => {
-            dispatch(getErrors(err));
-        });
-};
-
-// Put new userdata with username
+// Put new userdata with username and return updated userdata
 export const updateUserData = (newUserData) => dispatch => {
     axios
         .put("/api/users/userdata", newUserData)
         .then(response => {
-            dispatch(updatingUserData());
+            dispatch(updatingUserData(response.data));
         })
         .catch(err => {
             dispatch(getErrors(err));
         });
 };
 
-export const fetchUserData = userData => {
+export const updatingUserData = userData => {
     return {
-        type: GET_USERDATA,
+        type: UPDATE_USERDATA,
         payload: userData
-    }
-};
-
-export const updatingUserData = () => {
-    return {
-        type: UPDATE_USERDATA
     };
 };
 

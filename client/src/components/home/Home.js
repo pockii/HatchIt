@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
-import { getUserData, updateUserData } from "../../actions/userdataActions";
+import { updateUserData } from "../../actions/userdataActions";
 
 import State from "../state/State.js";
 import Account from "./popups/Account.js";
@@ -18,14 +18,7 @@ class Home extends Component {
         this.name = this.props.auth.user.name;
         this.updateCoins = this.updateCoins.bind(this);
         this.updateHappiness = this.updateHappiness.bind(this);
-    }
-
-    componentDidMount() {
-        if (!this.props.userdata.hasUserData) {
-            const userData = { name: this.name };
-            this.props.getUserData(userData); 
-        }  
-    }
+    }    
 
     onLogoutClick = e => {
         e.preventDefault();
@@ -34,23 +27,22 @@ class Home extends Component {
 
     updateCoins(newCoins) {
         const userData = {
-            name: this.name,
+            name: this.props.auth.user.name,
             coins: newCoins,
         };
         this.props.updateUserData(userData); 
-        this.props.getUserData(userData);
     }
 
     updateHappiness(newHappiness) {
         const userData = {
-            name: this.name,
+            name: this.props.auth.user.name,
             happiness: newHappiness,
         };
         this.props.updateUserData(userData); 
-        this.props.getUserData(userData);
     }
 
     render() {
+        
         return (
             <div class="bg-lightbluebg h-screen">  
                 <div class="h-0">
@@ -62,8 +54,8 @@ class Home extends Component {
                 <State />
               
                 <div class="flex flex-col absolute bottom-0 left-0 w-1/4 sm:text-xs md:text-sm lg:text-base xl:text-xl text-darkblue">
-                    <Coins coins={this.props.userdata.user.coins} updateCoins={this.updateCoins} />
-                    <Happiness happiness={this.props.userdata.user.happiness} updateHappiness={this.updateHappiness} />
+                    <Coins coins={this.props.auth.user.coins} updateCoins={this.updateCoins} />
+                    <Happiness happiness={this.props.auth.user.happiness} updateHappiness={this.updateHappiness} />
                 </div> 
 
                 <div class="flex flex-col absolute right-0 bottom-0 sm:text-xs md:text-sm lg:text-base xl:text-xl text-darkblue">
@@ -77,7 +69,6 @@ class Home extends Component {
 
 Home.propTypes = {
     logoutUser: PropTypes.func.isRequired,
-    getUserData: PropTypes.func.isRequired,
     updateUserData: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired,
@@ -93,6 +84,5 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps,
     { logoutUser,
-      getUserData,
       updateUserData }
 )(Home);
