@@ -22,6 +22,10 @@ const UserSchema = new Schema({
   happiness: {
     type: Number,
     default: 50
+  },
+  totalHappinessGained: {
+    type: Number, 
+    default: 0
   }
 });
 
