@@ -6,7 +6,7 @@ import { updateUserData } from "../../actions/userdataActions";
 
 import State from "../state/State.js";
 import Account from "./popups/Account.js";
-import Food from "./popups/Food.js"
+import Food from "./Food.js"
 import FoodWindow from "./FoodWindow.js";
 import Logout from "./Logout.js";
 import Coins from "./Coins.js";
