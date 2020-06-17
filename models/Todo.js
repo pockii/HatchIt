@@ -9,11 +9,13 @@ const SubTaskSchema = new Schema({
     },
     deadline: {
         type: Date,
+        default: Date.now,
         required: true,
     },
     level: {
         type: Number,
         default: 2,
+        required: true,
     }
 })
 
@@ -25,15 +27,17 @@ const TaskSchema = new Schema({
     },
     deadline: {
         type: Date,
-        required: true,
+        default: Date.now,
+        required: true
     },
     level: {
         type: Number,
         default: 2,
+        required: true,
     }, 
     subTasks: {
         type: [SubTaskSchema],
-        default: undefined
+        default: undefined,
     } 
 })
 
@@ -45,12 +49,8 @@ const TodoSchema = new Schema({
     },
     tasks: {
         type: [TaskSchema],
-        default: undefined
+        default: undefined,
     }
 })
 
-module.exports = {
-    Todo: mongoose.model("todos", TodoSchema),
-    Task: mongoose.model("tasks", TaskSchema),
-    SubTask: mongoose.model("subTasks", SubTaskSchema)
-};
+module.exports = Todo = mongoose.model("todos", TodoSchema);

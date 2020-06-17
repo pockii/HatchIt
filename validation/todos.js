@@ -39,36 +39,52 @@ const isEmpty = require("is-empty");
 
 function validateTask(task) {
     let errors = {};
+    let isValid = true;
 
     task.description = !isEmpty(task.description) ? task.description : "";
     task.deadline = !isEmpty(task.deadline) ? task.deadline : "";
-    task.level = !isEmpty(task.level) ? task.level : "";
+    task.level = !isEmpty(task.level) ? task.level + "": "";
 
     if (Validator.isEmpty(task.description)) {
         errors.description = "Description for task is required";
+        isValid = false;
     }
 
     if (Validator.isEmpty(task.deadline)) {
         errors.taskDeadline = "Deadline for task is required";
+        isValid = false;
+    }
+
+    if (!Validator.isISO8601(task.deadline)) {
+        errors.taskDeadline = "Deadline for task is invalid";
+        isValid = false;
     }
 
     if (Validator.isEmpty(task.level)) {
         errors.taskDeadline = "Level for task is required";
+        isValid = false;
     }
 
-    errors.subTasks = {};
+    if (!Validator.isInt(task.level, { min: 1, max: 5 } )) {
+        errors.taskDeadline = "Level for task is invalid";
+        isValid = false;
+    }
+
     let isSubTasksValid = true;
-    for (let i = 0; i < task.subTasks.length; i++) {
-        const subTaskErrors = validateSubTask(task.subTasks[i]);
-        if (!subTaskErrors.isValid) {
-            errors.subTasks[i] = subTaskErrors.errors;
-            isSubTasksValid = false;
+    if (task.subTasks) {
+        errors.subTasks = {};
+        for (let i = 0; i < task.subTasks.length; i++) {
+            const subTaskErrors = validateSubTask(task.subTasks[i]);
+            if (!subTaskErrors.isValid) {
+                errors.subTasks[i] = subTaskErrors.errors;
+                isSubTasksValid = false;
+            }
         }
     }
-
+    
     return {
         errors,
-        isValid: !isEmpty(errors) && isSubTasksValid
+        isValid: isValid && isSubTasksValid
     };
 }
 
@@ -77,6 +93,7 @@ function validateSubTask(subTask) {
 
     subTask.description = !isEmpty(subTask.description) ? subTask.description : "";
     subTask.deadline = !isEmpty(subTask.deadline) ? subTask.deadline : "";
+    subTask.level = !isEmpty(subTask.level) ? subTask.level + "": "";
 
     if (Validator.isEmpty(subTask.description)) {
         errors.description = "Description for subTask is required";
@@ -86,24 +103,34 @@ function validateSubTask(subTask) {
         errors.subTaskDeadline = "Deadline for subTask is required";
     }
 
+    if (!Validator.isISO8601(subTask.deadline)) {
+        errors.taskDeadline = "Deadline for subTask is invalid";
+    }
+
     if (Validator.isEmpty(subTask.level)) {
         errors.taskDeadline = "Level for subTask is required";
     }
 
+    if (!Validator.isInt(subTask.level, { min: 1, max: 5 } )) {
+        errors.taskDeadline = "Level for subTask is invalid";
+    }
+
     return {
         errors,
-        isValid: !isEmpty(errors)
+        isValid: isEmpty(errors)
     };
 }
 
 function validateTodos(todos) {
     let errors = {};
     let isValid = true;
-    for (let i = 0; i < todos.length; i++) {
-        const error = validateTask(todos[i]);
-        if (!error.isValid) {
-            errors[i] = error.errors;
-            isValid = false;
+    if (todos) {
+        for (let i = 0; i < todos.length; i++) {
+            const error = validateTask(todos[i]);
+            if (!error.isValid) {
+                errors[i] = error.errors;
+                isValid = false;
+            }
         }
     }
     
