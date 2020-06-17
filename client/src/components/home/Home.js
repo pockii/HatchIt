@@ -6,11 +6,14 @@ import { updateUserData } from "../../actions/userdataActions";
 
 import State from "../state/State.js";
 import Account from "./popups/Account.js";
+import Food from "./popups/Food.js"
+import FoodWindow from "./FoodWindow.js";
 import Logout from "./Logout.js";
 import Coins from "./Coins.js";
 import Happiness from "./Happiness.js";
 
 import day from '../pics/day.svg';
+
 
 class Home extends Component {
 
@@ -24,6 +27,10 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.name = this.props.auth.user.name;
+        this.incrementHappiness = this.incrementHappiness.bind(this)
+        this.state = {
+            foodSeen: false
+        };
     }    
 
     componentDidMount() {
@@ -113,6 +120,12 @@ class Home extends Component {
         return this.props.auth.user.happiness === this.#happiness.max;
     }
 
+    foodCallBack = (childData) => {
+        this.setState({
+            foodSeen: childData
+        })
+    };
+
     // Logout
     onLogoutClick = e => {
         e.preventDefault();
@@ -128,11 +141,14 @@ class Home extends Component {
                         alt="Day"></img>
                 </div>
 
-                <State />
+                <State incrementHappiness={this.incrementHappiness} />
 
                 <button onClick={() => this.incrementHappiness(10)} class="text-xl">+</button>
                 <button onClick={() => this.decrementHappiness(10)} class="text-xl">-</button>
 
+                <div class="absolute top-0 pt-3 pr-16">
+                    {this.state.foodSeen ? <FoodWindow foodCallBack={this.foodCallBack} /> : null}
+                </div>
                 <div class="flex flex-col absolute bottom-0 left-0 w-1/4 sm:text-xs md:text-sm lg:text-base xl:text-xl text-darkblue">
                     <Coins coins={this.props.auth.user.coins} />
                     <Happiness happiness={this.props.auth.user.happiness} />
@@ -140,6 +156,7 @@ class Home extends Component {
 
                 <div class="flex flex-col absolute right-0 bottom-0 sm:text-xs md:text-sm lg:text-base xl:text-xl text-darkblue">
                     <Account user={this.props.auth.user} />
+                    <Food foodCallBack={this.foodCallBack} />
                     <Logout onLogoutClick={this.onLogoutClick} />
                 </div>               
             </div>
