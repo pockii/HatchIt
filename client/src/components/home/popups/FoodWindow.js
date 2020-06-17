@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import DraggableIcon from "./popups/DraggableIcon.js";
+import DraggableIcon from "./DraggableIcon.js";
 
-import burger from '../pics/burger.svg';
-import cookie from '../pics/cookie.svg';
-import donut from '../pics/donut.svg';
-import watermelon from '../pics/watermelon.svg';
-import pizza from '../pics/pizza.svg';
-import chocolate from '../pics/chocolate.svg';
+import burger from '../../pics/burger.svg';
+import cookie from '../../pics/cookie.svg';
+import donut from '../../pics/donut.svg';
+import watermelon from '../../pics/watermelon.svg';
+import pizza from '../../pics/pizza.svg';
+import chocolate from '../../pics/chocolate.svg';
 
 
 export default class FoodWindow extends Component {
