@@ -21,6 +21,7 @@ export default class State extends Component {
             images: [normal_state1, normal_state2],
         };
     }
+    
     onDragOver = (e) => {
         e.preventDefault();
     }
@@ -43,30 +44,35 @@ export default class State extends Component {
         }
     }
 
-    toggleReaction() {
+    changeState(newImages) {
         this.setState({
-            images: [react_state1, react_state2]
-        },
-            () => {setTimeout(
-                () => {
-                    this.setState({
-                        images: [normal_state1, normal_state2]
-                    })}
-                , 2500);
+            images: newImages
         })
     }
 
+    determineState(newImages, time) {
+        if (time === 0) {
+            this.changeState(newImages);
+        } else {
+            this.changeState(newImages);
+            setTimeout(() => this.changeState(this.currentState()), time);
+        }
+    }
+
+    currentState() {
+        if (this.props.maxHappiness) {
+            return [max_state1, max_state2];
+        } else {
+            return [normal_state1, normal_state2];
+        }
+    }
+
+    toggleReaction() {
+        this.determineState([react_state1, react_state2], 2500);
+    }
+
     toggleEating() {
-        this.setState({
-            images: [eating_state1, eating_state2]
-        },
-            () => {setTimeout(
-                () => {
-                    this.setState({
-                        images: [normal_state1, normal_state2]
-                    })}
-                , 3000);
-        })
+        this.determineState([eating_state1, eating_state2], 3000);
     }
 
     componentDidMount() {
