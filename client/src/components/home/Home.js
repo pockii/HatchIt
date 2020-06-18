@@ -30,6 +30,7 @@ class Home extends Component {
         this.incrementHappiness = this.incrementHappiness.bind(this)
         this.state = {
             foodSeen: false
+            maxHappiness: false
         };
     }    
 
@@ -44,6 +45,9 @@ class Home extends Component {
 
         if (this.isMaxHappiness() && prevProps.auth.user.happiness !== this.#happiness.max) {
             this.incrementCoins(100);
+            this.setState({
+                maxHappiness: true
+            })
         }
     }
 
@@ -105,6 +109,9 @@ class Home extends Component {
     decrementHappiness(num) {
         if (this.props.auth.user.happiness - num >= this.#happiness.min) {
             this.updateHappiness(this.props.auth.user.happiness - num);
+            this.setState({
+                maxHappiness: false
+            })
             return true;
         } else {
             this.updateHappiness(this.#happiness.min);
@@ -141,7 +148,7 @@ class Home extends Component {
                         alt="Day"></img>
                 </div>
 
-                <State incrementHappiness={this.incrementHappiness} />
+                <State incrementHappiness={this.incrementHappiness} maxHappiness={this.state.maxHappiness}/>
 
                 <button onClick={() => this.incrementHappiness(10)} class="text-xl">+</button>
                 <button onClick={() => this.decrementHappiness(10)} class="text-xl">-</button>
