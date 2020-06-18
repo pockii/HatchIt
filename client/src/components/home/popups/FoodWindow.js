@@ -8,7 +8,6 @@ import watermelon from '../../pics/watermelon.svg';
 import pizza from '../../pics/pizza.svg';
 import chocolate from '../../pics/chocolate.svg';
 
-
 export default class FoodWindow extends Component {
     constructor(props) {
         super(props);
@@ -57,44 +56,14 @@ export default class FoodWindow extends Component {
                             </svg>
                             <span>Food</span>
                         </p>   
-                        <div class="flex items-center grid grid-cols-9 row-gap-2 pl-6 h-48 overflow-scroll">
-                            <div class="col-start-1 col-span-2 border-solid rounded border-2 border-darkblue bg-yellowbarbg">  
-                                <DraggableIcon name="Cookie" imgsrc={cookie} value="5" />
-                                <p class="text-center text-darkblue sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
-                                    Cookie
-                                </p>
-                            </div>
-                            <div class="col-start-4 col-span-2 border-solid rounded border-2 border-darkblue bg-yellowbarbg"> 
-                                <DraggableIcon name="Burger" imgsrc={burger} value="10" /> 
-                                <p class="text-center text-darkblue sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
-                                    Burger
-                                </p>
-                            </div>
-                            <div class="col-end-9 col-span-2 border-solid rounded border-2 border-darkblue bg-yellowbarbg">  
-                                <DraggableIcon name="Donut" imgsrc={donut} value="15"/>
-                                <p class="text-center text-darkblue sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
-                                    Donut
-                                </p> 
-                            </div>
-                            <div class="col-start-1 col-span-2 border-solid rounded border-2 border-darkblue bg-yellowbarbg">  
-                                <DraggableIcon name="Watermelon" imgsrc={watermelon} value="20"/>
-                                <p class="text-center text-darkblue sm:text-lg md:text-lg lg:text-lg xl:text-2xl">
-                                    Watermelon
-                                </p>
-                            </div>
-                            <div class="col-start-4 col-span-2 border-solid rounded border-2 border-darkblue bg-yellowbarbg"> 
-                                <DraggableIcon name="Pizza" imgsrc={pizza} value="25"/> 
-                                <p class="text-center text-darkblue sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
-                                    Pizza
-                                </p>
-                            </div>
-                            <div class="col-end-9 col-span-2 border-solid rounded border-2 border-darkblue bg-yellowbarbg">  
-                                <DraggableIcon name="Chocolate" imgsrc={chocolate} value="30"/>
-                                <p class="text-center text-darkblue sm:text-lg md:text-lg lg:text-lg xl:text-2xl">
-                                    Chocolate
-                                </p> 
-                            </div>
-                            <div class="h-40"/>
+                        <div class="flex items-center grid grid-cols-3 row-gap-4 col-gap-6 pl-6 pr-6 h-48 overflow-scroll">
+                            <DraggableIcon name="Cookie" imgsrc={cookie} value="5" />
+                            <DraggableIcon name="Burger" imgsrc={burger} value="10" /> 
+                            <DraggableIcon name="Donut" imgsrc={donut} value="15" />
+                            <DraggableIcon name="Watermelon" imgsrc={watermelon} value="20" />
+                            <DraggableIcon name="Pizza" imgsrc={pizza} value="25" /> 
+                            <DraggableIcon name="Chocolate" imgsrc={chocolate} value="30" />
+                            <div class="h-4" />
                         </div>
                     </div>
                 </div>  
