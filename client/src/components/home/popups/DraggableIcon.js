@@ -15,18 +15,31 @@ export default class DraggableIcon extends Component {
         e.dataTransfer.setData("value", this.props.value);
     }
 
+    foodLabel() {
+        if (this.state.name.length > 9) {
+            return  <p class="text-center text-darkblue sm:text-md md:text-lg lg:text-xl xl:text-2xl">
+                        {this.state.name}
+                    </p>
+        } else {
+            return <p class="text-center text-darkblue sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
+                        {this.state.name}
+                    </p>
+        }
+    }
+
     render() {
         return (
-            <div
-                onDragStart = {(e) => this.onDragStart(e)} 
-                draggable="true">
-                <img class="object-contain w-full h-20 px-4 py-2"
-                    src={this.state.imgsrc}
-                    alt={this.state.name}>
-                </img>
+            <div class="border-solid rounded border-2 border-darkblue bg-yellowbarbg h-32">  
+                <div
+                    onDragStart = {(e) => this.onDragStart(e)} 
+                    draggable="true">
+                        <img class="object-contain w-full h-22 px-2 pt-2"
+                            src={this.state.imgsrc}
+                            alt={this.state.name}>
+                        </img>
+                </div>
+                {this.foodLabel()}
             </div>
         )
     }
-
-
 }
