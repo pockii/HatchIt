@@ -16,7 +16,7 @@ import {
 
 import TaskItem from './TaskItem';
 import TaskItemClone from './TaskItemClone';
-import SubTask from './SubTask';
+import SubTasks from './SubTasks';
 
 class Task extends Component {
     #style = "border border-darkblue rounded-lg h-auto relative flex flex-col bg-purple-100";
@@ -128,9 +128,9 @@ class Task extends Component {
                                         ref={provided.innerRef} 
                                         class={getDroppableStyle(snapshot.isDraggingOver)}
                                     >
-                                        {this.props.todo.tasks[this.props.taskId].subTasks.map((subTaskId, index) => (
-                                            <SubTask key={subTaskId} subTaskId={subTaskId} index={index} onTodoExitClick={this.props.onTodoExitClick}/>
-                                        ))}
+                                        <SubTasks 
+                                            subTasks={this.props.todo.tasks[this.props.taskId].subTasks} 
+                                            onTodoExitClick={this.props.onTodoExitClick} />
                                         {provided.placeholder}
                                     </div>
                                 )}

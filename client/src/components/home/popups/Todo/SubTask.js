@@ -84,7 +84,7 @@ class SubTask extends Component {
                     draggableId={this.props.subTaskId}
                     index={this.props.index}
                     > 
-                    { (provided, snapshot) => (
+                    { provided => (
                         <div 
                             class={getStyle(this.props.todo.subTasks[this.props.subTaskId].deadline)}
                             {...provided.draggableProps}

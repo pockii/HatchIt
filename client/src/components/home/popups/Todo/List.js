@@ -19,7 +19,7 @@ import {
     getDroppableStyle
 } from "./TodoHelper";
 
-import Task from "./Task.js";
+import Tasks from "./Tasks.js";
 import TaskClone from "./TaskClone.js";
   
 class List extends Component {
@@ -152,10 +152,9 @@ class List extends Component {
                                     ref={provided.innerRef}
                                     class={getDroppableStyle(snapshot.isDraggingOver)}
                                     >
-                                    {this.props.todo.todo.tasks.map((taskId, index) => {
-                                        const task = this.props.todo.tasks[taskId];
-                                        return <Task key={task.id} taskId ={task.id} index={index} onTodoExitClick={this.props.onTodoExitClick}/>;
-                                    })}
+                                    <Tasks 
+                                        tasks={this.props.todo.todo.tasks} 
+                                        onTodoExitClick={this.props.onTodoExitClick}/>
                                     {provided.placeholder}
                                 </div>
                             )}
