@@ -1,5 +1,11 @@
 import axios from "axios";
 
+import { 
+    normalizeTodo, 
+    normalizeTask, 
+    normalizeSubTask, 
+} from '../normalizr/todo.js';
+
 import {
     GET_ERRORS,
     POST_TODO,
@@ -17,31 +23,31 @@ export const addTodo = todo => dispatch => {
     axios
         .post("api/todos/", todo)
         .then(response => {
-            dispatch(addingTodo(response.data));
+            dispatch(addingTodo(normalizeTodo(response.data)));
         })
         .catch(err => {
             dispatch(getErrors(err));
         });
 }
 
-// Add task and return updated todo
+// Add task and return updated task
 export const addTask = task => dispatch => {
     axios
         .post("api/todos/task", task)
         .then(response => {
-            dispatch(addingTask(response.data));
+            dispatch(addingTask(normalizeTask(response.data)));
         })
         .catch(err => {
             dispatch(getErrors(err));
         });
 }
 
-// Add subTask and return updated todo
+// Add subTask and return updated subTask
 export const addSubTask = subTask => dispatch => {
     axios
         .post("api/todos/subtask", subTask)
         .then(response => {
-            dispatch(addingSubTask(response.data));
+            dispatch(addingSubTask(normalizeSubTask(response.data)));
         })
         .catch(err => {
             dispatch(getErrors(err));
@@ -49,118 +55,118 @@ export const addSubTask = subTask => dispatch => {
 }
 
 // Update todo and return updated todo
-export const updateTodo = newTodo => dispatch => {
+export const updateTodo = todo => dispatch => {
     axios
-        .put("api/todos/", newTodo)
+        .put("api/todos/", todo)
         .then(response => {
-            dispatch(updatingTodo(response.data));
+            dispatch(updatingTodo(normalizeTodo(response.data)));
         })
         .catch(err => {
             dispatch(getErrors(err));
         });
 }
 
-// Update task and return updated todo
-export const updateTask = newTask => dispatch => {
+// Update task and return updated task
+export const updateTask = task => dispatch => {
     axios
-        .put("api/todos/task", newTask)
+        .put("api/todos/task", task)
         .then(response => {
-            dispatch(updatingTask(response.data));
+            dispatch(updatingTask(normalizeTask(response.data)));
         })
         .catch(err => {
             dispatch(getErrors(err));
         });
 }
 
-// Update subTask and return updated todo
-export const updateSubTask = newSubTask => dispatch => {
+// Update subTask and return updated subTask
+export const updateSubTask = subTask => dispatch => {
     axios
-        .put("api/todos/subtask", newSubTask)
+        .put("api/todos/subtask", subTask)
         .then(response => {
-            dispatch(updatingSubTask(response.data));
+            dispatch(updatingSubTask(normalizeSubTask(response.data)));
         })
         .catch(err => {
             dispatch(getErrors(err));
         });
 }
 
-// Delete task and return updated todo
+// Delete task 
 export const deleteTask = task => dispatch => {
     axios
-        .delete("api/todos/task", task)
+        .delete("api/todos/task", { data: task })
         .then(response => {
-            dispatch(deletingTask(response.data));
+            dispatch(deletingTask(normalizeTodo(response.data)));
         })
         .catch(err => {
             dispatch(getErrors(err));
         });
 }
 
-// Delete subTask and return updated todo
+// Delete subTask 
 export const deleteSubTask = subTask => dispatch => {
     axios
-        .delete("api/todos/subtask", subTask)
+        .delete("api/todos/subtask", { data: subTask })
         .then(response => {
-            dispatch(deletingSubTask(response.data));
+            dispatch(deletingSubTask(normalizeTask(response.data)));
         })
         .catch(err => {
             dispatch(getErrors(err));
         });
 }
 
-export const addingTodo = userData => {
+export const addingTodo = normalizedTodo => {
     return {
         type: POST_TODO,
-        payload: userData
+        payload: normalizedTodo
     };
 };
 
-export const addingTask = userData => {
+export const addingTask = normalizedTask => {
     return {
         type: POST_TASK,
-        payload: userData
+        payload: normalizedTask
     };
 };
 
-export const addingSubTask = userData => {
+export const addingSubTask = normalizedSubTask => {
     return {
         type: POST_SUBTASK,
-        payload: userData
+        payload: normalizedSubTask
     };
 };
 
-export const updatingTodo = userData => {
+export const updatingTodo = normalizedTodo => {
     return {
         type: UPDATE_TODO,
-        payload: userData
+        payload: normalizedTodo
     };
 };
 
-export const updatingTask = userData => {
+export const updatingTask = normalizedTask => {
     return {
         type: UPDATE_TASK,
-        payload: userData
+        payload: normalizedTask
     };
 };
 
-export const updatingSubTask = userData => {
+export const updatingSubTask = normalizedSubTask => {
     return {
         type: UPDATE_SUBTASK,
-        payload: userData
+        payload: normalizedSubTask
     };
 };
 
-export const deletingTask = userData => {
+export const deletingTask = normalizedTodo => {
     return {
         type: DELETE_TASK,
-        payload: userData
+        payload: normalizedTodo
     }
 }
 
-export const deletingSubTask = userData => {
+export const deletingSubTask = normalizedTask => {
     return {
         type: DELETE_SUBTASK,
-        payload: userData
+        payload: normalizedTask
     }
 }
 
@@ -168,6 +174,6 @@ export const deletingSubTask = userData => {
 export const getErrors = err => {
     return {
       type: GET_ERRORS,
-      payload: err.response.data
+      payload: err.response.data,
     };
 };
