@@ -3,41 +3,52 @@ const Schema = mongoose.Schema;
 
 // Create SubTaskSchema
 const SubTaskSchema = new Schema({
+    id: { // for redux and normalizr, index
+        type: String, 
+        required: true
+    },
+    taskId: { // for redux and normalizr, taskindex
+        type: String, 
+        required: true
+    },
     description: {
         type: String,
         required: true,
     },
     deadline: {
         type: Date,
-        default: Date.now,
+        default: new Date(new Date().getTime()+(3*24*60*60*1000)), // 3 days + Date.now
         required: true,
     },
     level: {
-        type: Number,
-        default: 2,
+        type: String,
+        default: "2",
         required: true,
     }
 })
 
 // Create TaskSchema
 const TaskSchema = new Schema({
+    id: { // for redux and normalizr, index
+        type: String, 
+        required: true,
+    },
     description: {
         type: String,
         required: true,
     },
     deadline: {
         type: Date,
-        default: Date.now,
+        default: new Date(new Date().getTime()+(3*24*60*60*1000)), // 3 days + Date.now
         required: true
     },
     level: {
-        type: Number,
-        default: 2,
+        type: String,
+        default: "2",
         required: true,
     }, 
     subTasks: {
-        type: [SubTaskSchema],
-        default: undefined,
+        type: [SubTaskSchema]
     } 
 })
 
@@ -48,8 +59,7 @@ const TodoSchema = new Schema({
         required: true
     },
     tasks: {
-        type: [TaskSchema],
-        default: undefined,
+        type: [TaskSchema]
     }
 })
 

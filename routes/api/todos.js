@@ -3,9 +3,13 @@ const router = express.Router();
 
 // Load input validation
 const validation = require("../../validation/todos");
-const validateToDos = validation.validateTodos;
-const validateTask = validation.validateTask;
-const validateSubTask = validation.validateSubTask;
+const validateToDo = validation.validateTodo;
+const validateTaskPOST = validation.validateTaskPOST;
+const validateTaskPUT = validation.validateTaskPUT;
+const validateTaskDELETE = validation.validateTaskDELETE;
+const validateSubTaskPOST = validation.validateSubTaskPOST;
+const validateSubTaskPUT = validation.validateSubTaskPUT;
+const validateSubTaskDELETE = validation.validateSubTaskDELETE;
 
 // Load Todo model
 const Todo = require("../../models/Todo");
@@ -15,15 +19,15 @@ const Todo = require("../../models/Todo");
 // @route POST api/todos/
 // @desc Add todo
 // @access Public 
-// not directly after registration, only after 1st todo
 // req.body is a todo, level and deadline in tasks and subtasks are optional
 router.post("/", (req, res) => {
+
     if (!req.body) {
         return res.status(400).json({ message: "Todo to add cannot be empty!" });
     }
 
     // Todo validation 
-    const { errors, isValid } = validateToDos(req.body);
+    const { errors, isValid } = validateToDo(req.body);
 
     // Check validation
     if (!isValid) {
@@ -41,7 +45,7 @@ router.post("/", (req, res) => {
                     .then(todo => res.json(todo))
                     .catch(err => console.log(err));
             } else {
-                return res.status(400).json({ message: `Todo of user with username ${req.body.name} already exists` });
+                return res.json(result);
             }
         })
         .catch(err => {
@@ -58,12 +62,13 @@ router.post("/", (req, res) => {
 // replaces the entire tasks object 
 // req.body is a todo, level and deadline in tasks and subtasks are optional
 router.put("/", (req, res) => {
+
     if (!req.body) {
         return res.status(400).json({ message: "Todo to update cannot be empty!" });
     }
 
     // Todo validation 
-    const { errors, isValid } = validateToDos(req.body);
+    const { errors, isValid } = validateToDo(req.body);
 
     // Check validation
     if (!isValid) {
@@ -87,7 +92,6 @@ router.put("/", (req, res) => {
         });
 });
 
-
 // manipulating tasks
 
 // @route POST api/todos/task
@@ -97,7 +101,7 @@ router.put("/", (req, res) => {
 req.body = {
     name: "name",
     task: {
-        level: 2, // optional 
+        level: "2", // optional 
         description: "des",
         deadline: "date", // optional 
     }
@@ -108,18 +112,8 @@ router.post("/task", (req, res) => {
         return res.status(400).json({ message: "Task to add cannot be empty!" });
     }
 
-    const newTask = {
-        level: req.body.task.level ? req.body.task.level : 2,
-        description: req.body.task.description,
-        deadline: req.body.task.deadline ? req.body.task.deadline : new Date().toISOString(),
-    };
-
-    if (req.body.task.subTasks) {
-        newTask.subTasks = req.body.task.subTasks;
-    }  
-
     // Task validation 
-    const { errors, isValid } = validateTask(newTask);
+    const { errors, isValid } = validateTaskPOST(req.body);
 
     // Check validation
     if (!isValid) {
@@ -131,9 +125,11 @@ router.post("/task", (req, res) => {
             if (!result) { 
                 return res.status(404).json({ message: `Cannot add task of user with username ${req.body.name}. Maybe Todo was not found!` });
             } else {
-                result.tasks.push(newTask);
+                const len = result.tasks.length;
+                result.tasks.push(req.body.task);
+                result.tasks[len].id = len + "";
                 result.save()
-                    .then(todo => res.json(todo))
+                    .then(todo => res.json(todo.tasks[len]))
                     .catch(err => console.log(err));
             }
         })
@@ -153,11 +149,10 @@ router.post("/task", (req, res) => {
 req.body = {
     name: "name",
     task: {
-        level: 2,
+        level: "2", // optional
         _id: "idoftask",
         description: "des",
-        deadline: "date",
-        subTasks: {},
+        deadline: "date", // optional
     }
 }
 */
@@ -167,7 +162,7 @@ router.put("/task", (req, res) => {
     }
 
     // Task validation 
-    const { errors, isValid } = validateTask(req.body.task);
+    const { errors, isValid } = validateTaskPUT(req.body);
 
     // Check validation
     if (!isValid) {
@@ -185,7 +180,7 @@ router.put("/task", (req, res) => {
                 } else {
                     result.tasks[index] = req.body.task;
                     result.save()
-                        .then(todo => res.json(todo))
+                        .then(todo => res.json(todo.tasks[index]))
                         .catch(err => console.log(err));
                 }        
             }
@@ -212,6 +207,14 @@ router.delete("/task", (req, res) => {
         return res.status(400).json({ message: "Task to delete cannot be empty!" });
     }
 
+    // name and id validation 
+    const { errors, isValid } = validateTaskDELETE(req.body);
+
+    // Check validation
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+
     Todo.findOne( { name: req.body.name } )
         .then(result => {
             if (!result) { 
@@ -223,6 +226,9 @@ router.delete("/task", (req, res) => {
                 if (result.tasks.length >= len) {
                     return res.status(404).json({ message: `Cannot delete task of user with username ${req.body.name}. Task was not found.` });
                 } else {
+                    for (let i = 0; i < len - 1; i++) {
+                        result.tasks[i].id = i + "";
+                    }
                     result.save()
                         .then(todo => res.json(todo))
                         .catch(err => console.log(err));
@@ -245,9 +251,9 @@ router.delete("/task", (req, res) => {
 /*
 req.body = {
     name: "name",
-    task_id: "taskid", // optional
+    task_id: "idoftask", // optional
     subTask: {
-        level: 2, // optional 
+        level: "2", // optional 
         description: "des",
         deadline: "date", // optional
     }
@@ -258,14 +264,8 @@ router.post("/subtask", (req, res) => {
         return res.status(400).json({ message: "SubTask to add cannot be empty!" });
     }
 
-    const newSubTask = {
-        level: req.body.subTask.level ? req.body.subTask.level : 2,
-        description: req.body.subTask.description,
-        deadline: req.body.subTask.deadline ? req.body.subTask.deadline : new Date().toISOString(),
-    };
-
     // SubTask validation 
-    const { errors, isValid } = validateSubTask(newSubTask);
+    const { errors, isValid } = validateSubTaskPOST(req.body);
 
     // Check validation
     if (!isValid) {
@@ -277,15 +277,19 @@ router.post("/subtask", (req, res) => {
             if (!result) { 
                 return res.status(404).json({ message: `Cannot add subTask of user with username ${req.body.name}. Maybe Todo was not found!` });
             } else {
-                const taskId = req.body.task_id ? req.body.task_id : result.tasks[0]._id;
-
+                const taskId = req.body.task_id === undefined ? result.tasks[0]._id : req.body.task_id;
+                
                 const index = result.tasks.findIndex(task => task._id == taskId);
+
                 if (index == -1) {
                     return res.status(404).json({ message: `Cannot add subTask of user with username ${req.body.name}. Task was not found.` });
                 } else {
-                    result.tasks[index].subTasks.push(newSubTask);
+                    const len = result.tasks[index].subTasks.length;
+                    result.tasks[index].subTasks.push(req.body.subTask);
+                    result.tasks[index].subTasks[len].taskId = index + "";
+                    result.tasks[index].subTasks[len].id = len + "";
                     result.save()
-                        .then(todo => res.json(todo))
+                        .then(todo => res.json(todo.tasks[index].subTasks[len]))
                         .catch(err => console.log(err));
                 }    
             }
@@ -308,7 +312,7 @@ req.body = {
     task_id: "taskid",
     subTask: {
         _id: "idofsubtask",
-        level: 2, 
+        level: "2", 
         description: "des",
         deadline: "date"
     }
@@ -318,9 +322,8 @@ router.put("/subtask", (req, res) => {
     if (!req.body) {
         return res.status(400).json({ message: "SubTask to update cannot be empty!" });
     }
-
     // SubTask validation 
-    const { errors, isValid } = validateSubTask(req.body.subTask);
+    const { errors, isValid } = validateSubTaskPUT(req.body);
 
     // Check validation
     if (!isValid) {
@@ -343,7 +346,7 @@ router.put("/subtask", (req, res) => {
                 } else {
                     result.tasks[taskIndex].subTasks[subTaskIndex] = req.body.subTask;
                     result.save()
-                        .then(todo => res.json(todo))
+                        .then(todo => res.json(todo.tasks[taskIndex].subTasks[subTaskIndex]))
                         .catch(err => console.log(err));
                 }    
             }
@@ -371,6 +374,14 @@ router.delete("/subtask", (req, res) => {
         return res.status(400).json({ message: "SubTask to delete cannot be empty!" });
     }
 
+    // name and id validation 
+    const { errors, isValid } = validateSubTaskDELETE(req.body);
+
+    // Check validation
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+
     Todo.findOne( { name: req.body.name } )
         .then(result => {
             if (!result) { 
@@ -381,14 +392,17 @@ router.delete("/subtask", (req, res) => {
                     return res.status(404).json({ message: `Cannot delete subTask of user with username ${req.body.name}. Task was not found.` });
                 } 
 
-                const len = result.tasks.length;
+                const len = result.tasks[taskIndex].subTasks.length;
                 result.tasks[taskIndex].subTasks =  result.tasks[taskIndex].subTasks.filter(subTask => subTask._id != req.body.subTask_id);
 
-                if (result.tasks[taskIndex].subTasks >= len) {
+                if (result.tasks[taskIndex].subTasks.length >= len) {
                     return res.status(404).json({ message: `Cannot delete subTask of user with username ${req.body.name}. SubTask was not found.` });
                 } else {
+                    for (let i = 0; i < len - 1; i++) {
+                        result.tasks[taskIndex].subTasks[i].id = i + "";
+                    }
                     result.save()
-                        .then(todo => res.json(todo))
+                        .then(todo => res.json(todo.tasks[taskIndex]))
                         .catch(err => console.log(err));
                 }                
             }
