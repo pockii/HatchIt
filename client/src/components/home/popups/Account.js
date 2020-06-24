@@ -18,7 +18,7 @@ export default class Account extends Component {
 
     onAccountClick = () => {
         this.setState((state) => {
-        return {accountSeen: !state.accountSeen};
+            return {accountSeen: !state.accountSeen};
         });
     };
 
@@ -92,12 +92,14 @@ export default class Account extends Component {
                             autoHide
                             autoHideTimeout={1000}
                             autoHideDuration={400}>
-                            <p class="flex justify-center sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">  
+                            <p class="flex justify-center sm:text-base md:text-gl lg:text-xl xl:text-2xl">  
                                 <p class="text-darkblue">
                                     Username: {this.props.user.name}<br/>
                                     Coins: {this.props.user.coins}<br/>
                                     Happiness Level: {this.props.user.happiness}<br/>
                                     Total Happiness Gained: {this.props.user.totalHappinessGained} <br/>
+                                    Total Todos Completed: {this.props.user.tasks} <br/>
+                                    Total Sub Todos Completed: {this.props.user.subTasks} <br/>
                                     <br/>
                                     <br/>
                                     <br/>

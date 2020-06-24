@@ -26,6 +26,14 @@ const UserSchema = new Schema({
   totalHappinessGained: {
     type: Number, 
     default: 0
+  },
+  tasks: {
+    type: Number, 
+    default: 0
+  },
+  subTasks: {
+    type: Number, 
+    default: 0
   }
 });
 

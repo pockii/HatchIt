@@ -8,6 +8,9 @@ const keys = require("../../config/keys");
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 
+// Load userdata validation
+const validateUserData = require("../../validation/userdata");
+
 // Load User model
 const User = require("../../models/User");
 
@@ -67,11 +70,9 @@ router.post("/login", (req, res) => {
         
         // Check if user exists
         if (!user) {
-          return res.status(404).json({ namenotfound: "Username not found" });
-        } else {
-            console.log(req.body);
-        }
-          
+            return res.status(404).json({ namenotfound: "Username not found" });
+        } 
+                  
         // Check password
         bcrypt.compare(password, user.password).then(isMatch => {
             if (isMatch) {
@@ -82,7 +83,9 @@ router.post("/login", (req, res) => {
                     name: user.name,
                     coins: user.coins,
                     happiness: user.happiness,
-                    totalHappinessGained: user.totalHappinessGained
+                    totalHappinessGained: user.totalHappinessGained,
+                    tasks: user.tasks,
+                    subTasks: user.subTasks
               };
             // Sign token
             jwt.sign(
@@ -112,13 +115,21 @@ router.post("/login", (req, res) => {
 // @access Public
 router.put("/userdata", (req, res) => {
     if (!req.body) {
-        return res.status(400).json({ message: "Data to update can not be empty!" });
+        return res.status(400).json({ message: "Data to update cannot be empty!" });
+    }
+
+    // userData validation 
+    const { errors, isValid } = validateUserData(req.body);
+
+    // Check validation
+    if (!isValid) {
+        return res.status(400).json(errors);
     }
 
     User.findOneAndUpdate({ name: req.body.name }, req.body, {returnOriginal: false, useFindAndModify: false})
         .then(result => {
             if (!result) {
-                res.status(404).send({
+                return res.status(404).send({
                     message: `Cannot update data of user with username ${req.body.name}. Maybe User was not found!`
                 });
             } else {
@@ -126,7 +137,7 @@ router.put("/userdata", (req, res) => {
             }
         })
         .catch(err => {
-            res.status(500).send({
+            return res.status(500).send({
                 message: "Error updating data of user with username: " + req.body.name
             });
         });

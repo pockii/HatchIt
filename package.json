@@ -11,6 +11,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "proxy": "http://localhost:5000"
   },
+  "proxy": "http://localhost:5000",
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -24,10 +25,13 @@
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
     "mongoose": "^5.9.16",
+    "normalizr": "^3.6.0",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "react": "^16.13.1",
+    "react-beautiful-dnd": "^13.0.0",
     "react-custom-scrollbars": "^4.2.1",
+    "react-datepicker": "^3.0.0",
     "react-dom": "^16.13.1",
     "react-modal": "^3.11.2",
     "react-redux": "^7.2.0",

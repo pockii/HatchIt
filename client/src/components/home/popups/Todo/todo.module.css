@@ -1,0 +1,14 @@
+.modal {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    right: 50%;
+    bottom: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 90%;
+    background-color: #E7E9FF;
+    border: 2px solid #203864;
+    border-radius: 15px;
+    overflow: auto;
+}

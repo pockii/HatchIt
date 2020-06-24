@@ -11,6 +11,7 @@ import FoodWindow from "./FoodWindow.js";
 import Logout from "./Logout.js";
 import Coins from "./Coins.js";
 import Happiness from "./Happiness.js";
+import Todo from "./popups/Todo/Todo.js"
 
 import day from '../pics/day.svg';
 
@@ -80,7 +81,7 @@ class Home extends Component {
     // Happiness
     updateHappiness(newHappiness) {
         const userData = {
-            name: this.props.auth.user.name,
+            name: this.name,
             happiness: newHappiness,
         };
         this.props.updateUserData(userData); 
@@ -88,7 +89,7 @@ class Home extends Component {
 
     updateHappinessGained(num) {
         const userData = {
-            name: this.props.auth.user.name,
+            name: this.props.auth.name,
             totalHappinessGained: this.props.auth.user.totalHappinessGained + num,
         };
         this.props.updateUserData(userData); 
@@ -164,6 +165,7 @@ class Home extends Component {
                 <div class="flex flex-col absolute right-0 bottom-0 sm:text-xs md:text-sm lg:text-base xl:text-xl text-darkblue">
                     <Account user={this.props.auth.user} />
                     <Food foodCallBack={this.foodCallBack} />
+                    <Todo />
                     <Logout onLogoutClick={this.onLogoutClick} />
                 </div>               
             </div>
@@ -185,6 +187,8 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { logoutUser,
-      updateUserData }
+    { 
+        logoutUser,
+        updateUserData 
+    }
 )(Home);

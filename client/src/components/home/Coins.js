@@ -1,13 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Coins extends Component {
-    constructor(props) {
-        super(props);
-    }    
-
-    render() {
-        return (
-          <div class="p-1 inline-flex flex items-center">
+export default function Coins({ coins }) {
+    return (
+        <div class="p-1 inline-flex flex items-center">
             <svg class="w-6"
                 viewBox="0 0 96 96" 
                 xmlns="http://www.w3.org/2000/svg" 
@@ -20,11 +15,8 @@ class Coins extends Component {
                 </g>
                 </svg>
                 <span> 
-                    {this.props.coins}
+                    {coins}
                 </span>
-          </div>
-        );
-    }
+        </div>
+    );
 }
-
-export default Coins;
