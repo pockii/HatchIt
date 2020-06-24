@@ -1,14 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Happiness extends Component {
-    constructor(props) {
-        super(props);
-    }    
-
-    render() {
-        return (          
-            <div class="p-1 inline-flex flex items-center">
-              <svg 
+export default function Happiness({ happiness }) {
+    return (          
+        <div class="p-1 inline-flex flex items-center">
+            <svg 
                 class="w-6"
                 viewBox="0 0 96 96" 
                 xmlns="http://www.w3.org/2000/svg" 
@@ -20,17 +15,14 @@ class Happiness extends Component {
                             fill="#203864"/>
                         <path 
                             d="M24.9 72.674C22.3435 67.7879 18.6527 63.5861 14.137 60.421 18.6525 57.2553 22.3433 53.0532 24.9 48.167 27.4567 53.0538 31.1483 57.256 35.665 60.421 31.1486 63.5859 27.457 67.7877 24.9 72.674Z" 
-                          fill="#203864"/>
+                        fill="#203864"/>
                     </g>
-              </svg>
-              <div class="relative pt-4">
-                  <div style={{width : 250}} class="overflow-hidden h-3 mb-4 text-xs flex rounded border border-darkblue bg-pink-100">
-                      <div style={{width : this.props.happiness/100*250}} class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-300"></div>
-                  </div>
-              </div>
-          </div>
-        );
-    }
+            </svg>
+            <div class="relative pt-4">
+                <div style={{ width: 250 }} class="overflow-hidden h-3 mb-4 text-xs flex rounded border border-darkblue bg-pink-100">
+                    <div style={{ width: happiness / 100 * 250 }} class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-300"></div>
+                </div>
+            </div>
+        </div>
+    );
 }
-
-export default Happiness;

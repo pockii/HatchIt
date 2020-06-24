@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
@@ -32,7 +33,7 @@ if (localStorage.jwtToken) {
   }
 }
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
@@ -51,4 +52,5 @@ class App extends Component {
   }
 }
 
-export default App;
+ReactDOM.render(<App />, document.getElementById('root'));
+
