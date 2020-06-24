@@ -154,7 +154,7 @@ class List extends Component {
                                     >
                                     {this.props.todo.todo.tasks.map((taskId, index) => {
                                         const task = this.props.todo.tasks[taskId];
-                                        return <Task key={task.id} taskId ={task.id} index={index} />;
+                                        return <Task key={task.id} taskId ={task.id} index={index} onTodoExitClick={this.props.onTodoExitClick}/>;
                                     })}
                                     {provided.placeholder}
                                 </div>

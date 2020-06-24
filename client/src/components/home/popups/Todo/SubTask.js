@@ -74,6 +74,7 @@ class SubTask extends Component {
         };
         this.props.updateUserData(userData); 
         this.onDeleteSubTaskClick();
+        this.props.onTodoExitClick();
     }
 
     render() {

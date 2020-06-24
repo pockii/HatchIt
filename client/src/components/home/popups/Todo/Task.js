@@ -61,7 +61,7 @@ class Task extends Component {
         this.props.deleteTask({
             name: this.props.auth.user.name,
             task_id: this.props.todo.tasks[this.props.taskId]._id
-        });
+        });        
     }
 
     onCompleteTaskClick() {
@@ -73,6 +73,7 @@ class Task extends Component {
         };
         this.props.updateUserData(userData); 
         this.onDeleteTaskClick();
+        this.props.onTodoExitClick();
     }
 
     render() {
@@ -128,7 +129,7 @@ class Task extends Component {
                                         class={getDroppableStyle(snapshot.isDraggingOver)}
                                     >
                                         {this.props.todo.tasks[this.props.taskId].subTasks.map((subTaskId, index) => (
-                                            <SubTask key={subTaskId} subTaskId={subTaskId} index={index} />
+                                            <SubTask key={subTaskId} subTaskId={subTaskId} index={index} onTodoExitClick={this.props.onTodoExitClick}/>
                                         ))}
                                         {provided.placeholder}
                                     </div>

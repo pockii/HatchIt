@@ -12,8 +12,9 @@ import {
     deleteSubTask
  } from "../../../../actions/todoActions";
 import Modal from "react-modal";
-import List from './List';
 import todo from './todo.module.css';
+
+import List from './List';
 
 Modal.defaultStyles.overlay.backgroundColor = 'transparent';
 
@@ -184,7 +185,7 @@ class Todo extends Component {
                     </p>   
 
                     <div class="pl-10 pr-10 h-8/10">
-                        <List />
+                        <List onTodoExitClick={this.onTodoExitClick}/>
                     </div>
                 </Modal>
             </div>
