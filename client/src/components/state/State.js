@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 
-import normal_state1 from '../pics/normal_state1.svg';
-import normal_state2 from '../pics/normal_state2.svg';
-import react_state1 from '../pics/reaction_state1.svg';
-import react_state2 from '../pics/reaction_state2.svg';
-import eating_state1 from '../pics/eating_state1.svg';
-import eating_state2 from '../pics/eating_state2.svg';
-import max_state1 from '../pics/max_state1.svg';
-import max_state2 from '../pics/max_state2.svg';
+import normal_state1 from './pics/normal_state1.svg';
+import normal_state2 from './pics/normal_state2.svg';
+import react_state1 from './pics/reaction_state1.svg';
+import react_state2 from './pics/reaction_state2.svg';
+import eating_state1 from './pics/eating_state1.svg';
+import eating_state2 from './pics/eating_state2.svg';
+import max_state1 from './pics/max_state1.svg';
+import max_state2 from './pics/max_state2.svg';
+import guess_state1 from './pics/guess_state1.svg';
+import guess_state2 from './pics/guess_state2.svg'
 
 
 
@@ -30,6 +32,7 @@ export default class State extends Component {
         let value = parseInt(e.dataTransfer.getData("value"));
         this.props.incrementHappiness(value);
         this.toggleEating();
+        e.preventDefault();
     }
 
     switchImage() {
@@ -44,21 +47,6 @@ export default class State extends Component {
         }
     }
 
-    changeState(newImages) {
-        this.setState({
-            images: newImages
-        })
-    }
-
-    determineState(newImages, time) {
-        if (time === 0) {
-            this.changeState(newImages);
-        } else {
-            this.changeState(newImages);
-            setTimeout(() => this.changeState(this.currentState()), time);
-        }
-    }
-
     currentState() {
         if (this.props.maxHappiness) {
             return [max_state1, max_state2];
@@ -67,12 +55,35 @@ export default class State extends Component {
         }
     }
 
+    changeImages(newImages) {
+        this.setState({
+            images: newImages
+        })
+    }
+
+    updateImages(newImages, time) {
+        if (time === 0) {
+            this.changeImages(newImages);
+        } else {
+            this.changeImages(newImages);
+            setTimeout(() => this.changeImages(this.currentState()), time);
+        }
+    }
+
     toggleReaction() {
-        this.determineState([react_state1, react_state2], 2500);
+        this.updateImages([react_state1, react_state2], 2500);
     }
 
     toggleEating() {
-        this.determineState([eating_state1, eating_state2], 3000);
+        this.updateImages([eating_state1, eating_state2], 3000);
+    }
+
+    toggleGuessing() {
+        this.updateImages([guess_state1, guess_state2], 0);
+    }
+
+    revertToNormal() {
+        this.updateImages(this.currentState(), 0);
     }
 
     componentDidMount() {
