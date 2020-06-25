@@ -20,7 +20,9 @@ module.exports = function validateUserData(userData) {
     if (userData.subTasks !== undefined) {
         userData.subTasks = !isEmpty(userData.subTasks) ? userData.subTasks + "" : "";
     }
-
+    if (userData.dateGuessed !== undefined) {
+        userData.dateGuessed = !isEmpty(userData.dateGuessed) ? userData.dateGuessed + "" : "";
+    }
 
     if (Validator.isEmpty(userData.name)) {
         errors.name = "Name is required";
@@ -50,6 +52,11 @@ module.exports = function validateUserData(userData) {
         errors.subTasks = "subTasks is invalid";
         isValid = false;
     }
+    
+    if (userData.dateGuessed !== undefined && !Validator.isInt(userData.dateGuessed, { min : 0 } )) {
+        errors.dateGuessed = "dateGuessed is invalid";
+        isValid = false;
+    } 
 
     return {
         errors,
