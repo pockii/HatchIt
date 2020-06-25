@@ -7,6 +7,9 @@ import GuessButtons from './GuessButtons.js';
 Modal.defaultStyles.overlay.backgroundColor = 'transparent';
 
 export default class Guess extends Component {
+    #minute = 60000;
+    #hour = this.#minute * 60;
+    #day = this.#hour * 24;
 
     constructor(props) {
         super(props);
@@ -14,18 +17,21 @@ export default class Guess extends Component {
             guessSeen: false,
             firstChoice: false,
             guessed: false,
-            correctGuess: false
+            correctGuess: false,
+            available: true
         };
     }
 
     onGuessClick = () => {
-        this.props.guessCallBack(true);
-        this.setState((state) => {
-            return {
-                guessSeen: !state.guessSeen,
-                firstChoice: this.randomizer()
-            };
-        });
+        if (this.state.available) {
+            this.props.guessCallBack(true);
+            this.setState((state) => {
+                return {
+                    guessSeen: !state.guessSeen,
+                    firstChoice: this.randomizer(),
+                };
+            });
+        }
     };
 
     onGuessExitClick = () => {
@@ -33,7 +39,8 @@ export default class Guess extends Component {
         this.setState({
             guessSeen: false,
             guessed: false,
-            correctGuess: false
+            correctGuess: false,
+            available: false
         });
     };
 
@@ -41,12 +48,14 @@ export default class Guess extends Component {
         const rand = Math.random();
         return rand >= 0.5;
     };
-
+    
     callBackAfterGuess = (bool) => {
         this.setState({
             guessed: true,
             correctGuess: bool
         })
+        this.props.updateDateGuessed();
+        setTimeout(() => this.setState({available : true}), this.#day);
     };
 
     messageAfterGuess() {
@@ -58,12 +67,24 @@ export default class Guess extends Component {
         </p>
     };
 
+    isAvailable() {
+        return Date.now() - this.props.dateGuessed >= this.#day;
+    }
+
+    updateButton() {
+        if (this.state.available) {
+            return "p-1 hover:text-gray-500 inline-flex flex items-center"; 
+        } else {
+            return "p-1 hover:text-gray-500 inline-flex flex items-center opacity-50 cursor-not-allowed";
+        }
+    }
+
     render() {
         return (
             <div>
                 <button
-                    class="p-1 hover:text-gray-500 inline-flex flex items-center"
-                    onClick={this.onGuessClick}
+                    class= {this.updateButton()}
+                    onClick= {this.onGuessClick}
                 >
                     <svg 
                         class="w-6 fill-current"
@@ -140,4 +161,3 @@ export default class Guess extends Component {
         );
     }
 }
-
