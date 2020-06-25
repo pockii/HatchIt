@@ -7,7 +7,8 @@ import { updateUserData } from "../../actions/userdataActions";
 import State from "../state/State.js";
 import Account from "./popups/Account.js";
 import Food from "./Food.js"
-import FoodWindow from "./FoodWindow.js";
+import FoodWindow from "./popups/Food/FoodWindow.js";
+import Guess from "./popups/Guess/Guess.js";
 import Logout from "./Logout.js";
 import Coins from "./Coins.js";
 import Happiness from "./Happiness.js";
@@ -28,9 +29,12 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.name = this.props.auth.user.name;
-        this.incrementHappiness = this.incrementHappiness.bind(this)
+        this.incrementHappiness = this.incrementHappiness.bind(this);
+        this.decrementHappiness = this.decrementHappiness.bind(this);
+        this.incrementCoins = this.incrementCoins.bind(this);
+        this.petState = React.createRef();
         this.state = {
-            foodSeen: false
+            foodSeen: false,
             maxHappiness: false
         };
     }    
@@ -110,9 +114,6 @@ class Home extends Component {
     decrementHappiness(num) {
         if (this.props.auth.user.happiness - num >= this.#happiness.min) {
             this.updateHappiness(this.props.auth.user.happiness - num);
-            this.setState({
-                maxHappiness: false
-            })
             return true;
         } else {
             this.updateHappiness(this.#happiness.min);
@@ -128,10 +129,20 @@ class Home extends Component {
         return this.props.auth.user.happiness === this.#happiness.max;
     }
 
+    // FoodWindow
     foodCallBack = (childData) => {
         this.setState({
             foodSeen: childData
         })
+    };
+
+    // GuessState
+    guessCallBack = (childData) => {
+        if (childData) {
+            this.petState.current.toggleGuessing();
+        } else {
+            this.petState.current.revertToNormal();
+        }
     };
 
     // Logout
@@ -142,14 +153,17 @@ class Home extends Component {
 
     render() {   
         return (
-            <div class="bg-lightbluebg h-screen">  
+            <div class="bg-lightbluebg h-screen overflow-hidden">  
                 <div class="h-0">
                     <img class="object-contain w-full" 
                         src={day} 
                         alt="Day"></img>
                 </div>
 
-                <State incrementHappiness={this.incrementHappiness} maxHappiness={this.state.maxHappiness}/>
+                <State  
+                    ref={this.petState}
+                    incrementHappiness={this.incrementHappiness} 
+                    maxHappiness={this.state.maxHappiness} />
 
                 <button onClick={() => this.incrementHappiness(10)} class="text-xl">+</button>
                 <button onClick={() => this.decrementHappiness(10)} class="text-xl">-</button>
@@ -161,13 +175,22 @@ class Home extends Component {
                     <Coins coins={this.props.auth.user.coins} />
                     <Happiness happiness={this.props.auth.user.happiness} />
                 </div> 
-
-                <div class="flex flex-col absolute right-0 bottom-0 sm:text-xs md:text-sm lg:text-base xl:text-xl text-darkblue">
-                    <Account user={this.props.auth.user} />
-                    <Food foodCallBack={this.foodCallBack} />
-                    <Todo />
-                    <Logout onLogoutClick={this.onLogoutClick} />
-                </div>               
+                <div class="absolute right-0 bottom-0 sm:text-xs md:text-sm lg:text-base xl:text-xl text-darkblue">
+                    <div class="grid grid-flow-col grid-cols-2 grid-rows-4">
+                        <div />
+                        <div />
+                        <Todo />
+                        <Guess 
+                            incrementHappiness={this.incrementHappiness} 
+                            decrementHappiness={this.decrementHappiness} 
+                            incrementCoins={this.incrementCoins}
+                            guessCallBack={this.guessCallBack} />
+                        <div />
+                        <Account user={this.props.auth.user} />
+                        <Food foodCallBack={this.foodCallBack} />
+                        <Logout onLogoutClick={this.onLogoutClick} />
+                    </div>
+                </div>
             </div>
         );
     }
@@ -187,7 +210,7 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { 
+    {   
         logoutUser,
         updateUserData 
     }
