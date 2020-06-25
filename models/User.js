@@ -34,6 +34,10 @@ const UserSchema = new Schema({
   subTasks: {
     type: Number, 
     default: 0
+  },
+  dateGuessed: {
+    type: Number,
+    default: 0
   }
 });
 
