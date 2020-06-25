@@ -40,7 +40,6 @@ export default class Guess extends Component {
             guessSeen: false,
             guessed: false,
             correctGuess: false,
-            available: false
         });
     };
 
@@ -52,7 +51,8 @@ export default class Guess extends Component {
     callBackAfterGuess = (bool) => {
         this.setState({
             guessed: true,
-            correctGuess: bool
+            correctGuess: bool,
+            available: false
         })
         this.props.updateDateGuessed();
         setTimeout(() => this.setState({available : true}), this.#day);
