@@ -25,13 +25,14 @@ class Home extends Component {
         max: 100
     };
     #minute = 60000;
-
+    
     constructor(props) {
         super(props);
         this.name = this.props.auth.user.name;
         this.incrementHappiness = this.incrementHappiness.bind(this);
         this.decrementHappiness = this.decrementHappiness.bind(this);
         this.incrementCoins = this.incrementCoins.bind(this);
+        this.updateDateGuessed = this.updateDateGuessed.bind(this);
         this.petState = React.createRef();
         this.state = {
             foodSeen: false,
@@ -117,7 +118,7 @@ class Home extends Component {
             return true;
         } else {
             this.updateHappiness(this.#happiness.min);
-            return false;
+            return false; 
         }
     }      
     
@@ -129,6 +130,15 @@ class Home extends Component {
         return this.props.auth.user.happiness === this.#happiness.max;
     }
 
+    // Guess
+    updateDateGuessed() {
+        const userData = {
+            name: this.name,
+            dateGuessed: Date.now()
+        };
+        this.props.updateUserData(userData); 
+    }
+      
     // FoodWindow
     foodCallBack = (childData) => {
         this.setState({
@@ -181,6 +191,8 @@ class Home extends Component {
                         <div />
                         <Todo />
                         <Guess 
+                            dateGuessed={this.props.auth.user.dateGuessed}
+                            updateDateGuessed={this.updateDateGuessed}
                             incrementHappiness={this.incrementHappiness} 
                             decrementHappiness={this.decrementHappiness} 
                             incrementCoins={this.incrementCoins}
