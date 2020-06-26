@@ -154,7 +154,8 @@ class List extends Component {
                                     >
                                     <Tasks 
                                         tasks={this.props.todo.todo.tasks} 
-                                        onTodoExitClick={this.props.onTodoExitClick}/>
+                                        onTodoExitClick={this.props.onTodoExitClick}
+                                        todoCallBack={this.props.todoCallBack}/>
                                     {provided.placeholder}
                                 </div>
                             )}
