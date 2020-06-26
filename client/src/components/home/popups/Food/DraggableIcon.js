@@ -29,7 +29,7 @@ export default class DraggableIcon extends Component {
 
     render() {
         return (
-            <div class="border-solid rounded border-2 border-darkblue bg-yellowbarbg h-28">  
+            <div class="border-solid rounded border-2 border-darkblue bg-yellowbarbg w-32 h-28">  
                 <div
                     onDragStart = {(e) => this.onDragStart(e)} 
                     draggable="true">
