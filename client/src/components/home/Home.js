@@ -5,7 +5,7 @@ import { logoutUser } from "../../actions/authActions";
 import { updateUserData } from "../../actions/userdataActions";
 
 import State from "../state/State.js";
-import Account from "./popups/Account.js";
+import Account from "./popups/Account/Account.js";
 import Food from "./Food.js"
 import FoodWindow from "./popups/Food/FoodWindow.js";
 import Guess from "./popups/Guess/Guess.js";
@@ -174,10 +174,7 @@ class Home extends Component {
                     ref={this.petState}
                     incrementHappiness={this.incrementHappiness} 
                     maxHappiness={this.state.maxHappiness} />
-
-                <button onClick={() => this.incrementHappiness(10)} class="text-xl">+</button>
-                <button onClick={() => this.decrementHappiness(10)} class="text-xl">-</button>
-
+                    
                 <div class="absolute top-0 pt-3 pr-16">
                     {this.state.foodSeen ? <FoodWindow foodCallBack={this.foodCallBack} /> : null}
                 </div>
