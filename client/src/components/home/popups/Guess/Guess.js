@@ -17,18 +17,19 @@ export default class Guess extends Component {
             guessSeen: false,
             firstChoice: false,
             guessed: false,
-            correctGuess: false,
-            available: true
+            reward: "none",
+            available: this.isAvailable()
         };
     }
 
     onGuessClick = () => {
-        if (this.state.available) {
+        if (this.isAvailable()) {
             this.props.guessCallBack(true);
             this.setState((state) => {
                 return {
                     guessSeen: !state.guessSeen,
                     firstChoice: this.randomizer(),
+                    available: true
                 };
             });
         }
@@ -48,27 +49,10 @@ export default class Guess extends Component {
         return rand >= 0.5;
     };
     
-    callBackAfterGuess = (bool) => {
-        this.setState({
-            guessed: true,
-            correctGuess: bool,
-            available: false
-        })
-        this.props.updateDateGuessed();
-        setTimeout(() => this.setState({available : true}), this.#day);
-    };
-
-    messageAfterGuess() {
-        return <p class="pt-12 flex justify-center text-darkblue text-2xl">
-            {(this.state.correctGuess) 
-                ? "Good guess! Here's a reward!"
-                : "Oh no, better luck next time!"
-            }
-        </p>
-    };
-
     isAvailable() {
-        return Date.now() - this.props.dateGuessed >= this.#day;
+        const dateGuessed = new Date(this.props.dateGuessed)
+        const now = new Date()
+        return (now - dateGuessed) >= this.#day
     }
 
     updateButton() {
@@ -78,6 +62,26 @@ export default class Guess extends Component {
             return "p-1 hover:text-gray-500 inline-flex flex items-center opacity-50 cursor-not-allowed";
         }
     }
+
+    callBackAfterGuess = (newReward) => {
+        this.setState({
+            guessed: true,
+            reward: newReward,
+            available: false
+        })
+        this.props.updateDateGuessed();
+        setTimeout(() => this.setState({available : true}), this.#day);
+    };
+
+    messageAfterGuess() {
+        if (this.state.reward === "none") {
+            return "Oh no, better luck next time!"
+        } else if (this.state.reward === "coins") {
+            return "Congratulations! Here's some coins!"
+        } else {
+            return "Good guess! Your pet is happy!" 
+        }
+    };
 
     render() {
         return (
@@ -147,7 +151,9 @@ export default class Guess extends Component {
                         <span>Guess</span>
                     </p>  
                     {this.state.guessed 
-                        ? this.messageAfterGuess() 
+                        ? <p class="pt-12 flex justify-center text-darkblue text-2xl"> 
+                            {this.messageAfterGuess()} 
+                          </p> 
                         : <GuessButtons 
                             firstChoice={this.state.firstChoice} 
                             randomizer={this.randomizer}
@@ -161,3 +167,4 @@ export default class Guess extends Component {
         );
     }
 }
+
