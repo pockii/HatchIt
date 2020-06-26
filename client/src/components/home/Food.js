@@ -4,13 +4,10 @@ export default class Food extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            foodSeen: false
-        };
     }
 
     onFoodClick = () => {
-        this.props.foodCallBack(true)
+        this.props.foodCallBack(true);
     };
 
     render() {
