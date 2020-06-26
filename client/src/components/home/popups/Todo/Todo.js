@@ -34,7 +34,7 @@ class Todo extends Component {
                 id: "0",
                 description: "My first todo!"
             }]                       
-        });
+        });   
     }
 
     onTodoClick = () => {
@@ -183,7 +183,9 @@ class Todo extends Component {
                     </p>   
 
                     <div class="pl-10 pr-10 h-8/10">
-                        <List onTodoExitClick={this.onTodoExitClick}/>
+                        <List 
+                            onTodoExitClick={this.onTodoExitClick} 
+                            todoCallBack={this.props.todoCallBack}/>
                     </div>
                 </Modal>
             </div>
