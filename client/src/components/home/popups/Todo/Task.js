@@ -65,14 +65,28 @@ class Task extends Component {
     }
 
     onCompleteTaskClick() {
-        // add rewards here 
+        var happinessGained = this.props.todo.tasks[this.props.taskId].level * 5;
+        var newCoins = this.props.auth.user.coins + this.props.todo.tasks[this.props.taskId].level * 5;
+        
+        const allSubTasks = this.props.todo.tasks[this.props.taskId].subTasks
+        var i;
+        for (i = 0; i < allSubTasks.length; i++) {
+            happinessGained += this.props.todo.subTasks[allSubTasks[i]].level * 5;
+            newCoins += this.props.todo.subTasks[allSubTasks[i]].level * 5;
+        }
+
         const userData = {
             name: this.props.auth.user.name,
             tasks: this.props.auth.user.tasks + 1,
-            subTasks: this.props.auth.user.subTasks + this.props.todo.tasks[this.props.taskId].subTasks.length
+            subTasks: this.props.auth.user.subTasks + allSubTasks.length,
+            happiness: this.props.auth.user.happiness + happinessGained,
+            totalHappinessGained: this.props.auth.user.totalHappinessGained + happinessGained,
+            coins: newCoins
         };
+
         this.props.updateUserData(userData); 
         this.onDeleteTaskClick();
+        this.props.todoCallBack(true);
         this.props.onTodoExitClick();
     }
 
@@ -130,6 +144,7 @@ class Task extends Component {
                                     >
                                         <SubTasks 
                                             subTasks={this.props.todo.tasks[this.props.taskId].subTasks} 
+                                            todoCallBack={this.props.todoCallBack}
                                             onTodoExitClick={this.props.onTodoExitClick} />
                                         {provided.placeholder}
                                     </div>
