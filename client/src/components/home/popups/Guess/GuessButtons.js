@@ -12,9 +12,11 @@ export default class GuessButtons extends Component {
 
     randomizeReward() {
         if (this.props.randomizer()) {
-            return this.props.incrementHappiness(10);
+            this.props.incrementHappiness(10);
+            return "happiness";
         } else {
-            return this.props.incrementCoins(10);
+            this.props.incrementCoins(10);
+            return "coins";
         }
     }
 
@@ -24,11 +26,11 @@ export default class GuessButtons extends Component {
 
     onGuessChoiceClick = (choice) => {
         if (this.correctChoice(choice)) {
-            this.randomizeReward();
-            this.props.callBackAfterGuess(true);
+            const reward = this.randomizeReward();
+            this.props.callBackAfterGuess(reward);
         } else {
             this.props.decrementHappiness(5);
-            this.props.callBackAfterGuess(false);
+            this.props.callBackAfterGuess("none");
         }
     }
 
@@ -77,7 +79,7 @@ export default class GuessButtons extends Component {
                         xlink="http://www.w3.org/1999/xlink"
                         viewBox="-20 20 400 400"
                         overflow="hidden"
-                        id="Icons_Red_Gift"
+                        id="Icons_Blue_Gift"
                     >
                         <g 
                             transform="scale(0.900, 0.900)">
