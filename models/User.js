@@ -13,7 +13,7 @@ const UserSchema = new Schema({
   },
   date: {
     type: Date,
-    default: Date.now
+    default: new Date()
   },
   coins: {
     type: Number,
@@ -36,8 +36,8 @@ const UserSchema = new Schema({
     default: 0
   },
   dateGuessed: {
-    type: Number,
-    default: 0
+    type: Date,
+    default: new Date(0)
   }
 });
 
