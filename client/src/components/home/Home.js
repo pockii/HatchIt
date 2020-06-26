@@ -130,30 +130,38 @@ class Home extends Component {
         return this.props.auth.user.happiness === this.#happiness.max;
     }
 
-    // Guess
-    updateDateGuessed() {
-        const userData = {
-            name: this.name,
-            dateGuessed: Date.now()
-        };
-        this.props.updateUserData(userData); 
-    }
-      
     // FoodWindow
     foodCallBack = (childData) => {
         this.setState({
             foodSeen: childData
         })
     };
-
+    
+    // Guess
+    updateDateGuessed() {
+        const userData = {
+            name: this.name,
+            dateGuessed: new Date()
+        };
+        this.props.updateUserData(userData); 
+    }
+      
     // GuessState
-    guessCallBack = (childData) => {
-        if (childData) {
+    guessCallBack = (isGuessing) => {
+        if (isGuessing) {
             this.petState.current.toggleGuessing();
         } else {
             this.petState.current.revertToNormal();
         }
     };
+
+
+    // TodoState
+    todoCallBack = (completedTask) => {
+        if (completedTask) {
+            this.petState.current.toggleProductive();
+        }
+    }
 
     // Logout
     onLogoutClick = e => {
@@ -174,19 +182,25 @@ class Home extends Component {
                     ref={this.petState}
                     incrementHappiness={this.incrementHappiness} 
                     maxHappiness={this.state.maxHappiness} />
-                    
-                <div class="absolute top-0 pt-3 pr-16">
+
+                <button onClick={() => this.incrementHappiness(10)} class="text-lg">+</button>
+                <button onClick={() => this.decrementHappiness(10)} class="text-lg">-</button>
+
+                <div class="flex justify-center">
                     {this.state.foodSeen ? <FoodWindow foodCallBack={this.foodCallBack} /> : null}
                 </div>
+
                 <div class="flex flex-col absolute bottom-0 left-0 w-1/4 sm:text-xs md:text-sm lg:text-base xl:text-xl text-darkblue">
                     <Coins coins={this.props.auth.user.coins} />
                     <Happiness happiness={this.props.auth.user.happiness} />
                 </div> 
+                
                 <div class="absolute right-0 bottom-0 sm:text-xs md:text-sm lg:text-base xl:text-xl text-darkblue">
                     <div class="grid grid-flow-col grid-cols-2 grid-rows-4">
+                        <div /> 
                         <div />
-                        <div />
-                        <Todo />
+                        <Todo 
+                            todoCallBack={this.todoCallBack}/>
                         <Guess 
                             dateGuessed={this.props.auth.user.dateGuessed}
                             updateDateGuessed={this.updateDateGuessed}
