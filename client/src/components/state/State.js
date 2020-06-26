@@ -9,9 +9,9 @@ import eating_state2 from './pics/eating_state2.svg';
 import max_state1 from './pics/max_state1.svg';
 import max_state2 from './pics/max_state2.svg';
 import guess_state1 from './pics/guess_state1.svg';
-import guess_state2 from './pics/guess_state2.svg'
-
-
+import guess_state2 from './pics/guess_state2.svg';
+import productive_state1 from './pics/prod_state1.svg';
+import productive_state2 from './pics/prod_state2.svg';
 
 export default class State extends Component { 
     constructor(props) {
@@ -55,18 +55,18 @@ export default class State extends Component {
         }
     }
 
-    changeImages(newImages) {
-        this.setState({
-            images: newImages
-        })
-    }
-
     updateImages(newImages, time) {
         if (time === 0) {
-            this.changeImages(newImages);
+            this.setState({
+                images: newImages,
+            })
         } else {
-            this.changeImages(newImages);
-            setTimeout(() => this.changeImages(this.currentState()), time);
+            this.setState({
+                images: newImages,
+            })
+            setTimeout(() => this.setState({
+                images: this.currentState(),
+                }), time);
         }
     }
 
@@ -82,6 +82,10 @@ export default class State extends Component {
         this.updateImages([guess_state1, guess_state2], 0);
     }
 
+    toggleProductive() {
+        this.updateImages([productive_state1, productive_state2], 3000);
+    }
+    
     revertToNormal() {
         this.updateImages(this.currentState(), 0);
     }
