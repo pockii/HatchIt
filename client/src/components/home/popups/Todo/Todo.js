@@ -27,16 +27,14 @@ class Todo extends Component {
         this.onTodoExitClick = this.onTodoExitClick.bind(this);
     }
 
-    componentDidUpdate(prevProps) {
-        if (!this.props.todo.postedTodo) { // get todo of user when they click todos, add todo if todo does not exist
-            this.props.addTodo({ 
-                name: this.props.auth.user.name,
-                tasks: [{
-                    id: "0",
-                    description: "My first todo!"
-                }]                       
-            });
-        }   
+    componentDidMount() {
+        this.props.addTodo({ 
+            name: this.props.auth.user.name,
+            tasks: [{
+                id: "0",
+                description: "My first todo!"
+            }]                       
+        });
     }
 
     onTodoClick = () => {

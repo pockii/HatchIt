@@ -10,7 +10,9 @@ const initialState = {};
 const persistConfig = {
     key: 'root',
     storage,
-    stateReconciler: hardSet
+    stateReconciler: hardSet,
+    whitelist: ['auth'],
+    blacklist: ['errors', 'todo']
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
