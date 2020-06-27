@@ -198,6 +198,24 @@
      ```
 
      Actual Result: _same_ as Expected Result
+     Body:
+
+      ```json
+      {
+        "name": "user",
+        "password": "password"
+      }
+      ```
+
+      Expected Result:
+
+      ```json
+      {
+        "namenotfound": "Username not found"
+      }
+      ```
+
+      Actual Result: _same_ as Expected Result
 
 ## Unit Testing
 
