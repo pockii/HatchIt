@@ -60,7 +60,7 @@ export default class FoodWindow extends Component {
                         autoHideTimeout={1000}
                         autoHideDuration={400}
                     > 
-                        <div class="flex items-center grid grid-cols-3 row-gap-4 col-gap-6 pl-6 pr-6 h-48 overflow-scroll">
+                        <div class="flex items-center grid grid-cols-3 row-gap-4 col-gap-6 pl-6 pr-6 h-48">
                             <DraggableIcon name="Cookie" imgsrc={cookie} value="5" />
                             <DraggableIcon name="Burger" imgsrc={burger} value="10" /> 
                             <DraggableIcon name="Donut" imgsrc={donut} value="15" />

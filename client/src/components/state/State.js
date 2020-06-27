@@ -97,17 +97,14 @@ export default class State extends Component {
     render() {
         return (
             <div class="absolute bottom-0 z-1">
-                <div class="flex">
-                    <div class="w-1/3" />
-                    <div class="w-2/5">
-                        <img 
-                            class="object-contain"
-                            src={this.state.images[this.state.currentIndex]}
-                            onClick={this.toggleReaction}
-                            onDragOver={(e) => this.onDragOver(e)}
-                            onDrop={(e) => this.onDrop(e)}
-                            alt="Pet" />
-                    </div>
+                <div class="flex justify-center">
+                    <img 
+                        class="object-contain w-2/5"
+                        src={this.state.images[this.state.currentIndex]}
+                        onClick={this.toggleReaction}
+                        onDragOver={(e) => this.onDragOver(e)}
+                        onDrop={(e) => this.onDrop(e)}
+                        alt="Pet" />
                 </div>
             </div>
         )

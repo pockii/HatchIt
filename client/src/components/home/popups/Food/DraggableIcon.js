@@ -16,12 +16,12 @@ export default class DraggableIcon extends Component {
     }
 
     foodLabel() {
-        if (this.state.name.length > 9) {
-            return  <p class="text-center text-darkblue sm:text-md md:text-lg lg:text-xl xl:text-2xl">
+        if (this.state.name.length > 8) {
+            return  <p class="h-8 pt-1 text-center text-darkblue sm:text-md md:text-lg lg:text-xl xl:text-xl">
                         {this.state.name}
                     </p>
         } else {
-            return <p class="text-center text-darkblue sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
+            return <p class="h-8 text-center text-darkblue sm:text-lg md:text-xl lg:text-2xl xl:text-2xl">
                         {this.state.name}
                     </p>
         }
@@ -29,7 +29,7 @@ export default class DraggableIcon extends Component {
 
     render() {
         return (
-            <div class="border-solid rounded border-2 border-darkblue bg-yellowbarbg w-32 h-28">  
+            <div class="border-solid rounded border-2 border-darkblue bg-yellowbarbg w-32">  
                 <div
                     onDragStart = {(e) => this.onDragStart(e)} 
                     draggable="true">
