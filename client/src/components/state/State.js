@@ -12,6 +12,8 @@ import guess_state1 from './pics/guess_state1.svg';
 import guess_state2 from './pics/guess_state2.svg';
 import productive_state1 from './pics/prod_state1.svg';
 import productive_state2 from './pics/prod_state2.svg';
+import sleeping_state1 from './pics/sleeping_state1.svg';
+import sleeping_state2 from './pics/sleeping_state2.svg';
 
 export default class State extends Component { 
     constructor(props) {
@@ -86,6 +88,9 @@ export default class State extends Component {
         this.updateImages([productive_state1, productive_state2], 3000);
     }
     
+    toggleSleeping() {
+        this.updateImages([sleeping_state1, sleeping_state2], 0);
+    }
     revertToNormal() {
         this.updateImages(this.currentState(), 0);
     }

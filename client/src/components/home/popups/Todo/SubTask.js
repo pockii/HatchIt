@@ -70,8 +70,8 @@ class SubTask extends Component {
         const userData = {
             name: this.props.auth.user.name,
             subTasks: this.props.auth.user.subTasks + 1,
-            happiness: this.props.auth.user.happiness + this.props.todo.subTasks[this.props.subTaskId].level * 5,
-            totalHappinessGained: this.props.auth.user.totalHappinessGained + this.props.todo.subTasks[this.props.subTaskId].level * 5,
+            happiness: this.props.auth.user.happiness + (this.props.isNight ? 0 : this.props.todo.subTasks[this.props.subTaskId].level * 5),
+            totalHappinessGained: this.props.auth.user.totalHappinessGained + (this.props.isNight ? 0 : this.props.todo.subTasks[this.props.subTaskId].level * 5),
             coins: this.props.auth.user.coins + this.props.todo.subTasks[this.props.subTaskId].level * 5
         };
         this.props.updateUserData(userData); 

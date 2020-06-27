@@ -50,16 +50,16 @@ export default class Guess extends Component {
     };
     
     isAvailable() {
-        const dateGuessed = new Date(this.props.dateGuessed)
-        const now = new Date()
-        return (now - dateGuessed) >= this.#day
+        const dateGuessed = new Date(this.props.dateGuessed);
+        const now = new Date();
+        return (now - dateGuessed) >= this.#day && !(this.props.isNight); 
     }
 
     updateButton() {
-        if (this.state.available) {
-            return "p-1 hover:text-gray-500 inline-flex flex items-center"; 
+        if (this.state.available && !(this.props.isNight)) {
+            return "p-1 hover:text-gray-500 inline-flex flex items-center text-darkblue"; 
         } else {
-            return "p-1 hover:text-gray-500 inline-flex flex items-center opacity-50 cursor-not-allowed";
+            return "p-1 hover:text-gray-500 inline-flex flex items-center text-nightblue opacity-75 cursor-not-allowed";
         }
     }
 
@@ -70,7 +70,7 @@ export default class Guess extends Component {
             available: false
         })
         this.props.updateDateGuessed();
-        setTimeout(() => this.setState({available : true}), this.#day);
+        setTimeout(() => this.setState({available : this.isAvailable()}), this.#day);
     };
 
     messageAfterGuess() {

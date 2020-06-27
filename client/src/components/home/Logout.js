@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function Logout({ onLogoutClick }) {
+export default function Logout({ onLogoutClick, isNight }) {
     return (
-        <div>
+        <div class={isNight ? "text-lightbluebg hover:text-white": "text-darkblue hover:text-gray-500"}>
             <button
-                class="p-1 hover:text-gray-500 inline-flex flex items-center"
+                class="p-1 inline-flex flex items-center"
                 onClick={onLogoutClick}
             >
                 <svg 

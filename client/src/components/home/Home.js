@@ -6,6 +6,7 @@ import { updateUserData } from "../../actions/userdataActions";
 
 import State from "../state/State.js";
 import Account from "./popups/Account/Account.js";
+import Night from "./Night.js"
 import Food from "./Food.js"
 import FoodWindow from "./popups/Food/FoodWindow.js";
 import Guess from "./popups/Guess/Guess.js";
@@ -15,6 +16,7 @@ import Happiness from "./Happiness.js";
 import Todo from "./popups/Todo/Todo.js"
 
 import day from '../pics/day.svg';
+import night from '../pics/night.svg';
 
 
 class Home extends Component {
@@ -36,12 +38,15 @@ class Home extends Component {
         this.petState = React.createRef();
         this.state = {
             foodSeen: false,
-            maxHappiness: false
+            maxHappiness: false,
+            night: false
         };
     }    
 
     componentDidMount() {
-        setTimeout(this.decrementHappiness(1), this.#minute * 5);
+        if (!this.state.night) {
+            setTimeout(this.decrementHappiness(1), this.#minute * 5);
+        }
     }
 
     componentDidUpdate(prevProps) {
@@ -130,6 +135,27 @@ class Home extends Component {
         return this.props.auth.user.happiness === this.#happiness.max;
     }
 
+    // Background
+    decideBackground() {
+        if (this.state.night) {
+            return "bg-nightbluebg h-screen overflow-hidden";
+        } else {
+            return "bg-lightbluebg h-screen overflow-hidden";
+        }
+    }
+
+    // Night
+    nightCallBack = (childData) => {
+        this.setState({
+            night: childData
+        });
+        if (childData) {
+            this.petState.current.toggleSleeping();
+        } else {
+            this.petState.current.revertToNormal();
+        }
+    };
+
     // FoodWindow
     foodCallBack = (childData) => {
         this.setState({
@@ -144,7 +170,7 @@ class Home extends Component {
             dateGuessed: new Date()
         };
         this.props.updateUserData(userData); 
-    }
+    };
       
     // GuessState
     guessCallBack = (isGuessing) => {
@@ -155,10 +181,9 @@ class Home extends Component {
         }
     };
 
-
     // TodoState
     todoCallBack = (completedTask) => {
-        if (completedTask) {
+        if (completedTask && !(this.state.night)) {
             this.petState.current.toggleProductive();
         }
     }
@@ -171,11 +196,11 @@ class Home extends Component {
 
     render() {   
         return (
-            <div class="bg-lightbluebg h-screen overflow-hidden">  
+            <div class={this.decideBackground()}>  
                 <div class="h-0">
-                    <img class="object-contain w-full" 
-                        src={day} 
-                        alt="Day"></img>
+                    <img class="object-contain w-full " 
+                        src={this.state.night ? night : day} 
+                        alt="Background"></img>
                 </div>
 
                 <State  
@@ -190,28 +215,40 @@ class Home extends Component {
                     {this.state.foodSeen ? <FoodWindow foodCallBack={this.foodCallBack} /> : null}
                 </div>
 
-                <div class="flex flex-col absolute bottom-0 left-0 w-1/4 sm:text-xs md:text-sm lg:text-base xl:text-xl text-darkblue">
-                    <Coins coins={this.props.auth.user.coins} />
-                    <Happiness happiness={this.props.auth.user.happiness} />
+                <div class="flex flex-col absolute bottom-0 left-0 w-1/4 sm:text-xs md:text-sm lg:text-base xl:text-xl">                    
+                    <Coins 
+                        coins={this.props.auth.user.coins}
+                        isNight={this.state.night} />
+                    <Happiness 
+                        happiness={this.props.auth.user.happiness} 
+                        isNight={this.state.night} />
                 </div> 
                 
-                <div class="absolute right-0 bottom-0 sm:text-xs md:text-sm lg:text-base xl:text-xl text-darkblue">
+                <div class="absolute right-0 bottom-0 sm:text-xs md:text-sm lg:text-base xl:text-xl">
                     <div class="grid grid-flow-col grid-cols-2 grid-rows-4">
-                        <div /> 
                         <div />
+                        <div /> 
                         <Todo 
-                            todoCallBack={this.todoCallBack}/>
+                            todoCallBack={this.todoCallBack}
+                            isNight={this.state.night} />
                         <Guess 
                             dateGuessed={this.props.auth.user.dateGuessed}
                             updateDateGuessed={this.updateDateGuessed}
                             incrementHappiness={this.incrementHappiness} 
                             decrementHappiness={this.decrementHappiness} 
                             incrementCoins={this.incrementCoins}
-                            guessCallBack={this.guessCallBack} />
-                        <div />
-                        <Account user={this.props.auth.user} />
-                        <Food foodCallBack={this.foodCallBack} />
-                        <Logout onLogoutClick={this.onLogoutClick} />
+                            guessCallBack={this.guessCallBack} 
+                            isNight={this.state.night} />
+                        <Account 
+                            user={this.props.auth.user} 
+                            isNight={this.state.night} />
+                        <Night nightCallBack={this.nightCallBack} />
+                        <Food 
+                            foodCallBack={this.foodCallBack} 
+                            isNight={this.state.night} />
+                        <Logout 
+                            onLogoutClick={this.onLogoutClick} 
+                            isNight={this.state.night} />
                     </div>
                 </div>
             </div>

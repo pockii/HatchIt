@@ -65,9 +65,9 @@ class Todo extends Component {
 
     render() {
         return (
-            <div>
+            <div class={this.props.isNight ? "text-lightbluebg hover:text-white" : "text-darkblue hover:text-gray-500"}>
                 <button
-                    class="p-1 hover:text-gray-500 inline-flex flex items-center"
+                    class="p-1 inline-flex flex items-center"
                     onClick={this.onTodoClick}
                 >
                     <svg 
@@ -185,7 +185,8 @@ class Todo extends Component {
                     <div class="px-10 h-8/10">
                         <List 
                             onTodoExitClick={this.onTodoExitClick} 
-                            todoCallBack={this.props.todoCallBack}/>
+                            todoCallBack={this.props.todoCallBack}
+                            isNight={this.props.isNight}/>
                     </div>
                 </Modal>
             </div>

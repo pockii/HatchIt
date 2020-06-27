@@ -79,8 +79,8 @@ class Task extends Component {
             name: this.props.auth.user.name,
             tasks: this.props.auth.user.tasks + 1,
             subTasks: this.props.auth.user.subTasks + allSubTasks.length,
-            happiness: this.props.auth.user.happiness + happinessGained,
-            totalHappinessGained: this.props.auth.user.totalHappinessGained + happinessGained,
+            happiness: this.props.auth.user.happiness + (this.props.isNight ? 0 : happinessGained),
+            totalHappinessGained: this.props.auth.user.totalHappinessGained + (this.props.isNight ? 0 : happinessGained),
             coins: newCoins
         };
 
@@ -145,7 +145,8 @@ class Task extends Component {
                                         <SubTasks 
                                             subTasks={this.props.todo.tasks[this.props.taskId].subTasks} 
                                             todoCallBack={this.props.todoCallBack}
-                                            onTodoExitClick={this.props.onTodoExitClick} />
+                                            onTodoExitClick={this.props.onTodoExitClick}
+                                            isNight={this.props.isNight} />
                                         {provided.placeholder}
                                     </div>
                                 )}

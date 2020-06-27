@@ -11,6 +11,7 @@ export default class Tasks extends PureComponent {
                     index={index} 
                     onTodoExitClick={this.props.onTodoExitClick}
                     todoCallBack={this.props.todoCallBack}
+                    isNight={this.props.isNight}
                     />;
         });
     }

@@ -9,7 +9,8 @@ module.exports = {
     },
     extend: {                    
       colors: {
-          lightbluebg: "#D9F2FF",
+          lightbluebg: '#D9F2FF',
+          nightbluebg: '#284881',
           nightblue: '#317CC1',
           darkblue: '#203864', // also used as nightblueoutline
           nightbluebar: '#BDD7EE',

@@ -11,7 +11,8 @@ export default class SubTasks extends PureComponent {
                 subTaskId={subTaskId} 
                 index={index} 
                 todoCallBack={this.props.todoCallBack}
-                onTodoExitClick={this.props.onTodoExitClick}/>
+                onTodoExitClick={this.props.onTodoExitClick}
+                isNight={this.isNight}/>
         ));
     }
 }
