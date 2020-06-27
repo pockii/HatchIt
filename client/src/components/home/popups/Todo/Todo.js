@@ -182,7 +182,7 @@ class Todo extends Component {
                         <span>Todos</span>
                     </p>   
 
-                    <div class="pl-10 pr-10 h-8/10">
+                    <div class="px-10 h-8/10">
                         <List 
                             onTodoExitClick={this.onTodoExitClick} 
                             todoCallBack={this.props.todoCallBack}/>
