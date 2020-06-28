@@ -208,9 +208,6 @@ class Home extends Component {
                     incrementHappiness={this.incrementHappiness} 
                     maxHappiness={this.state.maxHappiness} />
 
-                <button onClick={() => this.incrementHappiness(10)} class="text-lg">+</button>
-                <button onClick={() => this.decrementHappiness(10)} class="text-lg">-</button>
-
                 <div class="flex justify-center">
                     {this.state.foodSeen ? <FoodWindow foodCallBack={this.foodCallBack} /> : null}
                 </div>
