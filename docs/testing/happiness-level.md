@@ -112,7 +112,7 @@
 
 1. Test Case: click incrementHappiness button once
 
-   Expected Result: happiness level increases by 10
+   Expected Result: happiness level increases by 10, total happiness gained increases by 10
 
    Actual Result: _same_ as Expected Result
 
@@ -124,13 +124,13 @@
 
 3. Test Case: click decrementHappiness button repeatedly until happiness decreases to 0
 
-   Expected Result: happiness level increases to 0, coins decrease to 0
+   Expected Result: happiness level decreases to 0, coins decrease to 0
 
    Actual Result: _same_ as Expected Result
 
 4. Test Case: click decrementHappiness button repeatedly until happiness increases to 100
 
-   Expected Result: happiness level increases by 100, coins increase by 100
+   Expected Result: happiness level increases to 100, total happiness gained increases, coins increase by 100
 
    Actual Result: _same_ as Expected Result
 

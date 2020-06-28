@@ -18,7 +18,7 @@
     - Once a pet has reached maximum happiness level, a breakdown of events that increased happiness level is shown (_coming soon_)
   - Amount of todos and sub todos completed
   - Best time of completion for the “Rescue” minigame (_coming soon_)
-  ![Account and Logout](./gifs/account_and_logout.gif)
+  ![Account and Logout](./gifs/account_and_logout.gif "Account and Logout")
 - Achievements (e.g. for number of pets, unlocking a new pet type) (_coming soon_)
 
 The account keeps track of the player’s statistics and achievements, a visualisation of the player’s productivity which can inspire the player to continue completing todos and thus, be productive.
@@ -46,19 +46,19 @@ Since the happiness level of the pet is constantly decreasing, the player needs 
 - Petting
   - Pet is normally in a “general” state  
   - Pet will do an action(e.g. jump/rollover) and transit into a “reaction” state when the user double clicks
-  ![Petting](./gifs/petting.gif)
+  ![Petting](./gifs/petting.gif "Petting")
 - Feeding
   - General food options are displayed (e.g. Cookie, Burger, Chocolate, Donut, Pizza, Watermelon)
   - Player can drag their choice of food to the pet, pet transits into a “eating” state
   - Happiness level of pet will increase after feeding
-  ![Feeding](./gifs/feeding.gif)
+  ![Feeding](./gifs/feeding.gif "Feeding")
 - Playing
   - “Guess” minigame
   - Pet transits into a “questioning” state 
   - Two buttons will pop up and the player picks one
   - If the player guessed correctly → either happiness level of pet increases or player gets some coins
   - If the player guessed wrongly → happiness level of pet decreases
-  ![Guess](./gifs/guess.gif)
+  ![Guess](./gifs/guess.gif "Guess")
 - “Rescue” minigame (_coming soon_)
   - Pet is trapped in a box, pet transits into a panic state
   - Getting pet out of box → aggressive clicking
@@ -90,18 +90,18 @@ These personal pet interactions allow for the player to have a stronger connecti
     | 4 | Troublesome      |
     | 5 | Difficult        |
 
-  ![Edit Todo](./gifs/edit_todo.gif)
+  ![Edit Todo](./gifs/edit_todo.gif "Edit Todo")
 
 - Able to rearrange todos and sub todos by dragging them around
   - User can rearrange todos
   - User can rearrange sub todos within the todo
   - User can move a sub todo to another todo
-  ![Arrange todos](./gifs/arrange_todo.gif)
+  ![Arrange todos](./gifs/arrange_todo.gif "Arrange todos")
 - Todo can be marked as completed or deleted
   - Todo is removed after completion or deletion
   - Complete a todo → pet transits into a “productive” state, happiness level and in-game currency increases depending on the difficulty level of todo
-![Complete and Delete todo](./gifs/complete_and_delete_todo.gif)
-
+  ![Complete and Delete todo](./gifs/complete_and_delete_todo.gif "Complete and Delete todo")
+  
 This is the main productivity feature of our app, which the player can use to organise their life and monitor their own productivity. The satisfaction of crossing out a completed todo compounded with the happiness and currency reward will help to further motivate the player to be productive.
 
 ## Shop
@@ -124,6 +124,6 @@ This feature appeals to the player’s desire to collect all the cute pets in th
 - Pet transits into a “sleeping” state during Night mode and features are grayed out
   - To-do list is still available for use, happiness level will not increase after a task is completed, only coins will increase
 - Happiness level will remain the same during Night mode
-![Night](./gifs/night.gif)
+![Night](./gifs/night.gif "Night")
 
 When life gets too hectic, taking care of the pet may overwhelm the player. Therefore, this feature allows the player to take a break before coming back to their pet. The to-do list feature will still be available during Night mode, so the player’s productivity will not be compromised.

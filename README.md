@@ -7,7 +7,8 @@ Have you ever wanted a pet but realised that you are incapable of even taking ca
 
 Well, you’re in luck!
 
-What makes us different from other platforms
+## What makes us different from other platforms
+
 Most virtual pet apps, such as Pou, focus on taking care of a pet, e.g. feeding, cleaning, sleeping, etc. While this may be fun and fulfilling, caring for a pet can feel tiresome when the novelty wears off, especially when life gets hectic. To set us apart, we have purposefully created a feature that enables you to pause your progress (the benefits of a virtual pet!) until you are ready to continue taking care of it
 
 Virtual pet apps are mostly for entertainment, have little replay value and can be a time sink. Meanwhile, plain productivity apps such as Todolist require a lot of discipline and determination to use constantly. Our app targets these problems by combining entertainment with productivity, turning your pet into motivation so you can better incorporate it into your daily life.
