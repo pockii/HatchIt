@@ -54,7 +54,7 @@ Since the happiness level of the pet is constantly decreasing, the player needs 
   - Happiness level of pet will increase after feeding
   ![Feeding](./gifs/feeding.gif "Feeding")
 - Playing
-  - “Guess” minigame
+  - “Guess” minigame (only available once per day)
   - Pet transits into a “questioning” state
   - Two buttons will pop up and the player picks one
   - If the player guessed correctly → either happiness level of pet increases or player gets some coins
