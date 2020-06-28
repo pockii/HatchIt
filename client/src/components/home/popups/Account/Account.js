@@ -100,7 +100,7 @@ export default class Account extends Component {
                                     Total Happiness Gained: {this.props.user.totalHappinessGained} <br/>
                                     Total Todos Completed: {this.props.user.tasks} <br/>
                                     Total Sub Todos Completed: {this.props.user.subTasks} <br/>
-                                    Date guessed: {this.props.user.dateGuessed} <br/>
+                                    Date guessed: {(this.props.user.dateGuessed).substring(0,10)} <br/>
                                     <br/>
                                     <br/>
                                     <br/>
