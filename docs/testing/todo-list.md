@@ -1,10 +1,11 @@
 # Todo List
 
 - Table of Contents
+
   - [Automated Testing](#automated-testing)
   - [Unit Testing](#unit-testing)
   - [Integrated Testing](#integrated-testing)
-  
+
 ## Automated Testing
 
 (with Postman)
@@ -1303,25 +1304,206 @@
 
 ## Unit Testing
 
-1. Test Case: click add Todo button once
+1. Test Case: click New Todo button once in Todo modal
 
-   Expected Result: 
-
-   Actual Result: _same_ as Expected Result
-
-2. Test Case: click add Sub Todo button once
-
-   Expected Result: 
+   Expected Result: New Task is created with deadline 3 days after today's date, difficulty level Effortless and description 'New Todo'
 
    Actual Result: _same_ as Expected Result
 
-3. Test Case:
+2. Test Case: click New Sub Todo button once in Todo modal
 
-   Expected Result: 
+   Expected Result: New Sub Task is created with deadline 3 days after today's date, difficulty level Effortless and description 'New Sub Todo'
 
    Actual Result: _same_ as Expected Result
+
+3. Test Case: click on deadline of a task and choose a day 4 days after today's date
+   (after test 1)
+
+   Expected Result: Colour of task turns light pink
+
+   Actual Result: _same_ as Expected Result
+
+4. Test Case: click on deadline of a task and choose a day 3 days after today's date
+   (after test 1)
+
+   Expected Result: Colour of task turns pink
+
+   Actual Result: _same_ as Expected Result
+
+5. Test Case: click on deadline of a task and choose a day 1 day before today's date
+   (after test 1)
+
+   Expected Result: Colour of task turns dark pink
+
+   Actual Result: _same_ as Expected Result
+
+6. Test Case: click on difficulty level of a task and select Effortless
+   (after test 1)
+
+   Expected Result: Difficulty level of task changes to Effortless
+
+   Actual Result: _same_ as Expected Result
+
+7. Test Case: click on difficulty level of a task and select Simple
+   (after test 1)
+
+   Expected Result: Difficulty level of task changes to Simple
+
+   Actual Result: _same_ as Expected Result
+
+8. Test Case: click on difficulty level of a task and select Medium
+   (after test 1)
+
+   Expected Result: Difficulty level of task changes to Medium
+
+   Actual Result: _same_ as Expected Result
+
+9. Test Case: click on difficulty level of a task and select Troublesome
+   (after test 1)
+
+   Expected Result: Difficulty level of task changes to Troublesome
+
+   Actual Result: _same_ as Expected Result
+
+10. Test Case: click on difficulty level of a task and select Difficult
+    (after test 1)
+
+    Expected Result: Difficulty level of task changes to Difficult
+
+    Actual Result: _same_ as Expected Result
+
+11. Test Case: click on description of a task and edit description
+    (after test 1)
+
+    Expected Result: Description of task changes and is saved
+
+    Actual Result: _same_ as Expected Result
+
+12. Test Case: Click on tick icon of a task
+    (after test 1)
+
+    Expected Result: Todo modal closes, pet transits into productive state, coins increases and happiness level increases
+
+    Actual Result: _same_ as Expected Result
+
+13. Test Case: Click on delete icon of a task
+    (after test 1)
+
+    Expected Result: Task is removed
+
+    Actual Result: _same_ as Expected Result
+
+14. Test Case: click on deadline of a subTask and choose a day 4 days after today's date
+    (after test 2)
+
+    Expected Result: Colour of subTask turns light pink
+
+    Actual Result: _same_ as Expected Result
+
+15. Test Case: click on deadline of a subTask and choose a day 3 days after today's date
+    (after test 2)
+
+    Expected Result: Colour of subTask turns pink
+
+    Actual Result: _same_ as Expected Result
+
+16. Test Case: click on deadline of a subTask and choose a day 1 day before today's date
+    (after test 2)
+
+    Expected Result: Colour of subTask turns dark pink
+
+    Actual Result: _same_ as Expected Result
+
+17. Test Case: click on difficulty level of a subTask and select Effortless
+    (after test 2)
+
+    Expected Result: Difficulty level of subTask changes to Effortless
+
+    Actual Result: _same_ as Expected Result
+
+18. Test Case: click on difficulty level of a subTask and select Simple
+    (after test 2)
+
+    Expected Result: Difficulty level of subTask changes to Simple
+
+    Actual Result: _same_ as Expected Result
+
+19. Test Case: click on difficulty level of a subTask and select Medium
+    (after test 2)
+    subTask
+    Expected Result: Difficulty level of subTask changes to Medium
+
+    Actual Result: _same_ as Expected Result
+
+20. Test Case: click on difficulty level of a subTask and select Troublesome
+    (after test 2)
+
+    Expected Result: Difficulty level of subTask changes to Troublesome
+
+    Actual Result: _same_ as Expected Result
+
+21. Test Case: click on difficulty level of a subTask and select Difficult
+    (after test 2)
+
+    Expected Result: Difficulty level of subTask changes to Difficult
+
+    Actual Result: _same_ as Expected Result
+
+22. Test Case: click on description of a subTask and edit description
+    (after test 2)
+
+    Expected Result: Description of subTask changes and is saved
+
+    Actual Result: _same_ as Expected Result
+
+23. Test Case: Click on tick icon of a subTask
+    (after test 2)
+
+    Expected Result: Todo modal closes, pet transits into productive state, coins increases and happiness level increases
+
+    Actual Result: _same_ as Expected Result
+
+24. Test Case: Click on delete icon of a subTask
+    (after test 2)
+
+    Expected Result: SubTask is removed
+
+    Actual Result: _same_ as Expected Result
 
 ## Integrated Testing
 
-| Test Case | Steps Taken | Expected Result | Actual Result |
-| --------- | ----------- | --------------- | ------------- |
+1. Test Case: click on a task and drag it to the top in Todo modal
+
+   Expected Result: Colour of task turns light purple and background of droppable in Todo modal changes to light indigo during drag, task is moved to the top after drop
+
+   Actual Result: _same_ as Expected Result
+
+2. Test Case: click on a task and drag it to the bottom in Todo modal
+
+   Expected Result: Colour of task turns light purple and background of droppable in Todo modal changes to light indigo during drag, task is moved to the bottom after drop
+
+   Actual Result: _same_ as Expected Result
+
+3. Test Case: click on a subTask and drag it to the top within a task
+
+   Expected Result: Colour of subTask turns light purple and background of droppable in task changes to light indigo during drag, subTask is moved to the top after drop
+
+   Actual Result: _same_ as Expected Result
+
+4. Test Case: click on a subTask and drag it to the bottom within a task
+
+   Expected Result: Colour of subTask turns light purple and background of droppable in task changes to light indigo during drag, subTask is moved to the bottom after drop
+
+   Actual Result: _same_ as Expected Result
+
+5. Test Case: click on a subTask and drag it to another task with at least 1 subTask
+
+   Expected Result: Colour of subTask turns light purple and background of droppable in the other task changes to light indigo during drag, subTask is moved to the bottom of the other task after drop
+
+   Actual Result: _same_ as Expected Result
+
+6. Test Case: click on a subTask and drag it to another task without any subTasks
+
+   Expected Result: Colour of subTask turns light purple and background of droppable in the other task changes to light indigo during drag, subTask is moved to the other task after drop
+
+   Actual Result: _same_ as Expected Result

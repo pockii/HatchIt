@@ -28,6 +28,7 @@ The account keeps track of the player’s statistics and achievements, a visuali
 - Happiness level decreases over time
 - If happiness level is 0, the in-game currency will decrease to 0
 - If happiness level is maximum, the pet transits to maximum happiness state and in-game currency increases
+    ![Maximum Happiness State](./gifs/max_happiness.gif "Maximum Happiness State")
   - When maximum happiness level is reached, a random pet from locked pet types is unlocked (_coming soon_)
 - Pet Interactivity (_coming soon_)
 

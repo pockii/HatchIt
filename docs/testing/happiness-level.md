@@ -130,12 +130,14 @@
 
 4. Test Case: click decrementHappiness button repeatedly until happiness increases to 100
 
-   Expected Result: happiness level increases to 100, total happiness gained increases, coins increase by 100
+   Expected Result: happiness level increases to 100, total happiness gained increases, coins increase by 100, pet transits into maximum happiness state
 
    Actual Result: _same_ as Expected Result
 
 ## Integrated Testing
 
-| Test Case | Steps Taken | Expected Result | Actual Result |
-| --------- | ----------- | --------------- | ------------- |
+1. Test Case: In Food modal, feed pet multiple times until happiness level increases to 100
 
+   Expected Result: happiness level increases to 100, total happiness gained increases, coins increase by 100, pet transits into maximum happiness state
+
+   Actual Result: _same_ as Expected Result

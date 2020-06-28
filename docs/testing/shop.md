@@ -1,4 +1,4 @@
-# Happiness Level
+# Shop
 
 - Table of Contents
   - [Automated Testing](#automated-testing)
@@ -121,12 +121,8 @@
 
 ## Integrated Testing
 
-| Test Case | Steps Taken | Expected Result | Actual Result |
-| --------- | ----------- | --------------- | ------------- |
-
+(_coming soon_)
 
 ## User Testing
 
-| Test Case | Steps Taken | Expected Result | Actual Result |
-| --------- | ----------- | --------------- | ------------- |
-
+(_coming soon_)

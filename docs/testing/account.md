@@ -4,7 +4,6 @@
 
   - [Automated Testing](#automated-testing)
   - [Unit Testing](#unit-testing)
-  - [Integrated Testing](#integrated-testing)
 
 ## Automated Testing
 
@@ -532,9 +531,3 @@
    ```
 
    Actual Result: _same_ as Expected Result
-
-## Integrated Testing
-
-| Test Case | Steps Taken | Expected Result | Actual Result |
-| --------- | ----------- | --------------- | ------------- |
-
