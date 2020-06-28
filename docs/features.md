@@ -55,7 +55,7 @@ Since the happiness level of the pet is constantly decreasing, the player needs 
   ![Feeding](./gifs/feeding.gif "Feeding")
 - Playing
   - “Guess” minigame
-  - Pet transits into a “questioning” state 
+  - Pet transits into a “questioning” state
   - Two buttons will pop up and the player picks one
   - If the player guessed correctly → either happiness level of pet increases or player gets some coins
   - If the player guessed wrongly → happiness level of pet decreases

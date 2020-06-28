@@ -114,6 +114,10 @@
 
    Expected Result: happiness level increases by 10, total happiness gained increases by 10
 
+   Actual Result(before fix): ECONNREFUSED error, `this.props.auth.user.name` is undefined in `componentDidMount` lifecycle method in child component and `req.body` is undefined when calling PUT <http://localhost:5000/api/users/userdata>
+
+   Fix: Error is due to rendering of children components before parent components, retrieve userdata directly after login instead of in `componentDidMount` when child component is rendered
+
    Actual Result: _same_ as Expected Result
 
 2. Test Case: click decrementHappiness button once
@@ -128,15 +132,29 @@
 
    Actual Result: _same_ as Expected Result
 
-4. Test Case: click decrementHappiness button repeatedly until happiness increases to 100
+4. Test Case: click decrementHappiness button repeatedly as happiness increases to 100
 
    Expected Result: happiness level increases to 100, total happiness gained increases, coins increase by 100, pet transits into maximum happiness state
 
-   Actual Result: _same_ as Expected Result
+   Actual Result(before fix): coins increase by 100 repeatedly after happiness level reaches 100
+
+   Fix: Compare `prevProps` and `this.props`, only increase coins when happiness level is not previously 100
+
+   Current Actual Result: _same_ as Expected Result
 
 ## Integrated Testing
 
-1. Test Case: In Food modal, feed pet multiple times until happiness level increases to 100
+1. Test Case: Refresh page after change in happiness
+
+   Expected Result: happiness level remains the same
+
+   Actual Result(before fix): previous changes are lost
+
+   Fix: Add redux-persist to persist auth of redux state
+
+   Current Acutal Result: _same_ as Expected Result
+
+2. Test Case: In Food modal, feed pet multiple times until happiness level increases to 100
 
    Expected Result: happiness level increases to 100, total happiness gained increases, coins increase by 100, pet transits into maximum happiness state
 

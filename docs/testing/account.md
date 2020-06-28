@@ -4,6 +4,7 @@
 
   - [Automated Testing](#automated-testing)
   - [Unit Testing](#unit-testing)
+  - [Integrated Testing](#integrated-testing)
 
 ## Automated Testing
 
@@ -199,22 +200,22 @@
      Actual Result: _same_ as Expected Result
      Body:
 
-      ```json
-      {
-        "name": "user",
-        "password": "password"
-      }
-      ```
+     ```json
+     {
+       "name": "user",
+       "password": "password"
+     }
+     ```
 
-      Expected Result:
+     Expected Result:
 
-      ```json
-      {
-        "namenotfound": "Username not found"
-      }
-      ```
+     ```json
+     {
+       "namenotfound": "Username not found"
+     }
+     ```
 
-      Actual Result: _same_ as Expected Result
+     Actual Result: _same_ as Expected Result
 
 ## Unit Testing
 
@@ -529,5 +530,49 @@
       }
     }
    ```
+
+   Actual Result: _same_ as Expected Result
+
+## Integrated Testing
+
+1. Test Case: click Account button in home
+
+   Expected Result: Username, Coins, Happiness Level, Total Happiness Gained, Total Todos Completed, Total Sub Todos Completed and Date guessed is shown
+
+   Actual Result: _same_ as Expected Result
+
+2. Test Case: click Account button while Account modal is open
+
+   Expected Result: Account modal closes
+
+   Actual Result: _same_ as Expected Result
+
+3. Test Case: click exit button in Account modal
+
+   Expected Result: Account modal closes
+
+   Actual Result: _same_ as Expected Result
+
+4. Test Case: click esc in Account modal
+
+   Expected Result: Account modal closes
+
+   Actual Result: _same_ as Expected Result
+
+5. Test Case: click outside the Account modal with Account modal open
+
+   Expected Result: Account modal closes
+
+   Actual Result: _same_ as Expected Result
+
+6. Test Case: scroll in Account modal
+
+   Expected Result: Account modal scrolls
+
+   Actual Result: _same_ as Expected Result
+
+7. Test Case: click Logout button in home
+
+   Expected Result: redirected to Sign In page
 
    Actual Result: _same_ as Expected Result

@@ -1308,7 +1308,11 @@
 
    Expected Result: New Task is created with deadline 3 days after today's date, difficulty level Effortless and description 'New Todo'
 
-   Actual Result: _same_ as Expected Result
+   Actual Result(before fix): `this.props.todo.tasks` is undefined
+
+   Fix: Error arises from redux's inability to work with arrays containing objects, use normalizr to normalise todo data
+
+   Current Actual Result: _same_ as Expected Result
 
 2. Test Case: click New Sub Todo button once in Todo modal
 
@@ -1472,38 +1476,98 @@
 
 ## Integrated Testing
 
-1. Test Case: click on a task and drag it to the top in Todo modal
+1. Test Case: click Todo button in home
 
-   Expected Result: Colour of task turns light purple and background of droppable in Todo modal changes to light indigo during drag, task is moved to the top after drop
+   Expected Result: Todo modal opens
 
    Actual Result: _same_ as Expected Result
 
-2. Test Case: click on a task and drag it to the bottom in Todo modal
+2. Test Case: click Todo button while Todo modal is open
+
+   Expected Result: Todo modal closes
+
+   Actual Result: _same_ as Expected Result
+
+3. Test Case: click exit button in Todo modal
+
+   Expected Result: Todo modal closes
+
+   Actual Result: _same_ as Expected Result
+
+4. Test Case: click esc in Todo modal
+
+   Expected Result: Todo modal closes
+
+   Actual Result: _same_ as Expected Result
+
+5. Test Case: click outside the Todo modal with Todo modal open
+
+   Expected Result: Todo modal closes
+
+   Actual Result: _same_ as Expected Result
+
+6. Test Case: scroll in Todo modal
+
+   Expected Result: Todo modal scrolls
+
+   Actual Result: _same_ as Expected Result
+
+7. Test Case: click on a task and drag it to the top in Todo modal
+
+   Expected Result: Colour of task turns light purple and background of droppable in Todo modal changes to light indigo during drag, task is moved to the top after drop
+
+   Actual Result(before fix): Animation of drag is unnatural, cursor is on the left of the task instead of in the middle of the task during drag
+
+   Fix: Use a clone without functional components to display during drag
+
+   Current Actual Result: _same_ as Expected Result
+
+8. Test Case: click on a task and drag it to the bottom in Todo modal
 
    Expected Result: Colour of task turns light purple and background of droppable in Todo modal changes to light indigo during drag, task is moved to the bottom after drop
 
    Actual Result: _same_ as Expected Result
 
-3. Test Case: click on a subTask and drag it to the top within a task
+9. Test Case: click on a task and drag it outside the droppable in Todo modal
 
-   Expected Result: Colour of subTask turns light purple and background of droppable in task changes to light indigo during drag, subTask is moved to the top after drop
-
-   Actual Result: _same_ as Expected Result
-
-4. Test Case: click on a subTask and drag it to the bottom within a task
-
-   Expected Result: Colour of subTask turns light purple and background of droppable in task changes to light indigo during drag, subTask is moved to the bottom after drop
+   Expected Result: Task position remains unchanged
 
    Actual Result: _same_ as Expected Result
 
-5. Test Case: click on a subTask and drag it to another task with at least 1 subTask
+10. Test Case: click on a subTask and drag it to the top within a task
 
-   Expected Result: Colour of subTask turns light purple and background of droppable in the other task changes to light indigo during drag, subTask is moved to the bottom of the other task after drop
+    Expected Result: Colour of subTask turns light purple and background of droppable in task changes to light indigo during drag, subTask is moved to the top after drop
 
-   Actual Result: _same_ as Expected Result
+    Actual Result(before fix): subTask returns to original postion after drop
 
-6. Test Case: click on a subTask and drag it to another task without any subTasks
+    Fix: Error arises due to insufficent space on top of the first task, there is no droppable area detected, increase the space of droppable to span an area on the top of the first task
 
-   Expected Result: Colour of subTask turns light purple and background of droppable in the other task changes to light indigo during drag, subTask is moved to the other task after drop
+    Current Actual Result: _same_ as Expected Result
 
-   Actual Result: _same_ as Expected Result
+11. Test Case: click on a subTask and drag it to the bottom within a task
+
+    Expected Result: Colour of subTask turns light purple and background of droppable in task changes to light indigo during drag, subTask is moved to the bottom after drop
+
+    Actual Result: _same_ as Expected Result
+
+12. Test Case: click on a subTask and drag it outside the droppable in Todo modal
+
+    Expected Result: subTask position remains unchanged
+
+    Actual Result: _same_ as Expected Result
+
+13. Test Case: click on a subTask and drag it to another task with at least 1 subTask
+
+    Expected Result: Colour of subTask turns light purple and background of droppable in the other task changes to light indigo during drag, subTask is moved to the bottom of the other task after drop
+
+    Actual Result: _same_ as Expected Result
+
+14. Test Case: click on a subTask and drag it to another task without any subTasks
+
+    Expected Result: Colour of subTask turns light purple and background of droppable in the other task changes to light indigo during drag, subTask is moved to the other task after drop
+
+    Actual Result(before fix): subTask returns to original postion after drop
+
+    Fix: Error arises due to insufficent space in the task, there is no droppable area detected, set a minimum height in task as droppable area for subTasks
+
+    Current Actual Result: _same_ as Expected Result
