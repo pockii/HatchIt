@@ -122,7 +122,7 @@ This feature appeals to the player’s desire to collect all the cute pets in th
 ## Day and Night Mode
 
 - Lights on and off → control player’s screen time
-- Pet transits into a “sleeping” state during Night mode and features are grayed out
+- Pet transits into a “sleeping” state during Night mode and certain features are unaccessible
   - To-do list is still available for use, happiness level will not increase after a task is completed, only coins will increase
 - Happiness level will remain the same during Night mode
 ![Night](./gifs/night.gif "Night")
