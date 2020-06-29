@@ -23,8 +23,3 @@
 | Delete a task/subtask during Night mode | Nothing happens                                                                              | _same_ as Expected Result | -              | -              |
 | Click on Guess during Night mode        | Nothing happens                                                                              | _same_ as Expected Result | -              | -              |
 | Click on Logout during Night mode       | Logged out and sent back to Login page                                                       | _same_ as Expected Result | -              | -              |        |                |
-
-## User Testing
-
-| Test Case | Steps Taken | Expected Result | Actual Result |
-| --------- | ----------- | --------------- | ------------- |
