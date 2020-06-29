@@ -104,17 +104,14 @@
      Actual Result: _same_ as Expected Result
 
 ## Unit Testing
+| Test Case    	| Expected Result                                                              	| Actual Result             	| Fixes (if any) 	| Current Result 	|
+|--------------	|------------------------------------------------------------------------------	|---------------------------	|----------------	|----------------	|
+| Click on pet 	| Pet's state changes to reaction state for a few seconds before changing back 	| _same_ as Expected Result 	| -              	| -              	|
 
-| Test Case |  Expected Result | Actual Result | Fixes (if any) | Current Result |
-| --------- | --------------- | ------------- | -------------- | -------------- |
-|Click on pet |Pet's state changes to reaction state for a few seconds before changing back | _same_ as Expected Result                    	| -    
 
 
 ## Integrated Testing
-
-
-
-| Test Case                                                                         	| Expected Result                                                                                                        	| Actual Result                                	| Fixes (if any)                                                                  	| Current Result            	|
+| Test Case    | Expected Result   	| Actual Result  	| Fixes (if any)   | Current Result            	|
 |-----------------------------------------------------------------------------------	|------------------------------------------------------------------------------------------------------------------------	|----------------------------------------------	|---------------------------------------------------------------------------------	|---------------------------	|     
 | Click on pet and refresh the page                                                 	| Pet starts to react and changes back to normal after page is refreshed                                                 	| _same_ as Expected Result                    	| -                                                                               	| -                         	|
 | Open Food modal and drag food to pet once                                         	| Pet's state changes to eating state for a few seconds before changing back                                             	| _same_ as Expected Result                    	| -                                                                               	| -                         	|
