@@ -27,6 +27,8 @@ We wish to create a virtual pet through a web application that brings back nosta
 
 ## [Features](./docs/features.md "Features")
 
+## [Development Plan](./docs/testing/developmentplan.md)
+
 ## Testing
 
 - [Account](./docs/testing/account.md)
