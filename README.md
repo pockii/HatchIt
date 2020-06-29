@@ -29,6 +29,15 @@ We wish to create a virtual pet through a web application that brings back nosta
 
 ## [Development Plan](./docs/developmentplan.md)
 
+## Tech Stack
+1. HTML/CSS(Tailwind CSS)/Javascript
+2. ReactJS
+3. NodeJS + ExpressJS
+4. MongoDB
+5. Heroku
+
+## [Functional Prototype](https://drive.google.com/file/d/1qmoxR0E00v5j2kHLxUMrQlSqq4vCG-Dd/view?usp=sharing)
+
 ## Testing
 
 - [Account](./docs/testing/account.md)
