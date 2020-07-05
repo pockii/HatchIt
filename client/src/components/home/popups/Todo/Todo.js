@@ -186,7 +186,9 @@ class Todo extends Component {
                         <List 
                             onTodoExitClick={this.onTodoExitClick} 
                             todoCallBack={this.props.todoCallBack}
-                            isNight={this.props.isNight}/>
+                            isNight={this.props.isNight} 
+                            incrementHappiness={this.props.incrementHappiness} 
+                        />
                     </div>
                 </Modal>
             </div>

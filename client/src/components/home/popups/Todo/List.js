@@ -156,7 +156,9 @@ class List extends Component {
                                         tasks={this.props.todo.todo.tasks} 
                                         onTodoExitClick={this.props.onTodoExitClick}
                                         todoCallBack={this.props.todoCallBack}
-                                        isNight={this.props.isNight}/>
+                                        isNight={this.props.isNight} 
+                                        incrementHappiness={this.props.incrementHappiness} 
+                                    />
                                     {provided.placeholder}
                                 </div>
                             )}

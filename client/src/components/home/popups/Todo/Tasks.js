@@ -6,13 +6,14 @@ export default class Tasks extends PureComponent {
     render() {
         return this.props.tasks.map((taskId, index) => {
             return <Task 
-                    key={taskId} 
-                    taskId ={taskId} 
-                    index={index} 
-                    onTodoExitClick={this.props.onTodoExitClick}
-                    todoCallBack={this.props.todoCallBack}
-                    isNight={this.props.isNight}
-                    />;
+                        key={taskId} 
+                        taskId ={taskId} 
+                        index={index} 
+                        onTodoExitClick={this.props.onTodoExitClick}
+                        todoCallBack={this.props.todoCallBack}
+                        isNight={this.props.isNight}
+                        incrementHappiness={this.props.incrementHappiness}
+                        />;
         });
     }
 }
