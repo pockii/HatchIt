@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
 import authReducer from "./authReducers";
 import errorReducer from "./errorReducers";
-import todoReducers from "./todoReducers";
+import todoReducer from "./todoReducers";
+import happinessBreakdownReducer from "./happinessBreakdownReducers"
 
 export default combineReducers({
     auth: authReducer,
     errors: errorReducer,
-    todo: todoReducers
+    todo: todoReducer,
+    happinessBreakdown: happinessBreakdownReducer
 });
