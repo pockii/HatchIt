@@ -42,6 +42,10 @@ export default class HappinessBreakdown extends Component {
                     Happiness Breakdown
                 </div>   
 
+                <p class="flex justify-center sm:text-sm md:text-base lg:text-lg xl:text-xl text-darkblue">  
+                    Total Happiness Gained: {this.props.totalHappinessGained} <br/>
+                </p>     
+
                 <div class="pl-5 pr-5">
                     <Scrollbars 
                         autoHeight

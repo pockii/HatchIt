@@ -292,6 +292,7 @@ class Home extends Component {
                             isNight={this.state.night} 
                             onHappinessBreakdownClick={this.onHappinessBreakdownClick} />
                         <HappinessBreakdown 
+                            totalHappinessGained={this.props.auth.user.totalHappinessGained}
                             happinessBreakdown={this.props.happinessBreakdown}
                             happinessBreakdownSeen={this.state.happinessBreakdownSeen}
                             onHappinessBreakdownExitClick={this.onHappinessBreakdownExitClick} />
