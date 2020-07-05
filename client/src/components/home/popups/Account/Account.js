@@ -26,7 +26,7 @@ export default class Account extends Component {
         this.setState( {accountSeen: false} );
     };
 
-  render() {
+    render() {
         return (
             <div class={this.props.isNight ? "text-lightbluebg hover:text-white" : "text-darkblue hover:text-gray-500"}>
                 <button
@@ -71,7 +71,7 @@ export default class Account extends Component {
                          </svg>
                     </button>
                         
-                    <p class="p-3 text-darkblue sm:text-base md:text-lg lg:text-xl xl:text-2xl inline-flex flex items-center">
+                    <div class="p-3 text-darkblue sm:text-base md:text-lg lg:text-xl xl:text-2xl inline-flex flex items-center">
                         <svg 
                             class="w-6 fill-current"
                             viewBox="0 0 96 96" 
@@ -85,37 +85,33 @@ export default class Account extends Component {
                             </g>
                         </svg>
                         <span>Account</span>
-                    </p>   
-                    <p class="pl-5 pr-5">
+
+                        <div class="pl-5">
+                            <button 
+                                class="p-1 border-2 border-darkblue rounded-lg bg-yellowbarbg inline-flex text-darkblue sm:text-sm md:text-base lg:text-lg xl:text-xl hover:text-gray-500" 
+                                onClick={this.props.onHappinessBreakdownClick}>
+                                Happiness Breakdown
+                            </button>
+                        </div>
+                    </div>   
+
+                    <div class="pl-5 pr-5">
                         <Scrollbars 
                             autoHeight
                             autoHide
                             autoHideTimeout={1000}
                             autoHideDuration={400}>
-                            <p class="flex justify-center sm:text-base md:text-gl lg:text-xl xl:text-2xl">  
-                                <p class="text-darkblue">
-                                    Username: {this.props.user.name}<br/>
-                                    Coins: {this.props.user.coins}<br/>
-                                    Happiness Level: {this.props.user.happiness}<br/>
-                                    Total Happiness Gained: {this.props.user.totalHappinessGained} <br/>
-                                    Total Todos Completed: {this.props.user.tasks} <br/>
-                                    Total Sub Todos Completed: {this.props.user.subTasks} <br/>
-                                    Date guessed: {(this.props.user.dateGuessed).substring(0,10)} <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                </p>
+                            <p class="flex justify-center sm:text-base md:text-gl lg:text-xl xl:text-2xl text-darkblue">  
+                                Username: {this.props.user.name}<br/>
+                                Coins: {this.props.user.coins}<br/>
+                                Happiness Level: {this.props.user.happiness}<br/>
+                                Total Happiness Gained: {this.props.user.totalHappinessGained} <br/>
+                                Total Todos Completed: {this.props.user.tasks} <br/>
+                                Total Sub Todos Completed: {this.props.user.subTasks} <br/>
+                                Date guessed: {(this.props.user.dateGuessed).substring(0,10)} <br/>
                             </p>         
                         </Scrollbars>
-                    </p>
+                    </div>
                 </Modal>
             </div>
         );
