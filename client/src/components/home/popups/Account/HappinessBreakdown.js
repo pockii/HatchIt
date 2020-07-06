@@ -46,15 +46,15 @@ export default class HappinessBreakdown extends Component {
                     Total Happiness Gained: {this.props.totalHappinessGained} <br/>
                 </p>     
 
-                <div class="pl-5 pr-5">
+                <div class="pl-5 pr-5 h-7/10">
                     <Scrollbars 
-                        autoHeight
+                        style={{ height: '100%' }} 
                         autoHide
                         autoHideTimeout={1000}
                         autoHideDuration={400}>
-                        <div class="h-48 inline-flex">
+                        <div class="flex justify-center inline-flex h-9/10 w-full">  
                             <Chart data={getChartData(this.props.happinessBreakdown)}/>
-                        </div>
+                        </div>         
                     </Scrollbars>
                 </div>
             </Modal>
