@@ -28,7 +28,7 @@ export default class Account extends Component {
 
     render() {
         return (
-            <div class={this.props.isNight ? "text-lightbluebg hover:text-white" : "text-darkblue hover:text-gray-500"}>
+            <div class={this.props.isNight ? "text-lightbluebg hover:text-white" : "text-darkblue hover:text-gray-600"}>
                 <button
                     class="p-1 inline-flex flex items-center"
                     onClick={this.onAccountClick}

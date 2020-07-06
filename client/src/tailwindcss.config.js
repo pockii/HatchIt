@@ -11,6 +11,7 @@ module.exports = {
       colors: {
           lightbluebg: '#D9F2FF',
           nightbluebg: '#284881',
+          bluegray: '#9ab9bc',
           nightblue: '#317CC1',
           darkblue: '#203864', // also used as nightblueoutline
           nightbluebar: '#BDD7EE',

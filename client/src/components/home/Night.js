@@ -18,7 +18,7 @@ export default class Night extends Component {
 
     render() {
         return (
-            <div class={this.state.night ? "text-darkblue hover:text-gray-500" : "text-lightbluebg hover:text-white"}>
+            <div class={this.state.night ? "text-darkblue hover:text-gray-600" : "text-lightbluebg hover:text-white"}>
                 <button
                     class="p-1 inline-flex flex items-center"
                     onClick={this.onNightClick}
