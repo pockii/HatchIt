@@ -6,6 +6,8 @@ import react_state1 from './pics/reaction_state1.svg';
 import react_state2 from './pics/reaction_state2.svg';
 import eating_state1 from './pics/eating_state1.svg';
 import eating_state2 from './pics/eating_state2.svg';
+import happy_state1 from './pics/happy_state1.svg';
+import happy_state2 from './pics/happy_state2.svg'
 import max_state1 from './pics/max_state1.svg';
 import max_state2 from './pics/max_state2.svg';
 import guess_state1 from './pics/guess_state1.svg';
@@ -22,7 +24,7 @@ export default class State extends Component {
         this.toggleReaction = this.toggleReaction.bind(this);
         this.state = { 
             currentIndex: 0,
-            images: [normal_state1, normal_state2],
+            images: this.currentState()
         };
     }
     
@@ -50,10 +52,14 @@ export default class State extends Component {
     }
 
     currentState() {
-        if (this.props.maxHappiness) {
-            return [max_state1, max_state2];
-        } else {
-            return [normal_state1, normal_state2];
+        //const happinessLevel = Math.floor(this.props.happiness / 20);
+        switch (true) {
+            case (this.props.happiness > 66 && this.props.happiness <= 99):
+                return [happy_state1, happy_state2];
+            case (this.props.happiness === 100):
+                return [max_state1, max_state2];
+            default:
+                return [normal_state1, normal_state2];
         }
     }
 

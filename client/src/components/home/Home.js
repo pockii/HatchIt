@@ -48,7 +48,7 @@ class Home extends Component {
         this.onHappinessBreakdownExitClick = this.onHappinessBreakdownExitClick.bind(this);
         this.state = {
             foodSeen: false,
-            maxHappiness: false,
+            //maxHappiness: false,
             night: false,
             happinessBreakdownSeen: false
         };
@@ -78,9 +78,9 @@ class Home extends Component {
 
         if (this.isMaxHappiness() && prevProps.auth.user.happiness !== this.#happiness.max) {
             this.incrementCoins(100);
-            this.setState({
-                maxHappiness: true
-            })
+            // this.setState({
+            //     maxHappiness: true
+            // })
             this.onHappinessBreakdownClick();
         }
     }
@@ -265,7 +265,7 @@ class Home extends Component {
                 <State  
                     ref={this.petState}
                     incrementHappiness={num => this.incrementHappiness(num, "Devour Food")} 
-                    maxHappiness={this.state.maxHappiness} />
+                    happiness={this.props.auth.user.happiness} />
 
                 <div class="flex justify-center pt-3">
                     {this.state.foodSeen ? <FoodWindow foodCallBack={this.foodCallBack} /> : null}
@@ -282,7 +282,7 @@ class Home extends Component {
                 
                 <div class="absolute right-0 bottom-0 sm:text-xs md:text-sm lg:text-base xl:text-xl">
                     <div class="grid grid-flow-col grid-cols-2 grid-rows-4">
-                        <div />
+                        <button onClick={() => this.decrementHappiness(10)}> - </button>
                         <div />
                         <Todo 
                             todoCallBack={this.todoCallBack}

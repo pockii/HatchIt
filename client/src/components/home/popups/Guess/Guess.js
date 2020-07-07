@@ -59,7 +59,7 @@ export default class Guess extends Component {
         if (this.state.available && !(this.props.isNight)) {
             return "p-1 hover:text-gray-600 inline-flex flex items-center text-darkblue"; 
         } else {
-            return "p-1 hover:text-gray-500 inline-flex flex items-center text-bluegray opacity-75 cursor-not-allowed";
+            return "p-1 inline-flex flex items-center text-bluegray opacity-75 cursor-not-allowed";
         }
     }
 
