@@ -53,7 +53,7 @@ module.exports = function validateUserData(userData) {
         isValid = false;
     }
     
-    if (userData.dateGuessed !== undefined && !Validator.isISO8601(subTask.deadline)) {
+    if (userData.dateGuessed !== undefined && !Validator.isISO8601(userData.dateGuessed)) {
         errors.dateGuessed = "dateGuessed is invalid";
         isValid = false;
     } 
