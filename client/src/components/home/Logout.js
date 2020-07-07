@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Logout({ onLogoutClick, isNight }) {
     return (
-        <div class={isNight ? "text-lightbluebg hover:text-white": "text-darkblue hover:text-gray-500"}>
+        <div class={isNight ? "text-lightbluebg hover:text-white": "text-darkblue hover:text-gray-600"}>
             <button
                 class="p-1 inline-flex flex items-center"
                 onClick={onLogoutClick}

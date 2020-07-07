@@ -23,6 +23,8 @@ import Todo from "./popups/Todo/Todo.js";
 
 import day from '../pics/day.svg';
 import night from '../pics/night.svg';
+import grass from '../pics/grass.png';
+import night_grass from '../pics/night_grass.png'
 
 class Home extends Component {
 
@@ -252,6 +254,12 @@ class Home extends Component {
                     <img class="object-contain w-full" 
                         src={this.state.night ? night : day} 
                         alt="Background"></img>
+                </div>                
+                
+                <div class="absolute bottom-0">
+                    <img class="object-contain w-full"
+                        src={this.state.night ? night_grass : grass}
+                        alt="Floor"></img>
                 </div>
 
                 <State  
@@ -259,7 +267,7 @@ class Home extends Component {
                     incrementHappiness={num => this.incrementHappiness(num, "Devour Food")} 
                     maxHappiness={this.state.maxHappiness} />
 
-                <div class="flex justify-center">
+                <div class="flex justify-center pt-3">
                     {this.state.foodSeen ? <FoodWindow foodCallBack={this.foodCallBack} /> : null}
                 </div>
 
@@ -275,7 +283,7 @@ class Home extends Component {
                 <div class="absolute right-0 bottom-0 sm:text-xs md:text-sm lg:text-base xl:text-xl">
                     <div class="grid grid-flow-col grid-cols-2 grid-rows-4">
                         <div />
-                        <div /> 
+                        <div />
                         <Todo 
                             todoCallBack={this.todoCallBack}
                             isNight={this.state.night} 

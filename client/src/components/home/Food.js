@@ -12,9 +12,9 @@ export default class Food extends Component {
     
     updateButton() {
         if (this.props.isNight) {
-            return "p-1 hover:text-gray-500 inline-flex flex items-center text-nightblue opacity-75 cursor-not-allowed"; 
+            return "p-1 hover:text-gray-500 inline-flex flex items-center text-bluegray opacity-75 cursor-not-allowed"; 
         } else {
-            return "p-1 hover:text-gray-500 inline-flex flex items-center text-darkblue";
+            return "p-1 hover:text-gray-600 inline-flex flex items-center text-darkblue";
         }
     }
 
