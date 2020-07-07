@@ -81,6 +81,7 @@ class Home extends Component {
             this.setState({
                 maxHappiness: true
             })
+            this.onHappinessBreakdownClick();
         }
     }
 
