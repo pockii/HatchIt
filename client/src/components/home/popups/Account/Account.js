@@ -106,9 +106,9 @@ export default class Account extends Component {
                         </div>
                     </div>   
 
-                    <div class="pl-5 pr-5">
+                    <div class="pl-5 pr-5 pb-5 h-75/100  w-full">
                         <Scrollbars 
-                            autoHeight
+                            style={{ height: '100%', width: '100%' }} 
                             autoHide
                             autoHideTimeout={1000}
                             autoHideDuration={400}>
