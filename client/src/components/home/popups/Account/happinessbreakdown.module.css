@@ -1,9 +1,7 @@
 .modal {
     position: relative;
-    top: 22%;
-    left: 50%;
-    right: 72%;
-    bottom: 50%;
+    top: 21%;
+    left: 79%;
     transform: translate(-50%, -50%);
     width: 40%;
     height: 40%;
