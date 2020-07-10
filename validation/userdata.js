@@ -23,6 +23,12 @@ module.exports = function validateUserData(userData) {
     if (userData.dateGuessed !== undefined) {
         userData.dateGuessed = !isEmpty(userData.dateGuessed) ? userData.dateGuessed + "" : "";
     }
+    if (userData.dateRescued !== undefined) {
+        userData.dateRescued = !isEmpty(userData.dateRescued) ? userData.dateRescued + "" : "";
+    }
+    if(userData.bestTimeRescued !== undefined) {
+        userData.bestTimeRescued = !isEmpty(userData.bestTimeRescued) ? userData.bestTimeRescued + "" : "";
+    }
 
     if (Validator.isEmpty(userData.name)) {
         errors.name = "Name is required";
@@ -57,7 +63,16 @@ module.exports = function validateUserData(userData) {
         errors.dateGuessed = "dateGuessed is invalid";
         isValid = false;
     } 
+    
+    if (userData.dateRescued !== undefined && !Validator.isISO8601(userData.dateRescued)) {
+        errors.dateRescued = "dateRescued is invalid";
+        isValid = false;
+    } 
 
+    if (userData.bestTimeRescued !== undefined && !Validator.isFloat(userData.bestTimeRescued)) {
+        errors.bestTimeRescued = "bestTimeRescued is invalid";
+        isValid = false;
+    }
     return {
         errors,
         isValid: isEmpty(errors)

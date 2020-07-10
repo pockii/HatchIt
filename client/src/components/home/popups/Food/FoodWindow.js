@@ -10,9 +10,6 @@ import pizza from './pics/pizza.svg';
 import chocolate from './pics/chocolate.svg';
 
 export default class FoodWindow extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     onFoodExitClick = () => {
         this.props.foodCallBack(false);

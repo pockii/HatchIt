@@ -13,6 +13,7 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Home from "./components/home/Home";
+import Rescue from "./components/home/Rescue/Rescue";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -46,6 +47,7 @@ export default class App extends Component {
                             <Route exact path="/register" component={Register} />
                             <Switch>
                                 <PrivateRoute exact path="/home" component={Home} />
+                                <PrivateRoute exact path="/home/rescue" component={Rescue} />
                             </Switch>
                         </div>
                     </Router>

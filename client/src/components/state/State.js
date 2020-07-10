@@ -52,7 +52,6 @@ export default class State extends Component {
     }
 
     currentState() {
-        //const happinessLevel = Math.floor(this.props.happiness / 20);
         switch (true) {
             case (this.props.happiness > 66 && this.props.happiness <= 99):
                 return [happy_state1, happy_state2];

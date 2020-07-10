@@ -38,6 +38,14 @@ const UserSchema = new Schema({
   dateGuessed: {
     type: Date,
     default: new Date(0)
+  },
+  dateRescued: {
+    type: Date,
+    default: new Date(0)
+  }, 
+  bestTimeRescued: {
+      type: Number,
+      default: 10.0
   }
 });
 

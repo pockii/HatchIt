@@ -16,6 +16,7 @@ import Night from "./Night.js"
 import Food from "./Food.js"
 import FoodWindow from "./popups/Food/FoodWindow.js";
 import Guess from "./popups/Guess/Guess.js";
+import RescueButton from "./Rescue/RescueButton.js";
 import Logout from "./Logout.js";
 import Coins from "./Coins.js";
 import Happiness from "./Happiness.js";
@@ -48,7 +49,6 @@ class Home extends Component {
         this.onHappinessBreakdownExitClick = this.onHappinessBreakdownExitClick.bind(this);
         this.state = {
             foodSeen: false,
-            //maxHappiness: false,
             night: false,
             happinessBreakdownSeen: false
         };
@@ -78,9 +78,6 @@ class Home extends Component {
 
         if (this.isMaxHappiness() && prevProps.auth.user.happiness !== this.#happiness.max) {
             this.incrementCoins(100);
-            // this.setState({
-            //     maxHappiness: true
-            // })
             this.onHappinessBreakdownClick();
         }
     }
@@ -112,13 +109,13 @@ class Home extends Component {
     }
 
     // Happiness
-    updateHappiness(newHappiness) {
+   updateHappiness(newHappiness) {
         const userData = {
             name: this.name,
             happiness: newHappiness,
         };
         this.props.updateUserData(userData); 
-    }
+    } 
 
     addEvent(event) {
         this.props.addHappinessEvent({
@@ -220,7 +217,7 @@ class Home extends Component {
     updateDateGuessed() {
         const userData = {
             name: this.name,
-            dateGuessed: new Date()
+            dateGuessed: new Date(),
         };
         this.props.updateUserData(userData); 
     };
@@ -282,12 +279,14 @@ class Home extends Component {
                 
                 <div class="absolute right-0 bottom-0 sm:text-xs md:text-sm lg:text-base xl:text-xl">
                     <div class="grid grid-flow-col grid-cols-2 grid-rows-4">
-                        <button onClick={() => this.decrementHappiness(10)}> - </button>
                         <div />
                         <Todo 
                             todoCallBack={this.todoCallBack}
                             isNight={this.state.night} 
                             incrementHappiness={this.incrementHappiness} />
+                        <RescueButton 
+                            isNight={this.state.night} 
+                            dateRescued={this.props.auth.user.dateRescued} />
                         <Guess 
                             dateGuessed={this.props.auth.user.dateGuessed}
                             updateDateGuessed={this.updateDateGuessed}

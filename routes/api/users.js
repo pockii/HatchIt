@@ -86,7 +86,9 @@ router.post("/login", (req, res) => {
                     totalHappinessGained: user.totalHappinessGained,
                     tasks: user.tasks,
                     subTasks: user.subTasks,
-                    dateGuessed: user.dateGuessed
+                    dateGuessed: user.dateGuessed,
+                    dateRescued: user.dateRescued,
+                    bestTimeRescued: user.bestTimeRescued
               };
             // Sign token
             jwt.sign(

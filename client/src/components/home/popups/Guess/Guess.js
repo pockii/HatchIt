@@ -50,7 +50,7 @@ export default class Guess extends Component {
     };
     
     isAvailable() {
-        const dateGuessed = new Date(this.props.dateGuessed);
+        const dateGuessed = this.props.dateGuessed;
         const now = new Date();
         return (now - dateGuessed) >= this.#day && !(this.props.isNight); 
     }

@@ -124,6 +124,9 @@ export default class Account extends Component {
                                 Total Todos Completed: {this.props.user.tasks} <br/>
                                 Total Sub Todos Completed: {this.props.user.subTasks} <br/>
                                 Date guessed: {(this.props.user.dateGuessed).substring(0,10)} <br/>
+                                Date rescued: {(this.props.user.dateRescued).substring(0,10)} <br/>
+                                Best Time for Rescue minigame: {(this.props.user.bestTimeRescued).toFixed(1) + " seconds"} <br />
+                                <br />
                             </p>         
                         </Scrollbars>
                     </div>
