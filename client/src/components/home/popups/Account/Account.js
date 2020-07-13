@@ -119,9 +119,9 @@ export default class Account extends Component {
                                 Total Happiness Gained: {this.props.user.totalHappinessGained} <br/>
                                 Total Todos Completed: {this.props.user.tasks} <br/>
                                 Total Sub Todos Completed: {this.props.user.subTasks} <br/>
-                                Date guessed: {new Date(this.props.user.dateGuessed).getTime() === 0 ? null : this.props.user.dateGuessed.substring(0,10)} <br/>
-                                Date rescued: {new Date(this.props.user.dateRescued).getTime() === 0 ? null : this.props.user.dateRescued.substring(0,10)} <br/>
-                                Best Time for Rescue minigame: {this.props.user.bestTimeRescued === 10 ? null : this.props.user.bestTimeRescued.toFixed(1) + " seconds"} <br />
+                                Date guessed: {new Date(this.props.user.dateGuessed).getTime() === 0 ? "No attempts yet" : this.props.user.dateGuessed.substring(0,10)} <br/>
+                                Date rescued: {new Date(this.props.user.dateRescued).getTime() === 0 ? "No attempts yet": this.props.user.dateRescued.substring(0,10)} <br/>
+                                Best Time for Rescue minigame: {this.props.user.bestTimeRescued === 10 ? "No attempts yet" : this.props.user.bestTimeRescued.toFixed(1) + " seconds"} <br />
                                 <br />
                             </p>         
                         </Scrollbars>
