@@ -198,13 +198,15 @@ class Rescue extends Component {
 Rescue.propTypes = {
     updateUserData: PropTypes.func.isRequired,
     updateHappinessEvent: PropTypes.func.isRequired,
+    happinessBreakdown: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
     auth: state.auth,
-    errors: state.errors
+    errors: state.errors,
+    happinessBreakdown: state.happinessBreakdown
 });
 
 export default connect(

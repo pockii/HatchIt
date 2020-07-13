@@ -279,7 +279,7 @@ class Home extends Component {
                 
                 <div class="absolute right-0 bottom-0 sm:text-xs md:text-sm lg:text-base xl:text-xl">
                     <div class="grid grid-flow-col grid-cols-2 grid-rows-4">
-                        <div />
+                        <div /> 
                         <Todo 
                             todoCallBack={this.todoCallBack}
                             isNight={this.state.night} 

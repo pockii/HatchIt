@@ -7,9 +7,8 @@ export default class RescueButton extends Component {
     #day = this.#hour * 24;
 
     isAvailable() {
-        const dateRescued = this.props.dateRescued;
-        const now = new Date();
-        return (now - dateRescued) >= this.#day && !(this.props.isNight); 
+        const timeDiff = new Date() - new Date(this.props.dateRescued)
+        return (timeDiff >= this.#day) && !(this.props.isNight); 
     }
 
     render() {
