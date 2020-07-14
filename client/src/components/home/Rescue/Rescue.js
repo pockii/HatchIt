@@ -26,11 +26,15 @@ class Rescue extends Component {
     
     updateHappiness(successful) {
         const timeRescued = 10 - this.state.timeLeft;
+        let happinessChange = successful ? 10 : -5;
+        if (this.props.auth.user.happiness + happinessChange > 100) {
+            happinessChange = 100 - this.props.auth.user.happiness;
+        }
         const userData = {
             name: this.props.auth.user.name,
             dateRescued: new Date(),
-            happiness: this.props.auth.user.happiness + ((successful) ? 10 : -5),
-            totalHappinessGained: this.props.auth.user.totalHappinessGained + ((successful) ? 10 : 0),
+            happiness: this.props.auth.user.happiness + happinessChange,
+            totalHappinessGained: this.props.auth.user.totalHappinessGained + (happinessChange <= 0 ? 0 : happinessChange),
             bestTimeRescued: (timeRescued < this.props.auth.user.bestTimeRescued) ? timeRescued : this.props.auth.user.bestTimeRescued
         }
         this.props.updateUserData(userData);
