@@ -27,7 +27,7 @@ class Rescue extends Component {
     updateHappiness(successful) {
         const timeRescued = 10 - this.state.timeLeft;
         const userData = {
-            name: this.name,
+            name: this.props.auth.user.name,
             dateRescued: new Date(),
             happiness: this.props.auth.user.happiness + ((successful) ? 10 : -5),
             totalHappinessGained: this.props.auth.user.totalHappinessGained + ((successful) ? 10 : 0),
@@ -37,7 +37,7 @@ class Rescue extends Component {
 
         // update Happiness Breakdown
         this.props.updateHappinessEvent({
-            name: this.name,
+            name: this.props.auth.user.name,
             event: {
                 event: "Play Rescue",
                 totalHappinessGained: 10
