@@ -10,114 +10,221 @@
 
 - Backend (with Postman)
 
-  1. Test Case: PUT - <http://localhost:5000/api/users/userdata>
+  <table>
+  <thead>
+  <tr>
+  <th></th>
+  <th>
+  Test Case
+  </th>
+  <th>
+  Request Body
+  </th>
+  <th>
+  Expected Result
+  </th>
+  <th>
+  Actual Result
+  </th>
+  <th>
+  Remarks
+  </th>
+  </tr>
+  </thead>
 
-     Body:
+  <tr>
+  <td>
+  1
+  </td>
+  <td>
+  PUT - http://localhost:5000/api/users/userdata
+  </td>
+  <td>
 
-     ```json
-     {
-       "name": "name",
-       "coins": 40
-     }
-     ```
+  ```json
+  {
+    "name": "name",
+    "coins": 40
+  }
+  ```
 
-     Expected Result:
+  </td>
+  <td>
 
-     ```json
-     {
-       "date": "2020-06-27T02:34:37.850Z",
-       "coins": 40,
-       "happiness": 23,
-       "totalHappinessGained": 635,
-       "tasks": 0,
-       "subTasks": 0,
-       "dateGuessed": "1970-01-01T00:00:00.000Z",
-       "_id": "5ef6c04c4b2b6000cfbf319f",
-       "name": "name",
-       "password": "$2a$10$.eOW7FxcKZhpPoz0sfxiceMxsGvJHK2hmSWSiW1yNG5yIn4TIpuVK",
-       "__v": 0
-     }
-     ```
+  ```json
+  {
+    "date": "2020-06-27T02:34:37.850Z",
+    "coins": 40,
+    "happiness": 23,
+    "totalHappinessGained": 635,
+    "tasks": 0,
+    "subTasks": 0,
+    "dateGuessed": "1970-01-01T00:00:00.000Z",
+    "_id": "5ef6c04c4b2b6000cfbf319f",
+    "name": "name",
+    "password": "$2a$10$.eOW7FxcKZhpPoz0sfxiceMxsGvJHK2hmSWSiW1yNG5yIn4TIpuVK",
+    "__v": 0
+  }
+  ```
 
-     Actual Result: _same_ as Expected Result
+  </td>
+  <td>
+  <i>same</i> as Expected Result
+  </td>
+  <td></td>
+  </tr>
 
-  2. Test Case: PUT - <http://localhost:5000/api/users/userdata>
+  <tr>
+  <td>
+  2
+  </td>
+  <td>
+  PUT - http://localhost:5000/api/users/userdata
+  </td>
+  <td>
 
-     Body:
+  ```json
+  {
+    "name": ""
+  }
+  ```
 
-     ```json
-     {
-       "name": ""
-     }
-     ```
+  </td>
+  <td>
 
-     Expected Result:
+  ```json
+  {
+    "name": "Name is required"
+  }
+  ```
 
-     ```json
-     {
-       "name": "Name is required"
-     }
-     ```
+  </td>
+  <td>
+  <i>same</i> as Expected Result
+  </td>
+  <td></td>
+  </tr>
 
-     Actual Result: _same_ as Expected Result
+  <tr>
+  <td>
+  3
+  </td>
+  <td>
+  PUT - http://localhost:5000/api/users/userdata
+  </td>
+  <td>
 
-  3. Test Case: PUT - <http://localhost:5000/api/users/userdata>
+  ```json
+  {
+    "name": "name",
+    "coins": -23
+  }
+  ```
 
-     Body:
+  </td>
+  <td>
 
-     ```json
-     {
-       "name": "name",
-       "coins": -23
-     }
-     ```
+  ```json
+  {
+    "coins": "Coins is invalid"
+  }
+  ```
 
-     Expected Result:
+  </td>
+  <td>
+  <i>same</i> as Expected Result
+  </td>
+  <td></td>
+  </tr>
 
-     ```json
-     {
-       "coins": "Coins is invalid"
-     }
-     ```
+  <tr>
+  <td>
+  4
+  </td>
+  <td>
+  PUT - http://localhost:5000/api/users/userdata
+  </td>
+  <td>
 
-     Actual Result: _same_ as Expected Result
+  ```json
+  {
+    "name": "namefsrfdzf",
+    "coins": 2432
+  }
+  ```
 
-  4. Test Case: PUT - <http://localhost:5000/api/users/userdata>
+  </td>
+  <td>
 
-     Body:
+  ```json
+  {
+    "message": "Cannot update data of user with username namefsrfdzf. Maybe User was not found!"
+  }
+  ```
 
-     ```json
-     {
-       "name": "namefsrfdzf",
-       "coins": 2432
-     }
-     ```
-
-     Expected Result:
-
-     ```json
-     {
-       "message": "Cannot update data of user with username namefsrfdzf. Maybe User was not found!"
-     }
-     ```
-
-     Actual Result: _same_ as Expected Result
+  </td>
+  <td>
+  <i>same</i> as Expected Result
+  </td>
+  <td></td>
+  </tr>
+  </table>
 
 ## Unit Testing
 
 (with dummy incrementCoins and decrementCoins buttons that increase and decrease happiness by 7 respectively)
 
-1. Test Case: click incrementCoins button once
+<table>
+<thead>
+<tr>
+<th></th>
+<th>
+Test Case
+</th>
+<th>
+Expected Result
+</th>
+<th>
+Actual Result
+</th>
+<th>
+Remarks
+</th>
+</tr>
+</thead>
 
-   Expected Result: coins increases by 7
+<tr>
+<td>
+1
+</td>
+<td>
+click incrementCoins button once
+</td>
+<td>
+coins increases by 7
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
 
-   Actual Result: _same_ as Expected Result
-
-2. Test Case: click decrementCoins button once
-
-   Expected Result: coins decreases by 7
-
-   Actual Result: _same_ as Expected Result
+<tr>
+<td>
+2
+</td>
+<td>
+click decrementCoins button once
+</td>
+<td>
+coins decreases by 7
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+</table>
 
 ## Integrated Testing
 
