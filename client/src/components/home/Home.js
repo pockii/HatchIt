@@ -13,14 +13,17 @@ import State from "../state/State.js";
 import Account from "./popups/Account/Account.js";
 import HappinessBreakdown from "./popups/Account/HappinessBreakdown.js"
 import Night from "./Night.js"
-import Food from "./Food.js"
+import Food from "./popups/Food/Food.js"
 import FoodWindow from "./popups/Food/FoodWindow.js";
 import Guess from "./popups/Guess/Guess.js";
 import RescueButton from "./Rescue/RescueButton.js";
 import Logout from "./Logout.js";
-import Coins from "./Coins.js";
+import Coins from "./Coins/Coins.js";
 import Happiness from "./Happiness.js";
 import Todo from "./popups/Todo/Todo.js";
+import Shop from "./popups/Shop/Shop.js";
+import ShopFoodWindow from "./popups/Shop/ShopFoodWindow.js";
+import InsufficientCoinsError from "./Coins/InsufficientCoinsError.js";
 
 import day from '../pics/day.svg';
 import night from '../pics/night.svg';
@@ -43,20 +46,25 @@ class Home extends Component {
         this.decrementHappiness = this.decrementHappiness.bind(this);
         this.addEvent = this.addEvent.bind(this);
         this.incrementCoins = this.incrementCoins.bind(this);
+        this.decrementCoins = this.decrementCoins.bind(this);
         this.updateDateGuessed = this.updateDateGuessed.bind(this);
         this.petState = React.createRef();
         this.onHappinessBreakdownClick = this.onHappinessBreakdownClick.bind(this);
         this.onHappinessBreakdownExitClick = this.onHappinessBreakdownExitClick.bind(this);
+        this.showInsufficientCoinsError = this.showInsufficientCoinsError.bind(this);
+        this.onInsufficientCoinsErrorExitClick = this.onInsufficientCoinsErrorExitClick.bind(this);
         this.state = {
             foodSeen: false,
+            shopFoodSeen: false,
             night: false,
-            happinessBreakdownSeen: false
+            happinessBreakdownSeen: false,
+            insufficientCoinsErrorSeen: false
         };
     }    
 
     componentDidMount() {
         if (!this.state.night) {
-            setTimeout(this.decrementHappiness(1), this.#minute * 5);
+            setTimeout(() => this.decrementHappiness(1), this.#minute * 5);
         }
         const happinessBreakdown = {
             name: this.name,
@@ -100,13 +108,27 @@ class Home extends Component {
             this.updateCoins(this.props.auth.user.coins - num);
             return true;
         } else {
+            this.showInsufficientCoinsError();
             return false;
         }
     }
-      
+
     setMinCoins() {
         this.updateCoins(this.#coins.min);
     }
+    
+    showInsufficientCoinsError() {
+        this.setState({
+            insufficientCoinsErrorSeen: true
+        });
+        setTimeout(this.onInsufficientCoinsErrorExitClick, 1000);
+    }
+
+    onInsufficientCoinsErrorExitClick() {
+        this.setState({
+            insufficientCoinsErrorSeen: false
+        });
+    }    
 
     // Happiness
    updateHappiness(newHappiness) {
@@ -160,8 +182,8 @@ class Home extends Component {
             this.updateHappiness(this.#happiness.min);
             return false; 
         }
-    }      
-    
+    }    
+
     isMinHappiness() {
         return this.props.auth.user.happiness === this.#happiness.min;
     }
@@ -209,9 +231,26 @@ class Home extends Component {
     // FoodWindow
     foodCallBack = (childData) => {
         this.setState({
-            foodSeen: childData
+            foodSeen: childData,
+            shopFoodSeen: false
         })
     };
+
+    getFoodSeen() {
+        return this.state.foodSeen && !this.state.shopFoodSeen;
+    }
+
+    // ShopFoodWindow 
+    shopFoodCallBack = (childData) => {
+        this.setState({
+            foodSeen: false,
+            shopFoodSeen: childData
+        })
+    }
+
+    getShopSeen() {
+        return this.state.shopFoodSeen && !this.state.foodSeen;
+    }
     
     // Guess
     updateDateGuessed() {
@@ -262,10 +301,20 @@ class Home extends Component {
                 <State  
                     ref={this.petState}
                     incrementHappiness={num => this.incrementHappiness(num, "Devour Food")} 
+                    decrementCoins={this.decrementCoins}
                     happiness={this.props.auth.user.happiness} />
 
-                <div class="flex justify-center pt-3">
-                    {this.state.foodSeen ? <FoodWindow foodCallBack={this.foodCallBack} /> : null}
+                <div class="flex justify-center pt-3 h-full w-full">
+                    {this.getFoodSeen() ? <FoodWindow foodCallBack={this.foodCallBack} /> : null}
+                    {this.getShopSeen() ? <ShopFoodWindow shopFoodCallBack ={this.shopFoodCallBack} /> : null}
+                </div>
+
+                <div class="flex justify-center flex content-center"> 
+                    {this.state.insufficientCoinsErrorSeen 
+                        ? <InsufficientCoinsError 
+                            insufficientCoinsErrorSeen={this.state.insufficientCoinsErrorSeen} 
+                            onInsufficientCoinsErrorExitClick={this.onInsufficientCoinsErrorExitClick}/> 
+                        : null}
                 </div>
 
                 <div class="flex flex-col absolute bottom-0 left-0 w-1/4 sm:text-xs md:text-sm lg:text-base xl:text-xl">                    
@@ -278,8 +327,9 @@ class Home extends Component {
                 </div> 
                 
                 <div class="absolute right-0 bottom-0 sm:text-xs md:text-sm lg:text-base xl:text-xl">
-                    <div class="grid grid-flow-col grid-cols-2 grid-rows-4">
+                    <div class="grid grid-flow-col grid-cols-2 grid-rows-5">
                         <div /> 
+                        <div />
                         <Todo 
                             todoCallBack={this.todoCallBack}
                             isNight={this.state.night} 
@@ -307,6 +357,9 @@ class Home extends Component {
                         <Night nightCallBack={this.nightCallBack} />
                         <Food 
                             foodCallBack={this.foodCallBack} 
+                            isNight={this.state.night} />
+                        <Shop 
+                            shopFoodCallBack={this.shopFoodCallBack}
                             isNight={this.state.night} />
                         <Logout 
                             onLogoutClick={this.onLogoutClick} 

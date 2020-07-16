@@ -34,8 +34,11 @@ export default class State extends Component {
 
     onDrop = (e) => {
         let value = parseInt(e.dataTransfer.getData("value"));
-        this.props.incrementHappiness(value);
-        this.toggleEating();
+        let coins = parseInt(e.dataTransfer.getData("coins"));
+        if (coins === 0 || this.props.decrementCoins(coins)) {
+            this.props.incrementHappiness(value);
+            this.toggleEating();
+        } 
         e.preventDefault();
     }
 
@@ -96,6 +99,7 @@ export default class State extends Component {
     toggleSleeping() {
         this.updateImages([sleeping_state1, sleeping_state2], 0);
     }
+
     revertToNormal() {
         this.updateImages(this.currentState(), 0);
     }
