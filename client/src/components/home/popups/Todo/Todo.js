@@ -87,6 +87,7 @@ class Todo extends Component {
                     onRequestClose={this.onTodoExitClick}
                     shouldCloseOnEsc={true}
                     className={todo.modal}
+                    ariaHideApp={false}
                 >
                     <button 
                         class="p-3 text-darkblue absolute right-0 top-0 hover:text-gray-500" 
@@ -133,7 +134,7 @@ class Todo extends Component {
                                 id="Icons_Add" overflow="hidden">
                                     <path 
                                         d="M88 42 54 42 54 8 42 8 42 42 8 42 8 54 42 54 42 88 54 88 54 54 88 54Z" 
-                                        stroke-width="0.250079"/>
+                                        strokeWidth="0.250079"/>
                             </svg>
                             <span>New Sub Todo</span>
                         </button> 

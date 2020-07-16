@@ -53,6 +53,7 @@ export default class Account extends Component {
                     onRequestClose={this.onAccountExitClick}
                     shouldCloseOnEsc={true}
                     className={account.modal}
+                    ariaHideApp={false}
                 >
                     <button 
                         class="p-3 text-darkblue absolute right-0 top-0 hover:text-gray-500" 
@@ -66,7 +67,7 @@ export default class Account extends Component {
                             id="Icons_Close" overflow="hidden">
                                 <path 
                                 d="M83.4 21.1 74.9 12.6 48 39.5 21.1 12.6 12.6 21.1 39.5 48 12.6 74.9 21.1 83.4 48 56.5 74.9 83.4 83.4 74.9 56.5 48Z" 
-                                stroke-width="0.229186" 
+                                strokeWidth="0.229186" 
                                 />
                          </svg>
                     </button>
