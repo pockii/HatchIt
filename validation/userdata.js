@@ -5,29 +5,44 @@ module.exports = function validateUserData(userData) {
     let errors = {};
     
     userData.name = !isEmpty(userData.name) ? userData.name : "";
+
     if (userData.coins !== undefined) {
-        userData.coins = !isEmpty(userData.coins) ? userData.coins + "" : "";
+        userData.coins = userData.coins === 0 ? "0" 
+                            : !isEmpty(userData.coins) ? userData.coins + "" 
+                            : "";
     }
     if (userData.happiness !== undefined) {
-        userData.happiness = !isEmpty(userData.happiness) ? userData.happiness + "" : "";
+        userData.happiness = userData.happiness === 0 ? "0" 
+                            : !isEmpty(userData.happiness) ? userData.happiness + "" 
+                            : "";
     }
     if (userData.totalHappinessGained !== undefined) {
-        userData.totalHappinessGained = !isEmpty(userData.totalHappinessGained) ? userData.totalHappinessGained + "" : "";
+        userData.totalHappinessGained = userData.totalHappinessGained === 0 ? "0" 
+                                        : !isEmpty(userData.totalHappinessGained) ? userData.totalHappinessGained + "" 
+                                        : "";
     }
     if (userData.tasks !== undefined) {
-        userData.tasks = !isEmpty(userData.tasks) ? userData.tasks + "" : "";
+        userData.tasks = userData.tasks === 0 ? "0" 
+                        : !isEmpty(userData.tasks) ? userData.tasks + "" 
+                        : "";
     }
     if (userData.subTasks !== undefined) {
-        userData.subTasks = !isEmpty(userData.subTasks) ? userData.subTasks + "" : "";
+        userData.subTasks = userData.subTasks === 0 ? "0" 
+                            : !isEmpty(userData.subTasks) ? userData.subTasks + "" 
+                            : "";
     }
     if (userData.dateGuessed !== undefined) {
-        userData.dateGuessed = !isEmpty(userData.dateGuessed) ? userData.dateGuessed + "" : "";
+        userData.dateGuessed = !isEmpty(userData.dateGuessed) ? userData.dateGuessed : "";
     }
+
     if (userData.dateRescued !== undefined) {
-        userData.dateRescued = !isEmpty(userData.dateRescued) ? userData.dateRescued + "" : "";
+        userData.dateRescued = !isEmpty(userData.dateRescued) ? userData.dateRescued : "";
     }
-    if(userData.bestTimeRescued !== undefined) {
-        userData.bestTimeRescued = !isEmpty(userData.bestTimeRescued) ? userData.bestTimeRescued + "" : "";
+
+    if (userData.bestTimeRescued !== undefined) {
+        userData.bestTimeRescued = userData.bestTimeRescued === 0 ? "0" 
+                                    : !isEmpty(userData.bestTimeRescued) ? userData.bestTimeRescued + "" 
+                                    : "";
     }
 
     if (Validator.isEmpty(userData.name)) {

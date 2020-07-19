@@ -20,7 +20,9 @@ function validateEventStrict(event) {
     let errors = {};
 
     event.event = !isEmpty(event.event) ? event.event : "";
-    event.totalHappinessGained = !isEmpty(event.totalHappinessGained) ? event.totalHappinessGained + "" : "";
+    event.totalHappinessGained = event.totalHappinessGained === 0 ? "0" 
+                                : !isEmpty(event.totalHappinessGained) ? event.totalHappinessGained + "" 
+                                : "";
 
     if (Validator.isEmpty(event.event)) {
         errors.event = "Description for event is required";
@@ -46,7 +48,9 @@ function validateEvent(event) {
 
     event.event = !isEmpty(event.event) ? event.event : "";
     if (event.totalHappinessGained !== undefined) {
-        event.totalHappinessGained = !isEmpty(event.totalHappinessGained) ? event.totalHappinessGained + "" : "";
+        event.totalHappinessGained =  event.totalHappinessGained === 0 ? "0" 
+                                        : !isEmpty(event.totalHappinessGained) ? event.totalHappinessGained + "" 
+                                        : "";
     }
 
     if (Validator.isEmpty(event.event)) {
