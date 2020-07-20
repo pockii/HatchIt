@@ -5,6 +5,7 @@ module.exports = function validateUserData(userData) {
     let errors = {};
     
     userData.name = !isEmpty(userData.name) ? userData.name : "";
+
     if (userData.coins !== undefined) {
         userData.coins = userData.coins === 0 ? "0" 
                             : !isEmpty(userData.coins) ? userData.coins + "" 
@@ -19,13 +20,14 @@ module.exports = function validateUserData(userData) {
         userData.petsUnlocked = !isEmpty(userData.petsUnlocked) ? userData.petsUnlocked + "" : "";
     }
     if (userData.happiness !== undefined) {
-        userData.happiness = !isEmpty(userData.happiness) ? userData.happiness + "" : "";
+        userData.happiness = userData.happiness === 0 ? "0" 
+                            : !isEmpty(userData.happiness) ? userData.happiness + "" 
+                            : "";
     }
     if (userData.totalHappinessGained !== undefined) {
         userData.totalHappinessGained = userData.totalHappinessGained === 0 ? "0" 
                                         : !isEmpty(userData.totalHappinessGained) ? userData.totalHappinessGained + "" 
                                         : "";
-
     }
     if (userData.tasks !== undefined) {
         userData.tasks = userData.tasks === 0 ? "0" 
@@ -34,16 +36,18 @@ module.exports = function validateUserData(userData) {
     }
     if (userData.subTasks !== undefined) {
         userData.subTasks = userData.subTasks === 0 ? "0" 
-                            : !isEmpty(userData.subTasks) ? userData.subTasks + "" 
-                            : "";
+                                : !isEmpty(userData.subTasks) ? userData.subTasks + "" 
+                                : "";
     }
     if (userData.dateGuessed !== undefined) {
         userData.dateGuessed = !isEmpty(userData.dateGuessed) ? userData.dateGuessed : "";
     }
+
     if (userData.dateRescued !== undefined) {
         userData.dateRescued = !isEmpty(userData.dateRescued) ? userData.dateRescued : "";
     }
-    if(userData.bestTimeRescued !== undefined) {
+
+    if (userData.bestTimeRescued !== undefined) {
         userData.bestTimeRescued = userData.bestTimeRescued === 0 ? "0" 
                                     : !isEmpty(userData.bestTimeRescued) ? userData.bestTimeRescued + "" 
                                     : "";
