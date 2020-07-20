@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Happiness({ happiness, isNight }) {
+export default function Happiness({ happiness, petId, isNight }) {
     return (          
         <div class="p-1 inline-flex flex items-center">
             <svg 
@@ -25,7 +25,7 @@ export default function Happiness({ happiness, isNight }) {
                         ? "overflow-hidden h-3 mb-4 text-xs flex rounded border border-darkblue bg-nightbluebg"
                         : "overflow-hidden h-3 mb-4 text-xs flex rounded border border-darkblue bg-pink-100"}>
                     <div 
-                        style={{ width: happiness / 100 * 250 }} 
+                        style={{ width: happiness[petId] / 100 * 250 }} 
                         class={isNight
                                 ? "shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-lightbluebarbg"
                                 : "shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-300"}>

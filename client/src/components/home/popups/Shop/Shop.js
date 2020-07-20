@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function Shop({ shopFoodCallBack, isNight }) {
+export default function Shop({ shopCallBack, isNight }) {
 
     function onShopClick() {
-        shopFoodCallBack(true && !isNight);
+        shopCallBack(true && !isNight);
     }
     
     function updateButton() {

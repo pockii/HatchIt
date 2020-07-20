@@ -66,8 +66,7 @@ export default class Account extends Component {
                             xlink="http://www.w3.org/1999/xlink" 
                             id="Icons_Close" overflow="hidden">
                                 <path 
-                                d="M83.4 21.1 74.9 12.6 48 39.5 21.1 12.6 12.6 21.1 39.5 48 12.6 74.9 21.1 83.4 48 56.5 74.9 83.4 83.4 74.9 56.5 48Z" 
-                                strokeWidth="0.229186" 
+                                    d="M83.4 21.1 74.9 12.6 48 39.5 21.1 12.6 12.6 21.1 39.5 48 12.6 74.9 21.1 83.4 48 56.5 74.9 83.4 83.4 74.9 56.5 48Z" 
                                 />
                          </svg>
                     </button>
@@ -116,7 +115,8 @@ export default class Account extends Component {
                             <p class="flex justify-center sm:text-base md:text-gl lg:text-xl xl:text-2xl text-darkblue">  
                                 Username: {this.props.user.name}<br/>
                                 Coins: {this.props.user.coins}<br/>
-                                Happiness Level: {this.props.user.happiness}<br/>
+                                Happiness Level: {this.props.user.happiness[this.props.user.petId]}<br/>
+                                {/* Unlocked: {this.props.user.petsUnlocked[this.props.user.petId]} <br /> */}
                                 Total Happiness Gained: {this.props.user.totalHappinessGained} <br/>
                                 Total Todos Completed: {this.props.user.tasks} <br/>
                                 Total Sub Todos Completed: {this.props.user.subTasks} <br/>

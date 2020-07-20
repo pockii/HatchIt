@@ -1,21 +1,39 @@
 import React, { Component } from "react";
 
-import normal_state1 from './pics/normal_state1.svg';
-import normal_state2 from './pics/normal_state2.svg';
-import react_state1 from './pics/reaction_state1.svg';
-import react_state2 from './pics/reaction_state2.svg';
-import eating_state1 from './pics/eating_state1.svg';
-import eating_state2 from './pics/eating_state2.svg';
-import happy_state1 from './pics/happy_state1.svg';
-import happy_state2 from './pics/happy_state2.svg'
-import max_state1 from './pics/max_state1.svg';
-import max_state2 from './pics/max_state2.svg';
-import guess_state1 from './pics/guess_state1.svg';
-import guess_state2 from './pics/guess_state2.svg';
-import productive_state1 from './pics/prod_state1.svg';
-import productive_state2 from './pics/prod_state2.svg';
-import sleeping_state1 from './pics/sleeping_state1.svg';
-import sleeping_state2 from './pics/sleeping_state2.svg';
+import rabbit_normal1 from './pics/rabbit/normal_state1.svg';
+import rabbit_normal2 from './pics/rabbit/normal_state2.svg';
+import rabbit_react1 from './pics/rabbit/react_state1.svg';
+import rabbit_react2 from './pics/rabbit/react_state2.svg';
+import rabbit_eat1 from './pics/rabbit/eating_state1.svg';
+import rabbit_eat2 from './pics/rabbit/eating_state2.svg';
+import rabbit_happy1 from './pics/rabbit/happy_state1.svg';
+import rabbit_happy2 from './pics/rabbit/happy_state2.svg'
+import rabbit_max1 from './pics/rabbit/max_state1.svg';
+import rabbit_max2 from './pics/rabbit/max_state2.svg';
+import rabbit_guess1 from './pics/rabbit/guess_state1.svg';
+import rabbit_guess2 from './pics/rabbit/guess_state2.svg';
+import rabbit_prod1 from './pics/rabbit/prod_state1.svg';
+import rabbit_prod2 from './pics/rabbit/prod_state2.svg';
+import rabbit_sleep1 from './pics/rabbit/sleeping_state1.svg';
+import rabbit_sleep2 from './pics/rabbit/sleeping_state2.svg';
+
+import cat_normal1 from './pics/cat/normal_state1.svg';
+import cat_normal2 from './pics/cat/normal_state2.svg';
+import cat_react1 from './pics/cat/react_state1.svg';
+import cat_react2 from './pics/cat/react_state2.svg';
+import cat_eat1 from './pics/cat/eating_state1.svg';
+import cat_eat2 from './pics/cat/eating_state2.svg';
+import cat_happy1 from './pics/cat/happy_state1.svg';
+import cat_happy2 from './pics/cat/happy_state2.svg'
+import cat_max1 from './pics/cat/max_state1.svg';
+import cat_max2 from './pics/cat/max_state2.svg';
+import cat_guess1 from './pics/cat/guess_state1.svg';
+import cat_guess2 from './pics/cat/guess_state2.svg';
+import cat_prod1 from './pics/cat/temp_state1.svg';
+import cat_prod2 from './pics/cat/temp_state2.svg';
+import cat_sleep1 from './pics/cat/sleeping_state1.svg';
+import cat_sleep2 from './pics/cat/sleeping_state2.svg';
+
 
 export default class State extends Component { 
     constructor(props) {
@@ -28,6 +46,15 @@ export default class State extends Component {
         };
     }
     
+    #normal_state = [[rabbit_normal1, rabbit_normal2], [cat_normal1, cat_normal2]];
+    #react_state = [[rabbit_react1, rabbit_react2], [cat_react1, cat_react2]];
+    #eat_state = [[rabbit_eat1, rabbit_eat2], [cat_eat1, cat_eat2]];
+    #happy_state = [[rabbit_happy1, rabbit_happy2], [cat_happy1, cat_happy2]];
+    #max_state = [[rabbit_max1, rabbit_max2], [cat_max1, cat_max2]];
+    #guess_state = [[rabbit_guess1, rabbit_guess2], [cat_guess1, cat_guess2]];
+    #prod_state = [[rabbit_prod1, rabbit_prod2], [cat_prod1, cat_prod2]];
+    #sleep_state = [[rabbit_sleep1, rabbit_sleep2], [cat_sleep1, cat_sleep2]];
+
     onDragOver = (e) => {
         e.preventDefault();
     }
@@ -56,12 +83,12 @@ export default class State extends Component {
 
     currentState() {
         switch (true) {
+            case (this.props.happiness[this.props.petId] === 100):
+                return this.#max_state[this.props.petId];
             case (this.props.happiness > 66 && this.props.happiness <= 99):
-                return [happy_state1, happy_state2];
-            case (this.props.happiness === 100):
-                return [max_state1, max_state2];
+                return this.#happy_state[this.props.petId];
             default:
-                return [normal_state1, normal_state2];
+                return this.#normal_state[this.props.petId];
         }
     }
 
@@ -81,23 +108,23 @@ export default class State extends Component {
     }
 
     toggleReaction() {
-        this.updateImages([react_state1, react_state2], 2500);
+        this.updateImages(this.#react_state[this.props.petId], 2500);
     }
 
     toggleEating() {
-        this.updateImages([eating_state1, eating_state2], 3000);
+        this.updateImages(this.#eat_state[this.props.petId], 3000);
     }
 
     toggleGuessing() {
-        this.updateImages([guess_state1, guess_state2], 0);
+        this.updateImages(this.#guess_state[this.props.petId], 0);
     }
 
     toggleProductive() {
-        this.updateImages([productive_state1, productive_state2], 3000);
+        this.updateImages(this.#prod_state[this.props.petId], 3000);
     }
     
     toggleSleeping() {
-        this.updateImages([sleeping_state1, sleeping_state2], 0);
+        this.updateImages(this.#sleep_state[this.props.petId], 0);
     }
 
     revertToNormal() {

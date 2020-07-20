@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 
-import box_state1 from '../../state/pics/box_state1.svg';
-import box_state2 from '../../state/pics/box_state2.svg';
-import clap_state1 from '../../state/pics/prod_state1.svg';
-import clap_state2 from '../../state/pics/prod_state2.svg';
+import rabbit_box1 from '../../state/pics/rabbit/box_state1.svg';
+import rabbit_box2 from '../../state/pics/rabbit/box_state2.svg';
+import rabbit_clap1 from '../../state/pics/rabbit/prod_state1.svg';
+import rabbit_clap2 from '../../state/pics/rabbit/prod_state2.svg';
+
+import cat_box1 from '../../state/pics/cat/box_state1.svg';
+import cat_box2 from '../../state/pics/cat/box_state2.svg';
+import cat_clap1 from '../../state/pics/cat/temp_state1.svg';
+import cat_clap2 from '../../state/pics/cat/temp_state2.svg';
 
 export default class RescueState extends Component { 
     constructor(props) {
@@ -12,11 +17,14 @@ export default class RescueState extends Component {
         this.countClick = this.countClick.bind(this);
         this.state = { 
             currentIndex: 0,
-            images: [box_state1, box_state2],
+            images: this.#box_state[this.props.petId],
             count: 0,
             success: false
         };
     }
+
+    #box_state = [[rabbit_box1, rabbit_box2], [cat_box1, cat_box2]];
+    #clap_state = [[rabbit_clap1, rabbit_clap2], [cat_clap1, cat_clap2]];
 
     switchImage() {
         if (this.state.currentIndex < this.state.images.length - 1) {
@@ -34,7 +42,7 @@ export default class RescueState extends Component {
         if (this.state.count >= 50) {
             this.setState({
                 success: true,
-                images: [clap_state1, clap_state2]
+                images: this.#clap_state[this.props.petId]
             });
             this.props.onSuccessCallBack();
         } else if (this.props.running) {

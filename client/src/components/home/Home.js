@@ -22,7 +22,7 @@ import Coins from "./Coins/Coins.js";
 import Happiness from "./Happiness.js";
 import Todo from "./popups/Todo/Todo.js";
 import Shop from "./popups/Shop/Shop.js";
-import ShopFoodWindow from "./popups/Shop/ShopFoodWindow.js";
+import ShopWindow from "./popups/Shop/ShopWindow.js";
 import InsufficientCoinsError from "./Coins/InsufficientCoinsError.js";
 
 import day from '../pics/day.svg';
@@ -55,10 +55,10 @@ class Home extends Component {
         this.onInsufficientCoinsErrorExitClick = this.onInsufficientCoinsErrorExitClick.bind(this);
         this.state = {
             foodSeen: false,
-            shopFoodSeen: false,
+            shopSeen: false,
             night: false,
             happinessBreakdownSeen: false,
-            insufficientCoinsErrorSeen: false
+            insufficientCoinsErrorSeen: false,
         };
     }    
 
@@ -80,11 +80,11 @@ class Home extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.isMinHappiness() && prevProps.auth.user.happiness !== this.#happiness.min) {
+        if (this.isMinHappiness() && prevProps.auth.user.happiness[prevProps.auth.user.petId] !== this.#happiness.min) {
             this.setMinCoins();
         }
 
-        if (this.isMaxHappiness() && prevProps.auth.user.happiness !== this.#happiness.max) {
+        if (this.isMaxHappiness() && prevProps.auth.user.happiness[prevProps.auth.user.petId] !== this.#happiness.max) {
             this.incrementCoins(100);
             this.onHappinessBreakdownClick();
         }
@@ -132,9 +132,11 @@ class Home extends Component {
 
     // Happiness
    updateHappiness(newHappiness) {
+        const arr = [...this.props.auth.user.happiness];
+        arr[this.props.auth.user.petId] = newHappiness
         const userData = {
             name: this.name,
-            happiness: newHappiness,
+            happiness: arr
         };
         this.props.updateUserData(userData); 
     } 
@@ -147,10 +149,12 @@ class Home extends Component {
     }
 
     updateHappinessGainedAndHappiness(newHappiness, num, event) {
+        const arr = [...this.props.auth.user.happiness];
+        arr[this.props.auth.user.petId] = newHappiness
         const userData = {
             name: this.name,
+            happiness: arr,
             totalHappinessGained: this.props.auth.user.totalHappinessGained + num,
-            happiness: newHappiness
         };
         this.props.updateUserData(userData); 
 
@@ -165,18 +169,20 @@ class Home extends Component {
     }
 
     incrementHappiness(num, event) {
-        if (this.props.auth.user.happiness + num <= this.#happiness.max) {
-            this.updateHappinessGainedAndHappiness(this.props.auth.user.happiness + num, num, event);
+        const currentHappiness = this.props.auth.user.happiness[this.props.auth.user.petId]
+        if (currentHappiness + num <= this.#happiness.max) {
+            this.updateHappinessGainedAndHappiness(currentHappiness + num, num, event);
             return true;  
         } else {
-            this.updateHappinessGainedAndHappiness(this.#happiness.max, this.#happiness.max - this.props.auth.user.happiness, event);
+            this.updateHappinessGainedAndHappiness(this.#happiness.max, this.#happiness.max - currentHappiness, event);
             return false;
         }
     }
 
     decrementHappiness(num) {
-        if (this.props.auth.user.happiness - num >= this.#happiness.min) {
-            this.updateHappiness(this.props.auth.user.happiness - num);
+        const currentHappiness = this.props.auth.user.happiness[this.props.auth.user.petId]
+        if (currentHappiness - num >= this.#happiness.min) {
+            this.updateHappiness(currentHappiness - num);
             return true;
         } else {
             this.updateHappiness(this.#happiness.min);
@@ -185,11 +191,13 @@ class Home extends Component {
     }    
 
     isMinHappiness() {
-        return this.props.auth.user.happiness === this.#happiness.min;
+        const currentHappiness = this.props.auth.user.happiness[this.props.auth.user.petId];
+        return currentHappiness === this.#happiness.min;
     }
      
     isMaxHappiness() {
-        return this.props.auth.user.happiness === this.#happiness.max;
+        const currentHappiness = this.props.auth.user.happiness[this.props.auth.user.petId];
+        return currentHappiness === this.#happiness.max;
     }
 
     onHappinessBreakdownClick() {
@@ -232,7 +240,7 @@ class Home extends Component {
     foodCallBack = (childData) => {
         this.setState({
             foodSeen: childData,
-            shopFoodSeen: false
+            shopSeen: false
         })
     };
 
@@ -240,16 +248,16 @@ class Home extends Component {
         return this.state.foodSeen && !this.state.shopFoodSeen;
     }
 
-    // ShopFoodWindow 
-    shopFoodCallBack = (childData) => {
+    // ShopWindow 
+    shopCallBack = (childData) => {
         this.setState({
             foodSeen: false,
-            shopFoodSeen: childData
+            shopSeen: childData
         })
     }
 
     getShopSeen() {
-        return this.state.shopFoodSeen && !this.state.foodSeen;
+        return this.state.shopSeen && !this.state.foodSeen;
     }
     
     // Guess
@@ -277,6 +285,14 @@ class Home extends Component {
         }
     }
 
+    updatePet(newPetId) {
+        const userData = {
+            name: this.name,
+            petId: newPetId
+        }
+        this.props.updateUserData(userData);
+    }
+
     // Logout
     onLogoutClick = e => {
         e.preventDefault();
@@ -302,11 +318,13 @@ class Home extends Component {
                     ref={this.petState}
                     incrementHappiness={num => this.incrementHappiness(num, "Devour Food")} 
                     decrementCoins={this.decrementCoins}
-                    happiness={this.props.auth.user.happiness} />
+                    happiness={this.props.auth.user.happiness}
+                    petId={this.props.auth.user.petId} 
+                    key={this.props.auth.user.petId} />
 
                 <div class="flex justify-center pt-3 h-full w-full">
                     {this.getFoodSeen() ? <FoodWindow foodCallBack={this.foodCallBack} /> : null}
-                    {this.getShopSeen() ? <ShopFoodWindow shopFoodCallBack ={this.shopFoodCallBack} /> : null}
+                    {this.getShopSeen() ? <ShopWindow shopCallBack={this.shopCallBack} decrementCoins={this.decrementCoins} /> : null}
                 </div>
 
                 <div class="flex justify-center flex content-center"> 
@@ -323,13 +341,15 @@ class Home extends Component {
                         isNight={this.state.night} />
                     <Happiness 
                         happiness={this.props.auth.user.happiness} 
+                        petId={this.props.auth.user.petId}
                         isNight={this.state.night} />
                 </div> 
                 
                 <div class="absolute right-0 bottom-0 sm:text-xs md:text-sm lg:text-base xl:text-xl">
                     <div class="grid grid-flow-col grid-cols-2 grid-rows-5">
-                        <div /> 
-                        <div />
+                        <button class="2xl" onClick={() => this.updatePet(0)}> change 0 </button> 
+                        <button class="2xl" onClick={() => this.updatePet(1)}> change 1 </button> 
+                        <div class="2xl"> {this.props.auth.user.petId} </div>
                         <Todo 
                             todoCallBack={this.todoCallBack}
                             isNight={this.state.night} 
@@ -359,7 +379,7 @@ class Home extends Component {
                             foodCallBack={this.foodCallBack} 
                             isNight={this.state.night} />
                         <Shop 
-                            shopFoodCallBack={this.shopFoodCallBack}
+                            shopCallBack={this.shopCallBack}
                             isNight={this.state.night} />
                         <Logout 
                             onLogoutClick={this.onLogoutClick} 

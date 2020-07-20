@@ -30,10 +30,11 @@ class Rescue extends Component {
         if (this.props.auth.user.happiness + happinessChange > 100) {
             happinessChange = 100 - this.props.auth.user.happiness;
         }
+        this.props.auth.user.happiness[this.props.auth.user.petId] += happinessChange
         const userData = {
             name: this.props.auth.user.name,
             dateRescued: new Date(),
-            happiness: this.props.auth.user.happiness + happinessChange,
+            // happiness: this.props.auth.user.happiness,
             totalHappinessGained: this.props.auth.user.totalHappinessGained + (happinessChange <= 0 ? 0 : happinessChange),
             bestTimeRescued: (timeRescued < this.props.auth.user.bestTimeRescued) ? timeRescued : this.props.auth.user.bestTimeRescued
         }
@@ -145,7 +146,9 @@ class Rescue extends Component {
                 <RescueState 
                         startTimer={this.startTimer} 
                         running={this.state.running}
-                        onSuccessCallBack={this.onSuccessCallBack} />
+                        onSuccessCallBack={this.onSuccessCallBack} 
+                        petId={this.props.auth.user.petId} />
+                        
                 <div class="flex justify-center pt-3 text-darkblue">
                     <div class="relative p-3 bg-pinkwindowbg border-solid rounded-lg border-2 border-darkblue w-1/3">
                         <div class="flex text-2xl pb-2">

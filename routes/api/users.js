@@ -82,6 +82,8 @@ router.post("/login", (req, res) => {
                     id: user.id,
                     name: user.name,
                     coins: user.coins,
+                    petId: user.petId,
+                    petsUnlocked: user.petsUnlocked,
                     happiness: user.happiness,
                     totalHappinessGained: user.totalHappinessGained,
                     tasks: user.tasks,
