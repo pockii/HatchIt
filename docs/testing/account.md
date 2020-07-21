@@ -1517,4 +1517,83 @@ redirected to Sign In page
 <td></td>
 </tr>
 
+<tr>
+<td>
+8
+</td>
+<td>
+click HappinessBreakdown button in Account modal
+</td>
+<td>
+HappinessBreakdown modal is shown
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+<td>
+9
+</td>
+<td>
+click exit button in HappinessBreakdown modal
+</td>
+<td>
+HappinessBreakdown modal closes and Account modal is shown
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+<td>
+10
+</td>
+<td>
+click esc in HappinessBreakdown modal
+</td>
+<td>
+HappinessBreakdown modal closes and Account modal is shown
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+<td>
+11
+</td>
+<td>
+click outside the HappinessBreakdown modal with HappinessBreakdown modal open
+</td>
+<td>
+HappinessBreakdown modal closes and Account modal is shown
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+<td>
+12
+</td>
+<td>
+Complete tasks repeatedly until maximum happiness state is reached
+</td>
+<td>
+HappinessBreakdown modal is shown
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
 </table>
