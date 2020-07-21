@@ -324,7 +324,10 @@ class Home extends Component {
 
                 <div class="flex justify-center pt-3 h-full w-full">
                     {this.getFoodSeen() ? <FoodWindow foodCallBack={this.foodCallBack} /> : null}
-                    {this.getShopSeen() ? <ShopWindow shopCallBack={this.shopCallBack} decrementCoins={this.decrementCoins} /> : null}
+                    {this.getShopSeen() ? <ShopWindow 
+                                                petId={this.props.auth.user.petId} 
+                                                shopCallBack={this.shopCallBack} 
+                                                decrementCoins={this.decrementCoins} /> : null}
                 </div>
 
                 <div class="flex justify-center flex content-center"> 

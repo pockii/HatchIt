@@ -9,7 +9,29 @@ import croissant from './foodpics/croissant.svg';
 import icecream from './foodpics/icecream.svg';
 import popsicle from './foodpics/popsicle.svg';
 
-export default function ShopFoodWindow() {
+export default function ShopFoodWindow({ onShopExitClick, petId }) {
+
+    const foodIdArr = [0, 1, 2, 3, 4, 5];
+    const favouriteFood = petId % 5;
+
+    function getName(foodId) {
+        const nameArr = ["Cake", "Candy", "Coffee", "Croissant", "Ice Cream", "Popsicle"];
+        return nameArr[foodId];
+    }
+
+    function getImage(foodId) {
+        const imageArr = [cake, candy, coffee, croissant, icecream, popsicle];
+        return imageArr[foodId];
+    }
+
+    function getHappiness(foodId) {
+        return foodId === favouriteFood ? "35" : "25";
+    }
+
+    function getCoins(foodId) {
+        return "20";
+    }
+    
     return (
         <div class="relative h-full overflow-hidden">
             <div class="pr-5 w-full h-6/10">
@@ -20,17 +42,18 @@ export default function ShopFoodWindow() {
                     autoHideDuration={400}
                 > 
                     <div class="flex items-center grid grid-cols-3 row-gap-4 col-gap-6 px-6">
-                        <DraggableFood name="Cake" imgsrc={cake} value="25" coins="20" />
-                        <DraggableFood name="Candy" imgsrc={candy} value="25" coins="20" /> 
-                        <DraggableFood name="Coffee" imgsrc={coffee} value="25" coins="20" />
-                        <DraggableFood name="Croissant" imgsrc={croissant} value="25" coins="20" />
-                        <DraggableFood name="Ice Cream" imgsrc={icecream} value="25" coins="20" /> 
-                        <DraggableFood name="Popsicle" imgsrc={popsicle} value="25" coins="20" />
+                        { foodIdArr.map(foodId => <DraggableFood 
+                                                    name={getName(foodId)} 
+                                                    imgsrc={getImage(foodId)} 
+                                                    value={getHappiness(foodId)} 
+                                                    coins={getCoins(foodId)} /> )
+                        }
+                        <br />
                     </div>
                 </Scrollbars>
             </div>
 
-            <div class="px-4 text-darkblue sm:text-base md:text-lg lg:text-xl xl:text-2xl flex items-center">
+            <div class="p-4 text-darkblue sm:text-base md:text-lg lg:text-xl xl:text-2xl flex items-center">
                 <div class="inline-flex abolute left-0">
                     <svg 
                         class="w-6 fill-current"
