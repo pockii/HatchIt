@@ -50,11 +50,7 @@ function validateEvent(event) {
     if (event.totalHappinessGained !== undefined) {
         event.totalHappinessGained =  event.totalHappinessGained === 0 ? "0" 
                                         : !isEmpty(event.totalHappinessGained) ? event.totalHappinessGained + "" 
-<<<<<<< HEAD
-                                        : "";    
-=======
                                         : "";
->>>>>>> 998843a213325958d6137304c623d188753a82a5
     }
 
     if (Validator.isEmpty(event.event)) {

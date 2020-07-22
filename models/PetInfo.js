@@ -11,10 +11,10 @@ const PetSchema = new Schema({
         type: Number,
         default: 50
     },
-    // unlocked: {
-    //     type: Boolean,
-    //     required: true
-    // }
+    unlocked: {
+        type: Boolean,
+        required: true
+    }
 });
 
 // Create PetSchema

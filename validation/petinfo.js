@@ -36,6 +36,14 @@ function validatePetStrict(pet) {
         errors.happiness = "Happiness for pet is invalid";
     }
 
+    if (Validator.isEmpty(pet.unlocked)) {
+        errors.happiness = "Unlocked for pet is required";
+    }
+
+    if (!Validator.isBoolean(pet.unlocked)) {
+        errors.happiness = "Unlocked for pet is invalid";
+    }
+
     return {
         errors,
         isValid: isEmpty(errors)
@@ -59,6 +67,11 @@ function validatePet(pet) {
 
     if (pet.happiness !== undefined && !Validator.isInt(pet.happiness, { min: 0, max: 100 } )) {
         errors.happiness = "Happiness is invalid";
+        isValid = false;
+    }
+
+    if (pet.unlocked !== undefined && !Validator.isBoolean(pet.unlocked)) {
+        errors.unlocked = "Unlocked is invalid";
         isValid = false;
     }
 
