@@ -46,7 +46,7 @@ export default function ShopFoodWindow() {
                     </svg>
                     <span>Premium Food</span>
                 </div>
-                <div class="inline-flex absolute right-0 pr-3">
+                <div class="inline-flex absolute right-0 pr-4">
                     <svg class="w-6 fill-current"
                         viewBox="10 0 96 96" 
                         xmlns="http://www.w3.org/2000/svg" 

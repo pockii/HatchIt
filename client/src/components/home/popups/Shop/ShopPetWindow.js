@@ -23,7 +23,7 @@ export default function ShopPetWindow({decrementCoins}) {
                 </Scrollbars>
             </div>
 
-            <div class="pt-4 px-3 text-darkblue sm:text-base md:text-lg lg:text-xl xl:text-2xl flex items-center">
+            <div class="pt-4 px-4 text-darkblue sm:text-base md:text-lg lg:text-xl xl:text-2xl flex items-center">
                 <div class="inline-flex abolute left-0">
                     <svg 
                         class="w-6 fill-current"

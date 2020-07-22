@@ -83,8 +83,6 @@ router.post("/login", (req, res) => {
                     name: user.name,
                     coins: user.coins,
                     petId: user.petId,
-                    petsUnlocked: user.petsUnlocked,
-                    happiness: user.happiness,
                     totalHappinessGained: user.totalHappinessGained,
                     tasks: user.tasks,
                     subTasks: user.subTasks,
@@ -92,20 +90,20 @@ router.post("/login", (req, res) => {
                     dateRescued: user.dateRescued,
                     bestTimeRescued: user.bestTimeRescued
               };
-            // Sign token
-            jwt.sign(
-                payload,
-                keys.secretOrKey,
-                {
-                    expiresIn: 31556926 // 1 year in seconds
-                },
-                (err, token) => {
-                    res.json({
-                        success: true,
-                        token: "Bearer " + token
-                    });
-                }
-            );
+                // Sign token
+                jwt.sign(
+                    payload,
+                    keys.secretOrKey,
+                    {
+                        expiresIn: 31556926 // 1 year in seconds
+                    },
+                    (err, token) => {
+                        res.json({
+                            success: true,
+                            token: "Bearer " + token
+                        });
+                    }
+                );
             } else {
                 return res
                     .status(400)
@@ -144,6 +142,42 @@ router.put("/userdata", (req, res) => {
         .catch(err => {
             return res.status(500).send({
                 message: "Error updating data of user with username: " + req.body.name
+            });
+        });
+});
+
+router.post("/userdata/pet", (req, res) => {
+    if (!req.body) {
+        return res.status(400).json({ message: "PetInfo to add cannot be empty!" });
+    }
+
+    // // HappinessBreakdown validation
+    // const { errors, isValid } = validateHappinessBreakdown(req.body);
+
+    // // Check validation
+    // if (!isValid) {
+    //     return res.status(400).json(errors);
+    // }
+
+    User.findOne({ name: req.body.name })
+        .then((result) => {
+            if (!result) {
+                const newPetInfo = new HappinessBreakdown({
+                    name: req.body.name,
+                    events: req.body.events,
+                });
+                newHappinessBreakdown
+                    .save()
+                    .then((happinessBreakdown) => res.json(happinessBreakdown))
+                    .catch((err) => console.log(err));
+            } else {
+                return res.json(result);
+            }
+        })
+        .catch((err) => {
+            res.status(500).send({
+                err,
+                message: "Error adding happinessBreakdown of user with username: " + req.body.name,
             });
         });
 })

@@ -2,7 +2,7 @@ import axios from "axios";
 
 import {
     GET_ERRORS,
-    UPDATE_USERDATA
+    UPDATE_USERDATA  
 } from "./types";
 
 // Put new userdata with username and return updated userdata

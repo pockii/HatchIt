@@ -1,7 +1,7 @@
 import {
     SET_CURRENT_USER,
     USER_LOADING,
-    UPDATE_USERDATA
+    UPDATE_USERDATA,
 } from "../actions/types";
   
 const isEmpty = require("is-empty");
@@ -31,8 +31,7 @@ export default function(state = initialState, action) {
                 ...state,
                 user: action.payload,
                 updated: true
-            }
-
+            };              
         default:
             return state;
     }

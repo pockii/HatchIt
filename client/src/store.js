@@ -12,7 +12,7 @@ const persistConfig = {
     storage,
     stateReconciler: autoMergeLevel2,
     whitelist: ['auth'],
-    blacklist: ['errors', 'todo', 'happinessBreakdown']
+    blacklist: ['errors', 'todo', 'happinessBreakdown', 'petInfo']
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

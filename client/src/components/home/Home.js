@@ -8,6 +8,11 @@ import {
     addHappinessEvent,
     updateHappinessEvent
 } from "../../actions/happinessBreakdownActions"
+import {
+    addPetInfo,
+    addPet,
+    updatePet
+} from "../../actions/petInfoActions";
 
 import State from "../state/State.js";
 import Account from "./popups/Account/Account.js";
@@ -69,7 +74,7 @@ class Home extends Component {
         const happinessBreakdown = {
             name: this.name,
             events: [
-                { event: "Devour Food", },
+                { event: "Devour Food" },
                 { event: "Complete Todo" }, 
                 { event: "Complete Sub Todo" },
                 { event: "Play Guess" },
@@ -77,6 +82,15 @@ class Home extends Component {
             ]
         };
         this.props.addHappinessBreakdown(happinessBreakdown);
+
+        const petInfo = {
+            name: this.name,
+            pets: [
+                { pet: "Rabbit" },
+                { pet: "Cat" }
+            ]
+        }
+        this.props.addPetInfo(petInfo);
     }
 
     componentDidUpdate(prevProps) {
@@ -169,7 +183,7 @@ class Home extends Component {
     }
 
     incrementHappiness(num, event) {
-        const currentHappiness = this.props.auth.user.happiness[this.props.auth.user.petId]
+        const currentHappiness = 50
         if (currentHappiness + num <= this.#happiness.max) {
             this.updateHappinessGainedAndHappiness(currentHappiness + num, num, event);
             return true;  
@@ -180,7 +194,7 @@ class Home extends Component {
     }
 
     decrementHappiness(num) {
-        const currentHappiness = this.props.auth.user.happiness[this.props.auth.user.petId]
+        const currentHappiness = 50;
         if (currentHappiness - num >= this.#happiness.min) {
             this.updateHappiness(currentHappiness - num);
             return true;
@@ -191,12 +205,12 @@ class Home extends Component {
     }    
 
     isMinHappiness() {
-        const currentHappiness = this.props.auth.user.happiness[this.props.auth.user.petId];
+        const currentHappiness = 50;
         return currentHappiness === this.#happiness.min;
     }
      
     isMaxHappiness() {
-        const currentHappiness = this.props.auth.user.happiness[this.props.auth.user.petId];
+        const currentHappiness = 50;
         return currentHappiness === this.#happiness.max;
     }
 
@@ -318,7 +332,7 @@ class Home extends Component {
                     ref={this.petState}
                     incrementHappiness={num => this.incrementHappiness(num, "Devour Food")} 
                     decrementCoins={this.decrementCoins}
-                    happiness={this.props.auth.user.happiness}
+                    happiness={50}
                     petId={this.props.auth.user.petId} 
                     key={this.props.auth.user.petId} />
 
@@ -340,7 +354,7 @@ class Home extends Component {
                         coins={this.props.auth.user.coins}
                         isNight={this.state.night} />
                     <Happiness 
-                        happiness={this.props.auth.user.happiness} 
+                        happiness={50} 
                         petId={this.props.auth.user.petId}
                         isNight={this.state.night} />
                 </div> 
@@ -349,7 +363,6 @@ class Home extends Component {
                     <div class="grid grid-flow-col grid-cols-2 grid-rows-5">
                         <button class="2xl" onClick={() => this.updatePet(0)}> change 0 </button> 
                         <button class="2xl" onClick={() => this.updatePet(1)}> change 1 </button> 
-                        <div class="2xl"> {this.props.auth.user.petId} </div>
                         <Todo 
                             todoCallBack={this.todoCallBack}
                             isNight={this.state.night} 
@@ -397,6 +410,9 @@ Home.propTypes = {
     addHappinessBreakdown: PropTypes.func.isRequired,
     addHappinessEvent: PropTypes.func.isRequired,
     updateHappinessEvent: PropTypes.func.isRequired,
+    addPetInfo: PropTypes.func.isRequired,
+    addPet: PropTypes.func.isRequired,
+    updatePet: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired,
     happinessBreakdown: PropTypes.object.isRequired
@@ -405,7 +421,8 @@ Home.propTypes = {
 const mapStateToProps = state => ({
     auth: state.auth,
     errors: state.errors,
-    happinessBreakdown: state.happinessBreakdown
+    happinessBreakdown: state.happinessBreakdown,
+    petInfo: state.petInfo
 });
 
 export default connect(
@@ -415,6 +432,9 @@ export default connect(
         updateUserData,
         addHappinessBreakdown,
         addHappinessEvent,
-        updateHappinessEvent
+        updateHappinessEvent,
+        addPetInfo,
+        addPet,
+        updatePet
     }
 )(Home);

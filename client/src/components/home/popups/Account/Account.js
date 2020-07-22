@@ -115,8 +115,6 @@ export default class Account extends Component {
                             <p class="flex justify-center sm:text-base md:text-gl lg:text-xl xl:text-2xl text-darkblue">  
                                 Username: {this.props.user.name}<br/>
                                 Coins: {this.props.user.coins}<br/>
-                                Happiness Level: {this.props.user.happiness[this.props.user.petId]}<br/>
-                                {/* Unlocked: {this.props.user.petsUnlocked[this.props.user.petId]} <br /> */}
                                 Total Happiness Gained: {this.props.user.totalHappinessGained} <br/>
                                 Total Todos Completed: {this.props.user.tasks} <br/>
                                 Total Sub Todos Completed: {this.props.user.subTasks} <br/>

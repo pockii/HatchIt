@@ -83,7 +83,7 @@ export default class State extends Component {
 
     currentState() {
         switch (true) {
-            case (this.props.happiness[this.props.petId] === 100):
+            case (this.props.happiness === 100):
                 return this.#max_state[this.props.petId];
             case (this.props.happiness > 66 && this.props.happiness <= 99):
                 return this.#happy_state[this.props.petId];

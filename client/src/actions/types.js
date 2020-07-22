@@ -18,3 +18,7 @@ export const UPDATE_TASK = "UPDATE_TASK";
 export const UPDATE_SUBTASK = "UPDATE_SUBTASK";
 export const DELETE_TASK = "DELETE_TASK";
 export const DELETE_SUBTASK = "DELETE_SUBTASK";
+
+export const POST_PET_INFO = "POST_PET_INFO";
+export const POST_PET = "POST_PET";
+export const UPDATE_PET = "UPDATE_PET";
