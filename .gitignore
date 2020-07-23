@@ -1,3 +1,4 @@
 *node_modules
 client/src/css/tailwind.css
 .DS_Store
+.env

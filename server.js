@@ -6,6 +6,9 @@ const users = require("./routes/api/users");
 const todos = require("./routes/api/todos");
 const happinessbreakdowns = require("./routes/api/happinessbreakdown");
 const app = express();
+const path = require('path');           
+
+require('dotenv').config();             
 
 // Bodyparser middleware
 app.use(
@@ -15,22 +18,27 @@ app.use(
 );
 app.use(bodyParser.json());
 
-// DB Config
-const db = require("./config/keys").mongoURI;
-
 // Debug
 mongoose.set('debug', true);
 
 // Connect to MongoDB
 mongoose
     .connect(
-        db, {
+        process.env.MONGODB_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         }
     )
     .then(() => console.log("MongoDB successfully connected"))
     .catch(err => console.log(err));
+
+if (process.env.NODE_ENV === 'production') {           
+    app.use(express.static('client/build'));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+        });
+    }
+      
 
 // Passport middleware
 app.use(passport.initialize());
