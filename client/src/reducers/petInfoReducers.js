@@ -22,7 +22,7 @@ export default function(state = initialState, action) {
         case POST_PET_INFO:
             return {
                 ...state,
-                petIdArr: action.payload.entities.petInfo.undefined.pets,
+                petIdArr: action.payload.entities.petInfo.pets,
                 pets: action.payload.entities.pets,
                 postedPetInfo: true,
             };
@@ -30,13 +30,13 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 petIdArr: addPetId(state.petIdArr, action.payload._id),
-                events: updatePet(state.pets, action.payload),
+                pets: updatePet(state.pets, action.payload),
                 postedPet: true
             };
         case UPDATE_PET:
             return {
                 ...state,
-                events: updatePet(state.pets, action.payload),
+                oets: updatePet(state.pets, action.payload),
                 updatedPet: true
             };
         default:

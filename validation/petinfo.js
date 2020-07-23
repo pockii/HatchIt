@@ -23,6 +23,7 @@ function validatePetStrict(pet) {
     pet.happiness = pet.happiness === 0 ? "0" 
                                 : !isEmpty(pet.happiness) ? pet.happiness + "" 
                                 : "";
+    pet.unlocked = !isEmpty(pet.unlocked) ? pet.unlocked + "" : ""
 
     if (Validator.isEmpty(pet.pet)) {
         errors.pet = "Name of pet is required";
@@ -60,6 +61,7 @@ function validatePet(pet) {
                                         : !isEmpty(pet.happiness) ? pet.happiness + "" 
                                         : "";    
     }
+    pet.unlocked = !isEmpty(pet.unlocked) ? pet.unlocked + "" : "";
 
     if (Validator.isEmpty(pet.pet)) {
         errors.pet = "Name of pet is required";

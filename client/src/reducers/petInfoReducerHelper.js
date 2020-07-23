@@ -2,6 +2,7 @@ function clonePet(pet) {
     return {
         pet: pet.pet,
         happiness: pet.happiness,
+        unlocked: pet.unlocked,
         _id: pet._id
     };
 }

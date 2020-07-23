@@ -86,8 +86,8 @@ class Home extends Component {
         const petInfo = {
             name: this.name,
             pets: [
-                { pet: "Rabbit" },
-                { pet: "Cat" }
+                { pet: "Rabbit", unlocked: true },
+                { pet: "Cat", unlocked: false }
             ]
         }
         this.props.addPetInfo(petInfo);
@@ -146,11 +146,9 @@ class Home extends Component {
 
     // Happiness
    updateHappiness(newHappiness) {
-        const arr = [...this.props.auth.user.happiness];
-        arr[this.props.auth.user.petId] = newHappiness
+
         const userData = {
-            name: this.name,
-            happiness: arr
+            name: this.name
         };
         this.props.updateUserData(userData); 
     } 
