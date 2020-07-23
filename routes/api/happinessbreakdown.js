@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 // Load event validation
-const validation = require("../../validation/happinessBreakdown.js");
+const validation = require("../../validation/happinessbreakdown");
 const validateEventPOST = validation.validateEventPOST;
 const validateEventPUT = validation.validateEventPUT;
 const validateHappinessBreakdown = validation.validateHappinessBreakdown;
