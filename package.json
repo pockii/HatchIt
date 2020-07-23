@@ -51,6 +51,6 @@
     "nodemon": "^2.0.4",
     "postcss-cli": "^7.1.1",
     "tailwind.macro": "^1.0.0-alpha.10",
-    "tailwindcss": "^1.4.6"
+    "tailwindcss": "^1.5.2"
   }
 }
