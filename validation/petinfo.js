@@ -23,11 +23,7 @@ function validatePetStrict(pet) {
     pet.happiness = pet.happiness === 0 ? "0" 
                                 : !isEmpty(pet.happiness) ? pet.happiness + "" 
                                 : "";
-<<<<<<< HEAD
-    pet.unlocked = !isEmpty(pet.unlocked) ? pet.unlocked + "" : ""
-=======
     pet.unlocked = !isEmpty(pet.unlocked) ? pet.unlocked + "" : "";
->>>>>>> 4a474be1182107b7d9405ecb28553a6bf0f6da53
 
     if (Validator.isEmpty(pet.pet)) {
         errors.pet = "Name of pet is required";

@@ -117,7 +117,7 @@ router.put("/pet", (req, res) => {
         return res.status(400).json({ message: "Pet to update cannot be empty!" });
     }
 
-    // Event validation
+    // PetInfo validation
     const { errors, isValid } = validatePetPUT(req.body);
 
     // Check validation

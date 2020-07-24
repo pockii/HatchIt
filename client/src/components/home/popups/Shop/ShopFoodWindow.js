@@ -53,7 +53,7 @@ export default function ShopFoodWindow({ onShopExitClick, petId }) {
                 </Scrollbars>
             </div>
 
-            <div class="p-4 text-darkblue sm:text-base md:text-lg lg:text-xl xl:text-2xl flex items-center">
+            <div class="pt-4 px-4 text-darkblue sm:text-base md:text-lg lg:text-xl xl:text-2xl flex items-center">
                 <div class="inline-flex abolute left-0">
                     <svg 
                         class="w-6 fill-current"
