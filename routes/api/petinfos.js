@@ -135,6 +135,7 @@ router.put("/pet", (req, res) => {
                     return res.status(404).json({ message: `Cannot update pet of user with username ${req.body.name}. Pet was not found.` });
                 } else {
                     result.pets[index].happiness = parseInt(req.body.pet.happiness);
+                    result.pets[index].unlocked = req.body.pet.unlocked;
                     result.save()
                         .then(petInfo => res.json(result.pets[index]))
                         .catch(err => console.log(err));

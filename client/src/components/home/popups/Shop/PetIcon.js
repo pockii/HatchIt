@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { updatePet } from "../../../../actions/petInfoActions";
 import { updateUserData } from "../../../../actions/userdataActions";
 
 import NewPetWindow from "./NewPetWindow.js"
@@ -13,39 +14,52 @@ class PetIcon extends Component {
         this.onPetIconCallBack = this.onPetIconCallBack.bind(this);
         this.onNewPetWindowExitClick = this.onNewPetWindowExitClick.bind(this);
         this.state = {
-            unlocked: this.isUnlocked(),
             newPetWindowSeen: false
         }
     }
 
-    isUnlocked() {
-        return this.props.coins === "0" ? true : false;
-    };
+    getCurrentPet() {
+        const _id = this.props.petInfo.petIdArr[this.props.id];
+        return this.props.petInfo.pets[_id];
+    }
 
     onPetIconClick() {
-        if (this.state.unlocked) {
+        const currentPet = this.getCurrentPet();
+        if (currentPet.unlocked) {
             this.setState({
                 newPetWindowSeen: true
             })         
         } else if (this.props.decrementCoins(this.props.coins)) {
-            this.setState({
+            const currentPet = this.getCurrentPet();
+            const pet = {
+                pet: currentPet.pet,
+                happiness: 50,
                 unlocked: true
-            })
+            }
+            this.props.updatePet({
+                name: this.props.auth.user.name,
+                pet: pet
+            });
         }
     };
     
     onPetIconCallBack(newPet) {
-        const arr = {...this.props.auth.happiness};
-        if (newPet) {
-            arr[this.props.id] = 50
-        };
-
         const userData = {
             name: this.props.auth.user.name,
             petId: this.props.id,
-            happiness: arr
         };   
         this.props.updateUserData(userData);
+
+        const currentPet = this.getCurrentPet();
+        const pet = {
+            pet: currentPet.pet,
+            happiness: newPet ? 50 : currentPet.happiness,
+            unlocked: true
+        }
+        this.props.updatePet({
+            name: this.props.auth.user.name,
+            pet: pet
+        });
     };
 
     onNewPetWindowExitClick() {
@@ -53,9 +67,9 @@ class PetIcon extends Component {
             newPetWindowSeen: false
         })
     }
-
+    
     updateButton() {
-        if (this.state.unlocked) {
+        if (this.getCurrentPet().unlocked) {
             return "flex flex-col flex justify-center border-solid rounded border-2 border-darkblue w-full h-full bg-yellowbarbg hover:opacity-75"
         } else {
             return "flex flex-col flex justify-center border-solid rounded border-2 border-darkblue w-full h-full bg-yellowbarbg hover:bg-yellow-100 opacity-50"
@@ -106,18 +120,22 @@ class PetIcon extends Component {
 
 PetIcon.propTypes = {
     updateUserData: PropTypes.func.isRequired,
+    updatePet: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired,
+    petInfo: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
     auth: state.auth,
     errors: state.errors,
+    petInfo: state.petInfo
 });
 
 export default connect(
     mapStateToProps,
     {   
-        updateUserData
+        updateUserData,
+        updatePet,
     }
 )(PetIcon);

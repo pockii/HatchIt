@@ -13,7 +13,7 @@ const PetSchema = new Schema({
     },
     unlocked: {
         type: Boolean,
-        required: true
+        default: false
     }
 });
 

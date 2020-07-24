@@ -152,8 +152,7 @@ class Home extends Component {
     getCurrentHappiness() {
         const petId = this.props.auth.user.petId;
         const _id = this.props.petInfo.petIdArr[petId];
-        const currentHappiness = this.props.petInfo.pets[_id].happiness;
-        return currentHappiness;
+        return this.props.petInfo.pets[_id].happiness;
     }
 
     updateHappiness(newHappiness) {
@@ -162,7 +161,7 @@ class Home extends Component {
         const newPet = {
             pet: this.props.petInfo.pets[_id].pet,
             happiness: newHappiness,
-            unlocked: true
+            unlocked: this.props.petInfo.pets[_id].unlocked
         };
         this.props.updatePet({
             name: this.name,
@@ -321,32 +320,13 @@ class Home extends Component {
         }
     }
 
-    updatePetId(newPetId) {
-        const userData = {
-            name: this.name,
-            petId: newPetId
-        }
-        this.props.updateUserData(userData);
-    }
-
     // Logout
     onLogoutClick = e => {
         e.preventDefault();
         this.props.logoutUser();
     };    
 
-    render() {   
-        if (!this.props.petInfo.postedPetInfo) {
-            const petInfo = {
-                name: this.name,
-                pets: [
-                    { pet: "Rabbit", unlocked: true },
-                    { pet: "Cat", unlocked: false }
-                ]
-            }
-            this.props.addPetInfo(petInfo);
-        }
-
+    render() { 
         return (
             <div class={this.decideBackground()}>  
                 <div class="h-0">
@@ -355,7 +335,8 @@ class Home extends Component {
                         alt="Background"></img>
                 </div>                
                 
-                <div class="absolute bottom-0">
+                <div 
+                    class="absolute bottom-0">
                     <img class="object-contain w-full"
                         src={this.state.night ? night_grass : grass}
                         alt="Floor"></img>
@@ -399,8 +380,8 @@ class Home extends Component {
                     <button class="2xl" onClick={() => this.incrementHappiness(20, "Devour Food")}> + </button> 
                     <button class="2xl" onClick={() => this.decrementHappiness(20)}> - </button> 
                     <div class="grid grid-flow-col grid-cols-2 grid-rows-5">
-                        <button class="2xl" onClick={() => this.updatePetId(0)}> change 0 </button> 
-                        <button class="2xl" onClick={() => this.updatePetId(1)}> change 1 </button> 
+                        <div />
+                        <div />
                         <Todo 
                             todoCallBack={this.todoCallBack}
                             isNight={this.state.night} 

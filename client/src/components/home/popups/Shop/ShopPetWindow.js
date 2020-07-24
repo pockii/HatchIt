@@ -30,7 +30,7 @@ export default function ShopPetWindow({decrementCoins}) {
                         viewBox="0 -100 1250 1250" 
                         xmlns="http://www.w3.org/2000/svg" 
                         xlink="http://www.w3.org/1999/xlink" 
-                        id="Icons_Food" 
+                        id="Icons_Pets" 
                         overflow="hidden"
                         >
                         <g>

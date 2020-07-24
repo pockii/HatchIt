@@ -38,11 +38,11 @@ function validatePetStrict(pet) {
     }
 
     if (Validator.isEmpty(pet.unlocked)) {
-        errors.happiness = "Unlocked for pet is required";
+        errors.unlocked = "Unlocked for pet is required";
     }
 
     if (!Validator.isBoolean(pet.unlocked)) {
-        errors.happiness = "Unlocked for pet is invalid";
+        errors.unlocked = "Unlocked for pet is invalid";
     }
 
     return {
@@ -61,7 +61,9 @@ function validatePet(pet) {
                                         : !isEmpty(pet.happiness) ? pet.happiness + "" 
                                         : "";    
     }
-    pet.unlocked = !isEmpty(pet.unlocked) ? pet.unlocked + "" : "";
+    if (pet.unlocked !== undefined) {
+        pet.unlocked = !isEmpty(pet.unlocked) ? pet.unlocked + "" : "";
+    }
 
     if (Validator.isEmpty(pet.pet)) {
         errors.pet = "Name of pet is required";
@@ -72,7 +74,7 @@ function validatePet(pet) {
         isValid = false;
     }
 
-    if (!Validator.isBoolean(pet.unlocked)) {
+    if (pet.unlocked !== undefined && !Validator.isBoolean(pet.unlocked)) {
         errors.unlocked = "Unlocked is invalid";
         isValid = false;
     }

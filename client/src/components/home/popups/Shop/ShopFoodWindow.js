@@ -9,7 +9,7 @@ import croissant from './foodpics/croissant.svg';
 import icecream from './foodpics/icecream.svg';
 import popsicle from './foodpics/popsicle.svg';
 
-export default function ShopFoodWindow({ onShopExitClick, petId }) {
+export default function ShopFoodWindow({ petId }) {
 
     const foodIdArr = [0, 1, 2, 3, 4, 5];
     const favouriteFood = petId % 5;
@@ -53,7 +53,7 @@ export default function ShopFoodWindow({ onShopExitClick, petId }) {
                 </Scrollbars>
             </div>
 
-            <div class="pt-4 px-4 text-darkblue sm:text-base md:text-lg lg:text-xl xl:text-2xl flex items-center">
+            <div class="px-4 text-darkblue sm:text-base md:text-lg lg:text-xl xl:text-2xl flex items-center">
                 <div class="inline-flex abolute left-0">
                     <svg 
                         class="w-6 fill-current"
