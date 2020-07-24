@@ -22,7 +22,7 @@ export default function(state = initialState, action) {
         case POST_PET_INFO:
             return {
                 ...state,
-                petIdArr: action.payload.entities.petInfo.pets,
+                petIdArr: action.payload.entities.petInfo.undefined.pets,
                 pets: action.payload.entities.pets,
                 postedPetInfo: true,
             };
