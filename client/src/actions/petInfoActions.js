@@ -12,11 +12,7 @@ import {
 // Add pet and return updated petInfo
 export const addPetInfo = petInfo => dispatch => {
     axios
-<<<<<<< HEAD
-        .post("api/petinfo/", petInfo)
-=======
         .post("api/petinfos", petInfo)
->>>>>>> 4a474be1182107b7d9405ecb28553a6bf0f6da53
         .then(response => {
             dispatch(addingPetInfo(normalizePetInfo(response.data)));
         })
@@ -55,11 +51,7 @@ export const addingPet = pet => {
 // Update pet and return pet
 export const updatePet = pet => dispatch => {
     axios
-<<<<<<< HEAD
-        .put("api/petinfo/pet", pet)
-=======
         .put("api/petinfos/pet", pet)
->>>>>>> 4a474be1182107b7d9405ecb28553a6bf0f6da53
         .then(response => {
             dispatch(updatingPet(response.data));
         })
