@@ -86,19 +86,23 @@ class Home extends Component {
         const petInfo = {
             name: this.name,
             pets: [
-                { pet: "Rabbit" },
-                { pet: "Cat" }
+                { pet: "Rabbit", unlocked: true },
+                { pet: "Cat", unlocked: false }
             ]
         }
         this.props.addPetInfo(petInfo);
     }
 
     componentDidUpdate(prevProps) {
-        if (this.isMinHappiness() && prevProps.auth.user.happiness[prevProps.auth.user.petId] !== this.#happiness.min) {
+        const prevPetId = prevProps.auth.user.petId;
+        const prev_id = prevProps.petInfo.petIdArr[prevPetId];
+        const prevHappiness = prevProps.petInfo.pets[prev_id].happiness;
+        if (this.isMinHappiness() && prevHappiness !== this.#happiness.min) {
             this.setMinCoins();
         }
 
-        if (this.isMaxHappiness() && prevProps.auth.user.happiness[prevProps.auth.user.petId] !== this.#happiness.max) {
+        if (this.isMaxHappiness()) {
+            this.updateHappinessGained(this.#happiness.min);
             this.incrementCoins(100);
             this.onHappinessBreakdownClick();
         }
@@ -145,14 +149,25 @@ class Home extends Component {
     }    
 
     // Happiness
-   updateHappiness(newHappiness) {
-        const arr = [...this.props.auth.user.happiness];
-        arr[this.props.auth.user.petId] = newHappiness
-        const userData = {
-            name: this.name,
-            happiness: arr
+    getCurrentHappiness() {
+        const petId = this.props.auth.user.petId;
+        const _id = this.props.petInfo.petIdArr[petId];
+        const currentHappiness = this.props.petInfo.pets[_id].happiness;
+        return currentHappiness;
+    }
+
+    updateHappiness(newHappiness) {
+        const petId = this.props.auth.user.petId;
+        const _id = this.props.petInfo.petIdArr[petId];
+        const newPet = {
+            pet: this.props.petInfo.pets[_id].pet,
+            happiness: newHappiness,
+            unlocked: true
         };
-        this.props.updateUserData(userData); 
+        this.props.updatePet({
+            name: this.name,
+            pet: newPet
+        });
     } 
 
     addEvent(event) {
@@ -163,11 +178,12 @@ class Home extends Component {
     }
 
     updateHappinessGainedAndHappiness(newHappiness, num, event) {
-        const arr = [...this.props.auth.user.happiness];
-        arr[this.props.auth.user.petId] = newHappiness
+        this.updateHappiness(newHappiness); 
+
+        // update Total Happiness Gained
         const userData = {
             name: this.name,
-            happiness: arr,
+            happinessGained: this.props.auth.user.happinessGained + num,
             totalHappinessGained: this.props.auth.user.totalHappinessGained + num,
         };
         this.props.updateUserData(userData); 
@@ -183,7 +199,7 @@ class Home extends Component {
     }
 
     incrementHappiness(num, event) {
-        const currentHappiness = 50
+        const currentHappiness = this.getCurrentHappiness();
         if (currentHappiness + num <= this.#happiness.max) {
             this.updateHappinessGainedAndHappiness(currentHappiness + num, num, event);
             return true;  
@@ -194,7 +210,7 @@ class Home extends Component {
     }
 
     decrementHappiness(num) {
-        const currentHappiness = 50;
+        const currentHappiness = this.getCurrentHappiness();
         if (currentHappiness - num >= this.#happiness.min) {
             this.updateHappiness(currentHappiness - num);
             return true;
@@ -204,14 +220,20 @@ class Home extends Component {
         }
     }    
 
+    updateHappinessGained(newHappinessGained) {
+        const userData = {
+        name: this.name,
+        happinessGained: newHappinessGained
+    };
+        this.props.updateUserData(userData); 
+    }   
+
     isMinHappiness() {
-        const currentHappiness = 50;
-        return currentHappiness === this.#happiness.min;
+        return this.getCurrentHappiness() === this.#happiness.min;
     }
      
     isMaxHappiness() {
-        const currentHappiness = 50;
-        return currentHappiness === this.#happiness.max;
+        return this.props.auth.user.happinessGained >= 100;
     }
 
     onHappinessBreakdownClick() {
@@ -299,7 +321,7 @@ class Home extends Component {
         }
     }
 
-    updatePet(newPetId) {
+    updatePetId(newPetId) {
         const userData = {
             name: this.name,
             petId: newPetId
@@ -364,8 +386,8 @@ class Home extends Component {
                 
                 <div class="absolute right-0 bottom-0 sm:text-xs md:text-sm lg:text-base xl:text-xl">
                     <div class="grid grid-flow-col grid-cols-2 grid-rows-5">
-                        <button class="2xl" onClick={() => this.updatePet(0)}> change 0 </button> 
-                        <button class="2xl" onClick={() => this.updatePet(1)}> change 1 </button> 
+                        <button class="2xl" onClick={() => this.updatePetId(0)}> change 0 </button> 
+                        <button class="2xl" onClick={() => this.updatePetId(1)}> change 1 </button> 
                         <Todo 
                             todoCallBack={this.todoCallBack}
                             isNight={this.state.night} 
@@ -418,7 +440,8 @@ Home.propTypes = {
     updatePet: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired,
-    happinessBreakdown: PropTypes.object.isRequired
+    happinessBreakdown: PropTypes.object.isRequired,
+    petInfo: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
