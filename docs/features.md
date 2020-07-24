@@ -5,7 +5,7 @@
   - [Happiness Level](#happiness-level)
   - [General Pet Interactions](#general-pet-interactions)
   - [To-do List](#to-do-list)
-  - [Shop](#shop) (_coming soon_)
+  - [Shop](#shop)
   - [Day and Night Mode](#day-and-night-mode)
 
 ## Account
@@ -14,9 +14,9 @@
   ![Login and Register](./gifs/login_and_register.gif "Login and Register")
 - Keeps track of the player’s statistics
   - Total Happiness level gained overall
-    - Once a pet has reached maximum happiness level, a breakdown of events that increased happiness level is shown (_coming soon_)
+    - Once a pet has reached maximum happiness level, a breakdown of events that increased happiness level is shown
   - Amount of todos and sub todos completed
-  - Best time of completion for the “Rescue” minigame (_coming soon_)
+  - Best time of completion for the “Rescue” minigame 
     ![Account and Logout](./gifs/account_and_logout.gif "Account and Logout")
 - Achievements (e.g. for number of pets, unlocking a new pet type) (_coming soon_)
 
@@ -26,7 +26,8 @@ The account keeps track of the player’s statistics and achievements, a visuali
 
 - Happiness level decreases over time
 - If happiness level is 0, the in-game currency will decrease to 0
-- If happiness level is maximum, the pet transits to maximum happiness state and in-game currency increases
+- If happiness level is 100, the pet transits to maximum happiness state 
+- If at least 100 happiness increase is accumulated, and in-game currency increases by 100.
   ![Maximum Happiness State](./gifs/max_happiness.gif "Maximum Happiness State")
   - When maximum happiness level is reached, a random pet from locked pet types is unlocked (_coming soon_)
 - Pet Interactivity (_coming soon_)
@@ -59,7 +60,7 @@ Since the happiness level of the pet is constantly decreasing, the player needs 
   - If the player guessed correctly → either happiness level of pet increases or player gets some coins
   - If the player guessed wrongly → happiness level of pet decreases
     ![Guess](./gifs/guess.gif "Guess")
-- “Rescue” minigame (_coming soon_)
+- “Rescue” minigame 
   - Pet is trapped in a box, pet transits into a panic state
   - Getting pet out of box → aggressive clicking
   - Time limit → if you don’t rescue your pet on time: happiness level of pet decreases
@@ -107,8 +108,6 @@ These personal pet interactions allow for the player to have a stronger connecti
 This is the main productivity feature of our app, which the player can use to organise their life and monitor their own productivity. The satisfaction of crossing out a completed todo compounded with the happiness and currency reward will help to further motivate the player to be productive.
 
 ## Shop
-
-(_coming soon_)
 
 - In-game currency can be used to purchase items from the shop
 - Purchase premium food from the fridge
