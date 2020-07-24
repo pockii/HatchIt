@@ -8,7 +8,6 @@ const validateEventPUT = validation.validateEventPUT;
 const validateHappinessBreakdown = validation.validateHappinessBreakdown;
 
 // Load happinessBreakdown model
-const happinessBreakdown = require("../../models/HappinessBreakdown");
 const HappinessBreakdown = require("../../models/HappinessBreakdown");
 
 // @route POST api/happinessbreakdown/
@@ -134,10 +133,6 @@ router.put("/event", (req, res) => {
                     return res.status(404).json({ message: `Cannot update event of user with username ${req.body.name}. Event was not found.` });
                 } else {
                     result.events[index].totalHappinessGained += parseInt(req.body.event.totalHappinessGained);
-                    console.log("from db");
-                    console.log(typeof result.events[index].totalHappinessGained);
-                    console.log("from req");
-                    console.log(typeof req.body.event.totalHappinessGained)
                     result.save()
                         .then(happinessBreakdown => res.json(result.events[index]))
                         .catch(err => console.log(err));
