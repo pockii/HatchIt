@@ -27,6 +27,10 @@ const UserSchema = new Schema({
     type: Number, 
     default: 0
   },
+  happinessGained: {
+    type: Number, 
+    default: 0
+  },
   tasks: {
     type: Number, 
     default: 0

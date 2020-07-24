@@ -28,4 +28,4 @@ const PetInfoSchema = new Schema({
     }
 });
 
-module.exports = PetInfo = mongoose.model("petInfos", PetSchema);
+module.exports = PetInfo = mongoose.model("petInfos", PetInfoSchema);

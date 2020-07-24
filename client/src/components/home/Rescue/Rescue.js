@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
+import { updatePet } from "../../../actions/petInfoActions";
 import { updateUserData } from "../../../actions/userdataActions";
 import { updateHappinessEvent } from "../../../actions/happinessBreakdownActions";
 import PropTypes from "prop-types";
@@ -20,21 +21,38 @@ class Rescue extends Component {
         this.state = {
             timeLeft: 10,
             running: false,
-            timer: 0
+            timer: 0 
         }
     }
     
     updateHappiness(successful) {
         const timeRescued = 10 - this.state.timeLeft;
         let happinessChange = successful ? 10 : -5;
-        if (this.props.auth.user.happiness + happinessChange > 100) {
-            happinessChange = 100 - this.props.auth.user.happiness;
+
+        const petId = this.props.auth.user.petId;
+        const _id = this.props.petInfo.petIdArr[petId];
+        const currPet = this.props.petInfo.pets[_id];
+
+        if (currPet.happiness + happinessChange > 100) {
+            happinessChange = 100 - currPet.happiness;
         }
-        this.props.auth.user.happiness[this.props.auth.user.petId] += happinessChange
+
+        // update Happiness
+        const newPet = {
+            pet: currPet.pet,
+            happiness: currPet.happiness + happinessChange,
+            unlocked: true
+        };
+        this.props.updatePet({
+            name: this.props.auth.user.name,
+            pet: newPet
+        });
+
+        // update dateRescued, happinessGained, totalHappinessGained and bestTimeRescued
         const userData = {
             name: this.props.auth.user.name,
             dateRescued: new Date(),
-            // happiness: this.props.auth.user.happiness,
+            happinessGained: this.props.auth.user.happinessGained + (happinessChange <= 0 ? 0 : happinessChange),
             totalHappinessGained: this.props.auth.user.totalHappinessGained + (happinessChange <= 0 ? 0 : happinessChange),
             bestTimeRescued: (timeRescued < this.props.auth.user.bestTimeRescued) ? timeRescued : this.props.auth.user.bestTimeRescued
         }
@@ -205,21 +223,24 @@ class Rescue extends Component {
 Rescue.propTypes = {
     updateUserData: PropTypes.func.isRequired,
     updateHappinessEvent: PropTypes.func.isRequired,
-    happinessBreakdown: PropTypes.object.isRequired,
+    updatePet: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired,
+    happinessBreakdown: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
     auth: state.auth,
     errors: state.errors,
-    happinessBreakdown: state.happinessBreakdown
+    happinessBreakdown: state.happinessBreakdown,
+    petInfo: state.petInfo
 });
 
 export default connect(
     mapStateToProps,
     { 
         updateUserData,
-        updateHappinessEvent
+        updateHappinessEvent,
+        updatePet
     }
 )(withRouter(Rescue));

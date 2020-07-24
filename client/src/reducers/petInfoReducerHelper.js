@@ -8,7 +8,7 @@ function clonePet(pet) {
 }
 
 export function updatePet(pets, pet) {
-    // clone events object
+    // clone pets object
     const newPets = {};
     for (const id in pets) {
         newPets[id] = clonePet(pets[id]);

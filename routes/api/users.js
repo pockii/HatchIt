@@ -86,6 +86,7 @@ router.post("/login", (req, res) => {
                     coins: user.coins,
                     petId: user.petId,
                     totalHappinessGained: user.totalHappinessGained,
+                    happinessGained: user.happinessGained,
                     tasks: user.tasks,
                     subTasks: user.subTasks,
                     dateGuessed: user.dateGuessed,
