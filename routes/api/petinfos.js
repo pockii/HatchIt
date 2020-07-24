@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 // Load pet validation
-const validation = require("../../validation/petInfo.js");
+const validation = require("../../validation/petinfo");
 const validatePetPOST = validation.validatePetPOST;
 const validatePetPUT = validation.validatePetPUT;
 const validatePetInfo = validation.validatePetInfo;
@@ -10,7 +10,7 @@ const validatePetInfo = validation.validatePetInfo;
 // Load pet model
 const PetInfo = require("../../models/PetInfo");
 
-// @route POST api/petinfo/
+// @route POST api/petinfos/
 // @desc Add pet
 // @access Public
 // req.body is a petInfo, happiness is optional
@@ -27,7 +27,7 @@ router.post("/", (req, res) => {
         return res.status(400).json(errors);
     }
 
-   PetInfo.findOne({ name: req.body.name })
+    PetInfo.findOne({ name: req.body.name })
         .then((result) => {
             if (!result) {
                 const newPet = new PetInfo({
@@ -50,7 +50,7 @@ router.post("/", (req, res) => {
         });
 });
 
-// @route POST api/petinfo/pet
+// @route POST api/petinfos/pet
 // @desc Add pet
 // @access Public
 /*
@@ -58,7 +58,7 @@ req.body = {
     name: "name",
     pet: {
         pet: "pet name",
-        happiness: 12 // integer, optional,
+        happiness: 12 // integer, optional
         unlocked: true // boolean
     }
 }
@@ -68,7 +68,7 @@ router.post("/pet", (req, res) => {
         return res.status(400).json({ message: "Pet to add cannot be empty!" });
     }
 
-    // Event validation
+    // PetInfo validation
     const { errors, isValid } = validatePetPOST(req.body);
 
     // Check validation
@@ -98,7 +98,7 @@ router.post("/pet", (req, res) => {
         });
 });
 
-// @route PUT api/petinfo/pet
+// @route PUT api/petinfos/pet
 // @desc Update pet
 // @access Public
 // replaces the pet object
@@ -135,10 +135,6 @@ router.put("/pet", (req, res) => {
                     return res.status(404).json({ message: `Cannot update pet of user with username ${req.body.name}. Pet was not found.` });
                 } else {
                     result.pets[index].happiness = parseInt(req.body.pet.happiness);
-                    console.log("from db");
-                    console.log(typeof result.pets[index].happiness);
-                    console.log("from req");
-                    console.log(typeof req.body.pet.happiness)
                     result.save()
                         .then(petInfo => res.json(result.pets[index]))
                         .catch(err => console.log(err));
