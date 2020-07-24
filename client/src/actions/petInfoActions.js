@@ -12,7 +12,7 @@ import {
 // Add pet and return updated petInfo
 export const addPetInfo = petInfo => dispatch => {
     axios
-        .post("api/petinfo", petInfo)
+        .post("api/petinfos", petInfo)
         .then(response => {
             dispatch(addingPetInfo(normalizePetInfo(response.data)));
         })
@@ -21,17 +21,17 @@ export const addPetInfo = petInfo => dispatch => {
         });
 }
 
-export const addingPetInfo = normalizePetInfo => {
+export const addingPetInfo = normalizedPetInfo => {
     return {
         type: POST_PET_INFO,
-        payload: normalizePetInfo
+        payload: normalizedPetInfo
     };
 };
 
 // Add pet and return pet
 export const addPet = pet => dispatch => {
     axios
-        .post("api/petinfo/pet", pet)
+        .post("api/petinfos/pet", pet)
         .then(response => {
             dispatch(addingPet(response.data));
         })
@@ -40,10 +40,10 @@ export const addPet = pet => dispatch => {
         });
 }
 
-export const addingPet = event => {
+export const addingPet = pet => {
     return {
         type: POST_PET,
-        payload: event
+        payload: pet
     };
 };
 
@@ -51,6 +51,7 @@ export const addingPet = event => {
 // Update pet and return pet
 export const updatePet = pet => dispatch => {
     axios
+        .put("api/petinfos/pet", pet)
         .then(response => {
             dispatch(updatingPet(response.data));
         })

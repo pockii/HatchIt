@@ -1,7 +1,7 @@
 import { normalize, schema } from 'normalizr';
 
 const PetSchema = new schema.Entity(
-    'pet', {}, { idAttribute: value => value._id }
+    'pets', {}, { idAttribute: value => value._id }
 );
 
 const PetInfoSchema = new schema.Entity(

@@ -30,13 +30,13 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 petIdArr: addPetId(state.petIdArr, action.payload._id),
-                events: updatePet(state.pets, action.payload),
+                pets: updatePet(state.pets, action.payload),
                 postedPet: true
             };
         case UPDATE_PET:
             return {
                 ...state,
-                events: updatePet(state.pets, action.payload),
+                pets: updatePet(state.pets, action.payload),
                 updatedPet: true
             };
         default:
