@@ -29,6 +29,11 @@ module.exports = function validateUserData(userData) {
                                         : !isEmpty(userData.totalHappinessGained) ? userData.totalHappinessGained + "" 
                                         : "";
     }
+    if (userData.happinessGained !== undefined) {
+        userData.happinessGained = userData.happinessGained === 0 ? "0" 
+                                        : !isEmpty(userData.happinessGained) ? userData.happinessGained + "" 
+                                        : "";
+    }
     if (userData.tasks !== undefined) {
         userData.tasks = userData.tasks === 0 ? "0" 
                         : !isEmpty(userData.tasks) ? userData.tasks + "" 
@@ -67,15 +72,15 @@ module.exports = function validateUserData(userData) {
         isValid = false;
     }
 
-    // if (userData.happiness !== undefined && !Validator.isInt(userData.happiness, { min: 0 , max: 100 } )) {
-    //     errors.happiness = "Happiness is invalid";
-    //     isValid = false;
-    // }
-
     if (userData.totalHappinessGained !== undefined && !Validator.isInt(userData.totalHappinessGained, { min: 0 } )) {
         errors.totalHappinessGained = "Total Happpiness gained is invalid";
         isValid = false;
     }
+
+    if (userData.happinessGained !== undefined && !Validator.isInt(userData.happinessGained, { min: 0 } )) {
+        errors.happinessGained = "Happpiness gained is invalid";
+        isValid = false;
+    }    
 
     if (userData.tasks !== undefined && !Validator.isInt(userData.tasks, { min: 0 } )) {
         errors.tasks = "Tasks is invalid";
