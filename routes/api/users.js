@@ -149,40 +149,4 @@ router.put("/userdata", (req, res) => {
         });
 });
 
-router.post("/userdata/pet", (req, res) => {
-    if (!req.body) {
-        return res.status(400).json({ message: "PetInfo to add cannot be empty!" });
-    }
-
-    // // HappinessBreakdown validation
-    // const { errors, isValid } = validateHappinessBreakdown(req.body);
-
-    // // Check validation
-    // if (!isValid) {
-    //     return res.status(400).json(errors);
-    // }
-
-    User.findOne({ name: req.body.name })
-        .then((result) => {
-            if (!result) {
-                const newPetInfo = new HappinessBreakdown({
-                    name: req.body.name,
-                    events: req.body.events,
-                });
-                newHappinessBreakdown
-                    .save()
-                    .then((happinessBreakdown) => res.json(happinessBreakdown))
-                    .catch((err) => console.log(err));
-            } else {
-                return res.json(result);
-            }
-        })
-        .catch((err) => {
-            res.status(500).send({
-                err,
-                message: "Error adding happinessBreakdown of user with username: " + req.body.name,
-            });
-        });
-})
-
 module.exports = router;
