@@ -49,7 +49,7 @@ export default function FoodWindow({ foodCallBack }) {
                 </svg>
                 <span>Food</span>
             </p> 
-            <div class="pr-5 w-full h-7/10">
+            <div class="pl-5 pr-5 pb-5 w-full h-7/10">
                 <Scrollbars 
                     style={{ height: '100%', width: '100%' }} 
                     autoHide
