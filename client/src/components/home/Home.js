@@ -387,8 +387,6 @@ class Home extends Component {
                 </div> 
                 
                 <div class="absolute right-0 bottom-0 sm:text-xs md:text-sm lg:text-base xl:text-xl">
-                    <button class="2xl" onClick={() => this.incrementHappiness(20, "Devour Food")}> + </button> 
-                    <button class="2xl" onClick={() => this.decrementHappiness(20)}> - </button> 
                     <div class="grid grid-flow-col grid-cols-2 grid-rows-5">
                         <div />
                         <div />
