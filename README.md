@@ -27,7 +27,7 @@ We wish to create a virtual pet through a web application that brings back nosta
 
 ## [User Guide](./docs/user-guide.md "User Guide")
 
-## [Developer Guide](./docs/developer-guide.md "Developer Guide")
+## [Developer Guide](./docs/developerguide/developer-guide.md "Developer Guide")
 
 ## [Live Site](https://hatchit.herokuapp.com)
 
