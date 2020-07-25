@@ -60,7 +60,7 @@ export default function HappinessBreakdown(props) {
                 Total Happiness Gained: {totalHappinessGained} <br/>
             </p>     
 
-            <div class="pl-5 pr-5 h-7/10 w-full">
+            <div class="pl-5 pr-5 h-6/10 w-full">
                 <Scrollbars 
                     style={{ height: '100%', width: '100%' }} 
                     autoHide
