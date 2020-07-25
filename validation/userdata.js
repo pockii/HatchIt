@@ -102,7 +102,7 @@ module.exports = function validateUserData(userData) {
         isValid = false;
     } 
 
-    if (userData.bestTimeRescued !== undefined && !Validator.isFloat(userData.bestTimeRescued)) {
+    if (userData.bestTimeRescued !== undefined && !Validator.isFloat(userData.bestTimeRescued, { min: 0.0, max: 10.0 })) {
         errors.bestTimeRescued = "bestTimeRescued is invalid";
         isValid = false;
     }
