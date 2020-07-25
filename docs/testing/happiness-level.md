@@ -43,7 +43,7 @@
   ```json
   {
     "name": "name",
-    "happiness": 23,
+    "happinessGained": 23,
     "totalHappinessGained": 635
   }
   ```
@@ -53,16 +53,19 @@
 
   ```json
   {
-    "date": "2020-06-27T02:34:37.850Z",
+    "date": "2020-07-25T04:19:44.112Z",
     "coins": 0,
-    "happiness": 23,
+    "petId": 0,
     "totalHappinessGained": 635,
+    "happinessGained": 23,
     "tasks": 0,
     "subTasks": 0,
-    "dateGuessed": "1970-01-01T00:00:00.000Z",
-    "_id": "5ef6c04c4b2b6000cfbf319f",
+    "dateGuessed": "2020-06-24T05:34:37.850Z",
+    "dateRescued": "2020-07-25T00:00:00.000Z",
+    "bestTimeRescued": 7,
+    "_id": "5f1bb371725fcc3948867bc0",
     "name": "name",
-    "password": "$2a$10$.eOW7FxcKZhpPoz0sfxiceMxsGvJHK2hmSWSiW1yNG5yIn4TIpuVK",
+    "password": "$2a$10$hvT9gftR5cDWa0rXf/p/7OQp6kV89Ywaz5JXXdtLvOonTdE/TyCM2",
     "__v": 0
   }
   ```
@@ -117,7 +120,7 @@
   ```json
   {
     "name": "name",
-    "happiness": -5,
+    "happinessGained": -5,
     "totalHappinessGained": -42
   }
   ```
@@ -127,7 +130,7 @@
 
   ```json
   {
-    "happiness": "Happiness is invalid",
+    "happinessGained": "Happiness gained is invalid",
     "totalHappinessGained": "Total Happpiness gained is invalid"
   }
   ```
@@ -151,7 +154,7 @@
   ```json
   {
     "name": "nameibbikj",
-    "happiness": 5,
+    "happinessGained": 5,
     "totalHappinessGained": 42
   }
   ```

@@ -10,36 +10,36 @@
 
 - Backend (with Postman)
 
-  <table>
-  <thead>
-  <tr>
-  <th></th>
-  <th>
-  Test Case
-  </th>
-  <th>
-  Request Body
-  </th>
-  <th>
-  Expected Result
-  </th>
-  <th>
-  Actual Result
-  </th>
-  <th>
-  Remarks
-  </th>
-  </tr>
-  </thead>
+    <table>
+    <thead>
+    <tr>
+    <th></th>
+    <th>
+    Test Case
+    </th>
+    <th>
+    Request Body
+    </th>
+    <th>
+    Expected Result
+    </th>
+    <th>
+    Actual Result
+    </th>
+    <th>
+    Remarks
+    </th>
+    </tr>
+    </thead>
 
-  <tr>
-  <td>
-  1
-  </td>
-  <td>
-  PUT - http://localhost:5000/api/users/userdata
-  </td>
-  <td>
+    <tr>
+    <td>
+    1
+    </td>
+    <td>
+    PUT - http://localhost:5000/api/users/userdata
+    </td>
+    <td>
 
   ```json
   {
@@ -48,40 +48,43 @@
   }
   ```
 
-  </td>
-  <td>
+    </td>
+    <td>
 
   ```json
   {
-    "date": "2020-06-27T02:34:37.850Z",
+    "date": "2020-07-25T04:19:44.112Z",
     "coins": 40,
-    "happiness": 23,
+    "petId": 0,
     "totalHappinessGained": 635,
+    "happinessGained": 23,
     "tasks": 0,
     "subTasks": 0,
-    "dateGuessed": "1970-01-01T00:00:00.000Z",
-    "_id": "5ef6c04c4b2b6000cfbf319f",
+    "dateGuessed": "2020-06-24T05:34:37.850Z",
+    "dateRescued": "2020-07-25T00:00:00.000Z",
+    "bestTimeRescued": 7,
+    "_id": "5f1bb371725fcc3948867bc0",
     "name": "name",
-    "password": "$2a$10$.eOW7FxcKZhpPoz0sfxiceMxsGvJHK2hmSWSiW1yNG5yIn4TIpuVK",
+    "password": "$2a$10$hvT9gftR5cDWa0rXf/p/7OQp6kV89Ywaz5JXXdtLvOonTdE/TyCM2",
     "__v": 0
   }
   ```
 
-  </td>
-  <td>
-  <i>same</i> as Expected Result
-  </td>
-  <td></td>
-  </tr>
+    </td>
+    <td>
+    <i>same</i> as Expected Result
+    </td>
+    <td></td>
+    </tr>
 
-  <tr>
-  <td>
-  2
-  </td>
-  <td>
-  PUT - http://localhost:5000/api/users/userdata
-  </td>
-  <td>
+    <tr>
+    <td>
+    2
+    </td>
+    <td>
+    PUT - http://localhost:5000/api/users/userdata
+    </td>
+    <td>
 
   ```json
   {
@@ -89,8 +92,8 @@
   }
   ```
 
-  </td>
-  <td>
+    </td>
+    <td>
 
   ```json
   {
@@ -98,21 +101,21 @@
   }
   ```
 
-  </td>
-  <td>
-  <i>same</i> as Expected Result
-  </td>
-  <td></td>
-  </tr>
+    </td>
+    <td>
+    <i>same</i> as Expected Result
+    </td>
+    <td></td>
+    </tr>
 
-  <tr>
-  <td>
-  3
-  </td>
-  <td>
-  PUT - http://localhost:5000/api/users/userdata
-  </td>
-  <td>
+    <tr>
+    <td>
+    3
+    </td>
+    <td>
+    PUT - http://localhost:5000/api/users/userdata
+    </td>
+    <td>
 
   ```json
   {
@@ -121,8 +124,8 @@
   }
   ```
 
-  </td>
-  <td>
+    </td>
+    <td>
 
   ```json
   {
@@ -130,21 +133,21 @@
   }
   ```
 
-  </td>
-  <td>
-  <i>same</i> as Expected Result
-  </td>
-  <td></td>
-  </tr>
+    </td>
+    <td>
+    <i>same</i> as Expected Result
+    </td>
+    <td></td>
+    </tr>
 
-  <tr>
-  <td>
-  4
-  </td>
-  <td>
-  PUT - http://localhost:5000/api/users/userdata
-  </td>
-  <td>
+    <tr>
+    <td>
+    4
+    </td>
+    <td>
+    PUT - http://localhost:5000/api/users/userdata
+    </td>
+    <td>
 
   ```json
   {
@@ -153,8 +156,8 @@
   }
   ```
 
-  </td>
-  <td>
+    </td>
+    <td>
 
   ```json
   {
@@ -162,13 +165,13 @@
   }
   ```
 
-  </td>
-  <td>
-  <i>same</i> as Expected Result
-  </td>
-  <td></td>
-  </tr>
-  </table>
+    </td>
+    <td>
+    <i>same</i> as Expected Result
+    </td>
+    <td></td>
+    </tr>
+    </table>
 
 ## Unit Testing
 
