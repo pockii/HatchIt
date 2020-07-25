@@ -327,6 +327,16 @@ class Home extends Component {
     };    
 
     render() { 
+        if (!this.props.petInfo.postedPetInfo) {
+            const petInfo = {
+                name: this.name,
+                pets: [
+                    { pet: "Rabbit", unlocked: true },
+                    { pet: "Cat", unlocked: false }
+                ]
+            }
+            this.props.addPetInfo(petInfo);
+        }
         return (
             <div class={this.decideBackground()}>  
                 <div class="h-0">
