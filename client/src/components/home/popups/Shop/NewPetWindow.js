@@ -25,7 +25,7 @@ export default function NewPetWindow({ newPetWindowSeen, onNewPetWindowExitClick
                 onClick={onNewPetWindowExitClick}
             >
                 <svg
-                    class="w-6 fill-current"
+                    class="w-1/12 fill-current"
                     viewBox="0 0 96 96" 
                     xmlns="http://www.w3.org/2000/svg" 
                     xlink="http://www.w3.org/1999/xlink" 

@@ -88,7 +88,7 @@ class PetIcon extends Component {
                     class={this.updateButton()}
                     onClick={this.onPetIconClick}>  
                     <div
-                        class="w-full h-24 self-center"
+                        class="w-full h-full self-center"
                     >
                             <img class="w-full h-full px-2"
                                 src={this.props.imgsrc}
@@ -99,7 +99,7 @@ class PetIcon extends Component {
                         <span class="pl-3">{this.props.name}</span>
                         {this.state.unlocked  
                             ? null
-                            : <div class="flex inline-flex pl-3">
+                            : <div class="flex inline-flex pl-3 float-none">
                                 <svg class="w-6 fill-current"
                                     viewBox="0 0 96 96" 
                                     xmlns="http://www.w3.org/2000/svg" 
