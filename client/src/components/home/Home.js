@@ -49,6 +49,7 @@ class Home extends Component {
         this.name = this.props.auth.user.name;
         this.incrementHappiness = this.incrementHappiness.bind(this);
         this.decrementHappiness = this.decrementHappiness.bind(this);
+        this.updateHappinessGained = this.updateHappinessGained.bind(this);
         this.addEvent = this.addEvent.bind(this);
         this.incrementCoins = this.incrementCoins.bind(this);
         this.decrementCoins = this.decrementCoins.bind(this);
@@ -101,7 +102,7 @@ class Home extends Component {
             this.setMinCoins();
         }
 
-        if (this.isMaxHappiness()) {
+        if (this.isMaxHappiness() && prevProps.auth.user.happinessGained < 100) {
             this.updateHappinessGained(this.#happiness.min);
             this.incrementCoins(100);
             this.onHappinessBreakdownClick();
@@ -221,9 +222,9 @@ class Home extends Component {
 
     updateHappinessGained(newHappinessGained) {
         const userData = {
-        name: this.name,
-        happinessGained: newHappinessGained
-    };
+            name: this.name,
+            happinessGained: newHappinessGained
+        };
         this.props.updateUserData(userData); 
     }   
 
