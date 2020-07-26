@@ -34,7 +34,7 @@ class Rescue extends Component {
         // update coins, dateRescued and bestTimeRescued
         const userData = {
             name: this.props.auth.user.name,
-            coins: newCoins,
+            coins: this.props.auth.user.coins + 2,
             dateRescued: new Date(),
             bestTimeRescued: (timeRescued < this.props.auth.user.bestTimeRescued) ? timeRescued : this.props.auth.user.bestTimeRescued
         }
@@ -60,7 +60,7 @@ class Rescue extends Component {
             this.setState({
                 running: false
             })
-            this.updateHappiness(false);
+            this.updateCoins(false);
         } else {
             this.setState({
                 timeLeft: newTimeLeft,

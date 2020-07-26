@@ -7,8 +7,8 @@ import rabbit_clap2 from '../../state/pics/rabbit/prod_state2.svg';
 
 import cat_box1 from '../../state/pics/cat/box_state1.svg';
 import cat_box2 from '../../state/pics/cat/box_state2.svg';
-import cat_clap1 from '../../state/pics/cat/temp_state1.svg';
-import cat_clap2 from '../../state/pics/cat/temp_state2.svg';
+import cat_clap1 from '../../state/pics/cat/prod_state1.svg';
+import cat_clap2 from '../../state/pics/cat/prod_state2.svg';
 
 export default class RescueState extends Component { 
     constructor(props) {

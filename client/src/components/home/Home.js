@@ -78,8 +78,7 @@ class Home extends Component {
                 { event: "Devour Food" },
                 { event: "Complete Todo" }, 
                 { event: "Complete Sub Todo" },
-                { event: "Play Guess" },
-                { event: "Play Rescue" }
+                { event: "Play Guess" }
             ]
         };
         this.props.addHappinessBreakdown(happinessBreakdown);
@@ -391,8 +390,8 @@ class Home extends Component {
                 
                 <div class="absolute right-0 bottom-0 sm:text-xs md:text-sm lg:text-base xl:text-xl">
                     <div class="grid grid-flow-col grid-cols-2 grid-rows-5">
-                        <div />
-                        <div />
+                        <button onClick={() => this.decrementHappiness(47)} />  
+                        <button onClick={() => this.incrementCoins(10)} />
                         <Todo 
                             todoCallBack={this.todoCallBack}
                             isNight={this.state.night} 

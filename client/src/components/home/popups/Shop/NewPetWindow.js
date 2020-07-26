@@ -21,7 +21,7 @@ export default function NewPetWindow({ newPetWindowSeen, onNewPetWindowExitClick
             className={newpetwindow.modal}
             ariaHideApp={false}
         >
-            <div class="h-2/10">
+            <div class="h-1/10">
                 <button 
                     class="p-3 text-darkblue absolute right-0 top-0 hover:text-gray-500" 
                     onClick={onNewPetWindowExitClick}

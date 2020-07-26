@@ -10,6 +10,10 @@ import rabbit_happy1 from './pics/rabbit/happy_state1.svg';
 import rabbit_happy2 from './pics/rabbit/happy_state2.svg'
 import rabbit_max1 from './pics/rabbit/max_state1.svg';
 import rabbit_max2 from './pics/rabbit/max_state2.svg';
+import rabbit_sad1 from './pics/rabbit/sad_state1.svg';
+import rabbit_sad2 from './pics/rabbit/sad_state2.svg';
+import rabbit_broken1 from './pics/rabbit/broken_state1.svg';
+import rabbit_broken2 from './pics/rabbit/broken_state2.svg';
 import rabbit_guess1 from './pics/rabbit/guess_state1.svg';
 import rabbit_guess2 from './pics/rabbit/guess_state2.svg';
 import rabbit_prod1 from './pics/rabbit/prod_state1.svg';
@@ -27,10 +31,14 @@ import cat_happy1 from './pics/cat/happy_state1.svg';
 import cat_happy2 from './pics/cat/happy_state2.svg'
 import cat_max1 from './pics/cat/max_state1.svg';
 import cat_max2 from './pics/cat/max_state2.svg';
+import cat_sad1 from './pics/cat/sad_state1.svg';
+import cat_sad2 from './pics/cat/sad_state2.svg';
+import cat_broken1 from './pics/cat/broken_state1.svg';
+import cat_broken2 from './pics/cat/broken_state2.svg';
 import cat_guess1 from './pics/cat/guess_state1.svg';
 import cat_guess2 from './pics/cat/guess_state2.svg';
-import cat_prod1 from './pics/cat/temp_state1.svg';
-import cat_prod2 from './pics/cat/temp_state2.svg';
+import cat_prod1 from './pics/cat/prod_state1.svg';
+import cat_prod2 from './pics/cat/prod_state2.svg';
 import cat_sleep1 from './pics/cat/sleeping_state1.svg';
 import cat_sleep2 from './pics/cat/sleeping_state2.svg';
 
@@ -51,6 +59,8 @@ export default class State extends Component {
     #eat_state = [[rabbit_eat1, rabbit_eat2], [cat_eat1, cat_eat2]];
     #happy_state = [[rabbit_happy1, rabbit_happy2], [cat_happy1, cat_happy2]];
     #max_state = [[rabbit_max1, rabbit_max2], [cat_max1, cat_max2]];
+    #sad_state = [[rabbit_sad1, rabbit_sad2], [cat_sad1, cat_sad2]];
+    #broken_state = [[rabbit_broken1, rabbit_broken2], [cat_broken1, cat_broken2]];
     #guess_state = [[rabbit_guess1, rabbit_guess2], [cat_guess1, cat_guess2]];
     #prod_state = [[rabbit_prod1, rabbit_prod2], [cat_prod1, cat_prod2]];
     #sleep_state = [[rabbit_sleep1, rabbit_sleep2], [cat_sleep1, cat_sleep2]];
@@ -83,10 +93,16 @@ export default class State extends Component {
 
     currentState() {
         switch (true) {
+            case (this.props.happiness === 0):
+                return this.#broken_state[this.props.petId];
+            case (this.props.happiness <= 33):
+                return this.#sad_state[this.props.petId];
+            case (this.props.happiness <= 66):
+                return this.#normal_state[this.props.petId];
+            case (this.props.happines <= 99):
+                return this.#happy_state[this.props.petId];
             case (this.props.happiness === 100):
                 return this.#max_state[this.props.petId];
-            case (this.props.happiness > 66 && this.props.happiness <= 99):
-                return this.#happy_state[this.props.petId];
             default:
                 return this.#normal_state[this.props.petId];
         }
