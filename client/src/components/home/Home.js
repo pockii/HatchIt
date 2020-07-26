@@ -341,6 +341,7 @@ class Home extends Component {
             <div class={this.decideBackground()}>  
                 <div class="h-0">
                     <img class="object-contain w-full" 
+                        draggable="false"
                         src={this.state.night ? night : day} 
                         alt="Background"></img>
                 </div>                
@@ -348,6 +349,7 @@ class Home extends Component {
                 <div 
                     class="absolute bottom-0">
                     <img class="object-contain w-full"
+                        draggable="false"
                         src={this.state.night ? night_grass : grass}
                         alt="Floor"></img>
                 </div>
