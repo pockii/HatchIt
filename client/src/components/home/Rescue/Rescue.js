@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import { updatePet } from "../../../actions/petInfoActions";
 import { updateUserData } from "../../../actions/userdataActions";
-import { updateHappinessEvent } from "../../../actions/happinessBreakdownActions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
@@ -17,7 +15,7 @@ class Rescue extends Component {
         this.startTimer = this.startTimer.bind(this);
         this.countDown = this.countDown.bind(this);
         this.onSuccessCallBack = this.onSuccessCallBack.bind(this);
-        this.updateHappiness = this.updateHappiness.bind(this);
+        this.updateCoins = this.updateCoins.bind(this);
         this.state = {
             timeLeft: 10,
             running: false,
@@ -25,47 +23,22 @@ class Rescue extends Component {
         }
     }
     
-    updateHappiness(successful) {
+    updateCoins(successful) {
         const timeRescued = 10 - this.state.timeLeft;
-        let happinessChange = successful ? 10 : -5;
+        let newCoins = this.props.auth.user.coins + (successful) ? 10 : -5;
 
-        const petId = this.props.auth.user.petId;
-        const _id = this.props.petInfo.petIdArr[petId];
-        const currPet = this.props.petInfo.pets[_id];
-
-        if (currPet.happiness + happinessChange > 100) {
-            happinessChange = 100 - currPet.happiness;
+        if (newCoins < 0) {
+            newCoins = 0;
         }
 
-        // update Happiness
-        const newPet = {
-            pet: currPet.pet,
-            happiness: currPet.happiness + happinessChange,
-            unlocked: true
-        };
-        this.props.updatePet({
-            name: this.props.auth.user.name,
-            pet: newPet
-        });
-
-        // update dateRescued, happinessGained, totalHappinessGained and bestTimeRescued
+        // update coins, dateRescued and bestTimeRescued
         const userData = {
             name: this.props.auth.user.name,
+            coins: newCoins,
             dateRescued: new Date(),
-            happinessGained: this.props.auth.user.happinessGained + (happinessChange <= 0 ? 0 : happinessChange),
-            totalHappinessGained: this.props.auth.user.totalHappinessGained + (happinessChange <= 0 ? 0 : happinessChange),
             bestTimeRescued: (timeRescued < this.props.auth.user.bestTimeRescued) ? timeRescued : this.props.auth.user.bestTimeRescued
         }
         this.props.updateUserData(userData);
-
-        // update Happiness Breakdown
-        this.props.updateHappinessEvent({
-            name: this.props.auth.user.name,
-            event: {
-                event: "Play Rescue",
-                totalHappinessGained: 10
-            }            
-        });
     }
 
     startTimer() {
@@ -105,11 +78,11 @@ class Rescue extends Component {
         } else if (this.state.timeLeft > 0) {
             return <p class="flex justify-center text-xl"> 
                         Congratulations, you've saved your pet with {this.state.timeLeft} seconds left! <br />
-                        (Some happiness was gained) </p>
+                        Your pet gives you some coins as thanks. </p>
         } else {
             return <p class="flex justify-center px-2 text-xl text-darkblue">  
                         Time's up! Your pet is sad that it's still stuck in the box... <br />
-                         (Some happiness was lost) </p>
+                        Your pet steals some coins from you. </p>
         }        
     }
 
@@ -143,7 +116,7 @@ class Rescue extends Component {
         this.setState({
             running: false
         })
-        this.updateHappiness(true);
+        this.updateCoins(true);
     }
 
     render() {
@@ -222,25 +195,18 @@ class Rescue extends Component {
 
 Rescue.propTypes = {
     updateUserData: PropTypes.func.isRequired,
-    updateHappinessEvent: PropTypes.func.isRequired,
-    updatePet: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired,
-    happinessBreakdown: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
     auth: state.auth,
     errors: state.errors,
-    happinessBreakdown: state.happinessBreakdown,
-    petInfo: state.petInfo
 });
 
 export default connect(
     mapStateToProps,
     { 
-        updateUserData,
-        updateHappinessEvent,
-        updatePet
+        updateUserData
     }
 )(withRouter(Rescue));
