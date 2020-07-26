@@ -6,9 +6,9 @@
 
 ## Unit Testing
 
-| Test Case         | Expected Result                                                      | Actual Result             | Fixes (if any) | Current Result |
-| ----------------- | -------------------------------------------------------------------- | ------------------------- | -------------- | -------------- |
-| Enable Night mode | Button's colour changes and button's label changes from Night to Day | _same_ as Expected Result | -              | -              |
+|      |Test Case         | Expected Result                                                      | Actual Result             | Remarks        | 
+|------|----------------- | -------------------------------------------------------------------- | ------------------------- | -------------- | 
+| 1    |Enable Night mode | Button's colour changes and button's label changes from Night to Day | _same_ as Expected Result |                | 
 
 ## Integrated Testing
 
