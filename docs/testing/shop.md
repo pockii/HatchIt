@@ -171,11 +171,123 @@
     </td>
     <td></td>
     </tr>
+
+    <tr>
+    <td>
+    5
+    </td>
+    <td>
+    PUT - http://localhost:5000/api/petinfos/pet
+    </td>
+    <td>
+
+  ```json
+  {
+    "name": "name",
+    "pet": {
+      "pet": "Rabbit",
+      "happiness": 50,
+      "unlocked": true
+    }
+  }
+  ```
+
+    </td>
+    <td>
+
+  ```json
+  {
+    "happiness": 50,
+    "unlocked": true,
+    "_id": "5f1d780b0553ad1a9b8cf3bc",
+    "pet": "Rabbit"
+  }
+  ```
+
+    </td>
+    <td>
+    <i>same</i> as Expected Result
+    </td>
+    <td></td>
+    </tr>
+
+    <tr>
+    <td>
+    6
+    </td>
+    <td>
+    PUT - http://localhost:5000/api/petinfos/pet
+    </td>
+    <td>
+
+  ```json
+  {
+    "name": "name",
+    "pet": {
+      "pet": "Rabbit",
+      "happiness": 50
+    }
+  }
+  ```
+
+    </td>
+    <td>
+
+  ```json
+  {
+    "pet": {
+        "unlocked": "Unlocked for pet is required"
+    }
+  }
+  ```
+
+    </td>
+    <td>
+    <i>same</i> as Expected Result
+    </td>
+    <td></td>
+    </tr>
+
+    <tr>
+    <td>
+    7
+    </td>
+    <td>
+    PUT - http://localhost:5000/api/petinfos/pet
+    </td>
+    <td>
+
+  ```json
+  {
+    "name": "namesda",
+    "pet": {
+      "pet": "Rabbit",
+      "happiness": 50,
+      "unlocked": true
+    }
+  }
+  ```
+
+    </td>
+    <td>
+
+  ```json
+  {
+    "message": "Cannot update pet of user with username namesda. Maybe petInfo was not found!"
+  }
+  ```
+
+    </td>
+    <td>
+    <i>same</i> as Expected Result
+    </td>
+    <td></td>
+    </tr>
     </table>
 
 ## Unit Testing
 
-(with dummy incrementCoins and decrementCoins buttons that increase and decrease happiness by 7 respectively)
+(with dummy incrementCoins and decrementCoins buttons that increase and decrease coins by 7 respectively)
 
 <table>
 <thead>
@@ -221,6 +333,60 @@ click decrementCoins button once
 </td>
 <td>
 coins decreases by 7
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+</table>
+
+(with dummy unlockCat and lockCat buttons that unlock and lock the pet cat respectively)
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>
+Test Case
+</th>
+<th>
+Expected Result
+</th>
+<th>
+Actual Result
+</th>
+<th>
+Remarks
+</th>
+</tr>
+</thead>
+
+<tr>
+<td>
+1
+</td>
+<td>
+click unlockCat button once
+</td>
+<td>
+cat's button in shop is no longer greyed out
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+<td>
+2
+</td>
+<td>
+click lockCat button once
+</td>
+<td>
+cat's button in shop is greyed out
 </td>
 <td>
 <i>same</i> as Expected Result
@@ -281,9 +447,6 @@ Food modal closes and Premium Food modal is shown
 </td>
 <td></td>
 </tr>
-| Drag food icons out of Food modal                                                                                                                 | Food icons can be dragged out                                                            | Food modal closes                                    | Changed from react-modal to plain javascript                                                                        | _same_ as Expected Result |
-| Click exit button of Food modal                                                                                                                   | Food modal closes                                                                        | _same_ as Expected Result                            | -                                                                                                                   | -                         |
-| Click anywhere outside of Food modal                                                                                                              | Food modal remains open                                                                  | _same_ as Expected Result                            |
 
 <tr>
 <td>
