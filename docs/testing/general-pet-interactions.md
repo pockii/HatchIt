@@ -52,16 +52,19 @@ PUT - http://localhost:5000/api/users/userdata
 
 ```json
 {
-  "date": "2020-06-27T02:34:37.850Z",
-  "dateGuessed": 40,
-  "happiness": 23,
-  "totalHappinessGained": 635,
+  "date": "2020-07-25T04:19:44.112Z",
+  "coins": 0,
+  "petId": 0,
+  "totalHappinessGained": 0,
+  "happinessGained": 0,
   "tasks": 0,
   "subTasks": 0,
   "dateGuessed": "2020-06-24T05:34:37.850Z",
-  "_id": "5ef6c04c4b2b6000cfbf319f",
+  "dateRescued": "1970-01-01T00:00:00.000Z",
+  "bestTimeRescued": 10,
+  "_id": "5f1bb371725fcc3948867bc0",
   "name": "name",
-  "password": "$2a$10$.eOW7FxcKZhpPoz0sfxiceMxsGvJHK2hmSWSiW1yNG5yIn4TIpuVK",
+  "password": "$2a$10$hvT9gftR5cDWa0rXf/p/7OQp6kV89Ywaz5JXXdtLvOonTdE/TyCM2",
   "__v": 0
 }
 ```
@@ -149,6 +152,255 @@ PUT - http://localhost:5000/api/users/userdata
 {
   "name": "namefsrfdzf",
   "dateGuessed": "2020-06-24T05:34:37.850Z"
+}
+```
+
+</td>
+<td>
+
+```json
+{
+  "message": "Cannot update data of user with username namefsrfdzf. Maybe User was not found!"
+}
+```
+
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+<td>
+5
+</td>
+<td>
+PUT - http://localhost:5000/api/users/userdata
+</td>
+<td>
+
+```json
+{
+  "name": "name",
+  "dateRescued": "2020-07-25"
+}
+```
+
+</td>
+<td>
+
+```json
+{
+  "date": "2020-07-25T04:19:44.112Z",
+  "coins": 0,
+  "petId": 0,
+  "totalHappinessGained": 0,
+  "happinessGained": 0,
+  "tasks": 0,
+  "subTasks": 0,
+  "dateGuessed": "2020-06-24T05:34:37.850Z",
+  "dateRescued": "2020-07-25T00:00:00.000Z",
+  "bestTimeRescued": 10,
+  "_id": "5f1bb371725fcc3948867bc0",
+  "name": "name",
+  "password": "$2a$10$hvT9gftR5cDWa0rXf/p/7OQp6kV89Ywaz5JXXdtLvOonTdE/TyCM2",
+  "__v": 0
+}
+```
+
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+<td>
+6
+</td>
+<td>
+PUT - http://localhost:5000/api/users/userdata
+</td>
+<td>
+
+```json
+{
+  "name": "name",
+  "dateRescued": "2020-43-24T05:34:37.850Z"
+}
+```
+
+</td>
+<td>
+
+```json
+{
+  "dateRescued": "dateRescued is invalid"
+}
+```
+
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+<td>
+7
+</td>
+<td>
+PUT - http://localhost:5000/api/users/userdata
+</td>
+<td>
+
+```json
+{
+  "name": "namefsrfdzf",
+  "dateRescued": "2020-06-24T05:34:37.850Z"
+}
+```
+
+</td>
+<td>
+
+```json
+{
+  "message": "Cannot update data of user with username namefsrfdzf. Maybe User was not found!"
+}
+```
+
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+<td>
+8
+<td>
+PUT - http://localhost:5000/api/users/userdata
+</td>
+<td>
+
+```json
+{
+  "name": "name",
+  "bestTimeRescued": 5.4
+}
+```
+
+</td>
+<td>
+
+```json
+{
+  "date": "2020-07-25T04:19:44.112Z",
+  "coins": 0,
+  "petId": 0,
+  "totalHappinessGained": 0,
+  "happinessGained": 0,
+  "tasks": 0,
+  "subTasks": 0,
+  "dateGuessed": "2020-06-24T05:34:37.850Z",
+  "dateRescued": "2020-07-25T00:00:00.000Z",
+  "bestTimeRescued": 5.4,
+  "_id": "5f1bb371725fcc3948867bc0",
+  "name": "name",
+  "password": "$2a$10$hvT9gftR5cDWa0rXf/p/7OQp6kV89Ywaz5JXXdtLvOonTdE/TyCM2",
+  "__v": 0
+}
+```
+
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+<td>
+9
+</td>
+<td>
+PUT - http://localhost:5000/api/users/userdata
+</td>
+<td>
+
+```json
+{
+  "name": "name",
+  "bestTimeRescued": -3.4
+}
+```
+
+</td>
+<td>
+
+```json
+{
+  "dateGuessed": "bestTimeRescued is invalid"
+}
+```
+
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+<td>
+10
+</td>
+<td>
+PUT - http://localhost:5000/api/users/userdata
+</td>
+<td>
+
+```json
+{
+  "name": "name",
+  "bestTimeRescued": 11
+}
+```
+
+</td>
+<td>
+
+```json
+{
+  "dateGuessed": "bestTimeRescued is invalid"
+}
+```
+
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+<td>
+11
+</td>
+<td>
+PUT - http://localhost:5000/api/users/userdata
+</td>
+<td>
+
+```json
+{
+  "name": "namefsrfdzf",
+  "bestTimeRescued": 9.4
 }
 ```
 

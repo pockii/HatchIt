@@ -32,7 +32,7 @@ export default class ShopWindow extends Component {
 
     displayButton() {
         if (this.state.foodWindowSeen) {
-            return <div class="inline-flex">
+            return <div class="p-1 border-2 border-darkblue rounded-lg bg-yellowbarbg inline-flex text-darkblue sm:text-sm md:text-base lg:text-lg xl:text-xl hover:text-gray-500">
                     <svg 
                         class="w-6 fill-current"
                         viewBox="0 -100 1250 1250" 
@@ -52,7 +52,7 @@ export default class ShopWindow extends Component {
                     <span> Pets </span>
                 </div>
         } else {
-            return <div class="inline-flex">
+            return <div class="p-1 border-2 border-darkblue rounded-lg bg-yellowbarbg inline-flex text-darkblue sm:text-sm md:text-base lg:text-lg xl:text-xl hover:text-gray-500">
                         <svg 
                             class="w-6 fill-current"
                             viewBox="0 0 400 400" 
@@ -90,7 +90,7 @@ export default class ShopWindow extends Component {
                     </svg>
                 </button>
     
-                <div class="p-3 text-darkblue sm:text-base md:text-md lg:text-lg xl:text-xxl inline-flex flex items-center">
+                <div class="p-3 text-darkblue sm:text-base md:text-lg lg:text-xl xl:text-2xl inline-flex flex items-center">
                     <svg 
                         class="w-6 fill-current"
                         viewBox="0 0 96 96" 
@@ -104,7 +104,7 @@ export default class ShopWindow extends Component {
                     <span>Shop</span>
                     <div class="pl-6">
                         <button 
-                            class="inline-block pt-1 bg-yellowbarbg rounded-lg border-2 border-darkblue w-20 hover:bg-gray-100"
+                            class="inline-block"
                             onClick={() => this.changeWindow()}>
                                 {this.displayButton()}
                         </button>    

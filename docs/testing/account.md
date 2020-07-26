@@ -650,7 +650,7 @@
 
   ```json
   {
-    "message": "Cannot add event of user withusername name. Event already exists!"
+    "message": "Cannot add event of user with username name. Event already exists!"
   }
   ```
 

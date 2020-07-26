@@ -79,9 +79,9 @@ router.post("/pet", (req, res) => {
     PetInfo.findOne({ name: req.body.name })
         .then(result => {
             if (!result) {
-                return res.status(404).json({ message: `Cannot add pet of user with username ${req.body.name}. Maybe pet was not found!` });
+                return res.status(404).json({ message: `Cannot add pet of user with username ${req.body.name}. Maybe petInfo was not found!` });
             } else if (result.pets.findIndex(pet => pet.pet.localeCompare(req.body.pet.pet) === 0) !== -1) {
-                return res.status(404).json({ message: `Cannot add pet info of user with username ${req.body.name}. Pet info already exists!` });
+                return res.status(404).json({ message: `Cannot add pet of user with username ${req.body.name}. Pet already exists!` });
             } else {
                 const len = result.pets.length;
                 result.pets.push(req.body.pet);
@@ -128,7 +128,7 @@ router.put("/pet", (req, res) => {
     PetInfo.findOne({ name: req.body.name })
         .then(result => {
             if (!result) {
-                return res.status(404).json({ message: `Cannot update pet of user with username ${req.body.name}. Maybe PetInfo was not found!` });
+                return res.status(404).json({ message: `Cannot update pet of user with username ${req.body.name}. Maybe petInfo was not found!` });
             } else {
                 const index = result.pets.findIndex(pet => pet.pet.localeCompare(req.body.pet.pet) === 0);
                 if (index == -1) {

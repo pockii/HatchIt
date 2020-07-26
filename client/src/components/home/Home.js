@@ -49,6 +49,7 @@ class Home extends Component {
         this.name = this.props.auth.user.name;
         this.incrementHappiness = this.incrementHappiness.bind(this);
         this.decrementHappiness = this.decrementHappiness.bind(this);
+        this.updateHappinessGained = this.updateHappinessGained.bind(this);
         this.addEvent = this.addEvent.bind(this);
         this.incrementCoins = this.incrementCoins.bind(this);
         this.decrementCoins = this.decrementCoins.bind(this);
@@ -101,7 +102,7 @@ class Home extends Component {
             this.setMinCoins();
         }
 
-        if (this.isMaxHappiness()) {
+        if (this.isMaxHappiness() && prevProps.auth.user.happinessGained < 100) {
             this.updateHappinessGained(this.#happiness.min);
             this.incrementCoins(100);
             this.onHappinessBreakdownClick();
@@ -139,7 +140,7 @@ class Home extends Component {
         this.setState({
             insufficientCoinsErrorSeen: true
         });
-        setTimeout(this.onInsufficientCoinsErrorExitClick, 1000);
+        setTimeout(this.onInsufficientCoinsErrorExitClick, 2500);
     }
 
     onInsufficientCoinsErrorExitClick() {
@@ -221,9 +222,9 @@ class Home extends Component {
 
     updateHappinessGained(newHappinessGained) {
         const userData = {
-        name: this.name,
-        happinessGained: newHappinessGained
-    };
+            name: this.name,
+            happinessGained: newHappinessGained
+        };
         this.props.updateUserData(userData); 
     }   
 
@@ -327,10 +328,21 @@ class Home extends Component {
     };    
 
     render() { 
+        if (!this.props.petInfo.postedPetInfo) {
+            const petInfo = {
+                name: this.name,
+                pets: [
+                    { pet: "Rabbit", unlocked: true },
+                    { pet: "Cat", unlocked: false }
+                ]
+            }
+            this.props.addPetInfo(petInfo);
+        }
         return (
             <div class={this.decideBackground()}>  
                 <div class="h-0">
                     <img class="object-contain w-full" 
+                        draggable="false"
                         src={this.state.night ? night : day} 
                         alt="Background"></img>
                 </div>                
@@ -338,6 +350,7 @@ class Home extends Component {
                 <div 
                     class="absolute bottom-0">
                     <img class="object-contain w-full"
+                        draggable="false"
                         src={this.state.night ? night_grass : grass}
                         alt="Floor"></img>
                 </div>
@@ -377,8 +390,6 @@ class Home extends Component {
                 </div> 
                 
                 <div class="absolute right-0 bottom-0 sm:text-xs md:text-sm lg:text-base xl:text-xl">
-                    <button class="2xl" onClick={() => this.incrementHappiness(20, "Devour Food")}> + </button> 
-                    <button class="2xl" onClick={() => this.decrementHappiness(20)}> - </button> 
                     <div class="grid grid-flow-col grid-cols-2 grid-rows-5">
                         <div />
                         <div />

@@ -1,5 +1,5 @@
 
-# HatchIt
+# [HatchIt](https://hatchit.herokuapp.com)
 
 ## Motivation
 
@@ -25,18 +25,23 @@ We wish to create a virtual pet through a web application that brings back nosta
 - As a student who wants to go back to a simpler time, I want to relive my childhood memories with this modern version of Tamagotchi.
 - As a person who is unable to own a pet in real life, I hope to fill this void with a virtual pet.
 
-## [Features](./docs/features.md "Features")
+## [User Guide](./docs/user-guide.md "User Guide")
 
-## [Development Plan](./docs/developmentplan.md)
+## [Developer Guide](./docs/developerguide/developer-guide.md "Developer Guide")
+
+## [Live Site](https://hatchit.herokuapp.com)
+
+## [Design Diagrams](./docs/design-diagrams.md "Design Diagrams")
+
+## [Application of Software Engineering Principles](./docs/application-of-software-engineering-principles.md "Application of Software Engineering Principles")
 
 ## Tech Stack
+
 1. HTML/CSS(Tailwind CSS)/Javascript
 2. ReactJS
 3. NodeJS + ExpressJS
 4. MongoDB
 5. Heroku
-
-## [Functional Prototype](https://drive.google.com/file/d/1qmoxR0E00v5j2kHLxUMrQlSqq4vCG-Dd/view?usp=sharing)
 
 ## Testing
 

@@ -49,7 +49,7 @@ export default function FoodWindow({ foodCallBack }) {
                 </svg>
                 <span>Food</span>
             </p> 
-            <div class="pr-5 w-full h-7/10">
+            <div class="pl-5 pr-5 pb-5 w-full h-7/10">
                 <Scrollbars 
                     style={{ height: '100%', width: '100%' }} 
                     autoHide
@@ -60,7 +60,7 @@ export default function FoodWindow({ foodCallBack }) {
                         <DraggableIcon name="Cookie" imgsrc={cookie} value="1" coins="0" />
                         <DraggableIcon name="Burger" imgsrc={burger} value="2" coins="0" /> 
                         <DraggableIcon name="Donut" imgsrc={donut} value="3" coins="0" />
-                        <DraggableIcon name="Watermelon" imgsrc={watermelon} value="1" coins="0" />
+                        <DraggableIcon name="Water-melon" imgsrc={watermelon} value="1" coins="0" />
                         <DraggableIcon name="Pizza" imgsrc={pizza} value="2" coins="0" /> 
                         <DraggableIcon name="Chocolate" imgsrc={chocolate} value="3" coins="0" />
                         <br />
