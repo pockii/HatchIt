@@ -139,7 +139,7 @@ class Home extends Component {
         this.setState({
             insufficientCoinsErrorSeen: true
         });
-        setTimeout(this.onInsufficientCoinsErrorExitClick, 1000);
+        setTimeout(this.onInsufficientCoinsErrorExitClick, 2500);
     }
 
     onInsufficientCoinsErrorExitClick() {

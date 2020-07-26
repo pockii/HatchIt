@@ -15,24 +15,26 @@ export default function InsufficientCoinsError({ insufficientCoinsErrorSeen, onI
             className={insufficientcoinserror.modal}
             ariaHideApp={false}
         >
-            <button 
-                class="p-3 text-darkblue absolute right-0 top-0 hover:text-gray-500" 
-                onClick={onInsufficientCoinsErrorExitClick}
-            >
-                <svg
-                    class="w-6 fill-current"
-                    viewBox="0 0 96 96" 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    xlink="http://www.w3.org/1999/xlink" 
-                    id="Icons_Close" overflow="hidden">
-                        <path 
-                            d="M83.4 21.1 74.9 12.6 48 39.5 21.1 12.6 12.6 21.1 39.5 48 12.6 74.9 21.1 83.4 48 56.5 74.9 83.4 83.4 74.9 56.5 48Z" 
-                            strokeWidth="0.229186" 
-                        />
-                </svg>
-            </button>
+            <div class="h-2/10">
+                <button 
+                    class="p-3 text-darkblue absolute right-0 top-0 hover:text-gray-500" 
+                    onClick={onInsufficientCoinsErrorExitClick}
+                >
+                    <svg
+                        class="w-6 fill-current"
+                        viewBox="0 0 96 96" 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        xlink="http://www.w3.org/1999/xlink" 
+                        id="Icons_Close" overflow="hidden">
+                            <path 
+                                d="M83.4 21.1 74.9 12.6 48 39.5 21.1 12.6 12.6 21.1 39.5 48 12.6 74.9 21.1 83.4 48 56.5 74.9 83.4 83.4 74.9 56.5 48Z" 
+                                strokeWidth="0.229186" 
+                            />
+                    </svg>
+                </button>
+            </div>
 
-            <div class="p-2 w-full h-full">
+            <div class="p-2 w-full h-8/10">
                 <Scrollbars 
                     style={{ height: '100%', width: '100%' }} 
                     autoHide
@@ -41,7 +43,7 @@ export default function InsufficientCoinsError({ insufficientCoinsErrorSeen, onI
                 > 
                     <div class="flex flex-col flex content-center p-3 text-darkblue sm:text-base md:text-lg lg:text-xl xl:text-2xl w-full">
                         <svg 
-                            class="w-3/12 fill-current self-center"
+                            class="w-1/5 fill-current self-center"
                             viewBox="0 0 96 96" 
                             xmlns="http://www.w3.org/2000/svg" 
                             xlink="http://www.w3.org/1999/xlink" 
@@ -51,6 +53,7 @@ export default function InsufficientCoinsError({ insufficientCoinsErrorSeen, onI
                         </svg>
                         <p class="text-center">ERROR: Purchase failed.</p>
                         <p class="text-center">Insufficient Coins!</p>
+                        <div />
                     </div>    
                 </Scrollbars>
             </div>
