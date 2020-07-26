@@ -396,138 +396,25 @@ cat's button in shop is greyed out
 </table>
 
 ## Integrated Testing
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>
-Test Case
-</th>
-<th>
-Expected Result
-</th>
-<th>
-Actual Result
-</th>
-<th>
-Remarks
-</th>
-</tr>
-</thead>
-
-<tr>
-<td>
-1
-</td>
-<td>
-click Shop button in home
-</td>
-<td>
-Premium Food modal is shown
-</td>
-<td>
-<i>same</i> as Expected Result
-</td>
-<td></td>
-</tr>
-
-<tr>
-<td>
-2
-</td>
-<td>
-click Shop button in home while Food modal is open
-</td>
-<td>
-Food modal closes and Premium Food modal is shown
-</td>
-<td>
-<i>same</i> as Expected Result
-</td>
-<td></td>
-</tr>
-
-<tr>
-<td>
-3
-</td>
-<td>
-click exit button in Premium Food modal
-</td>
-<td>
-Premium Food modal closes
-</td>
-<td>
-<i>same</i> as Expected Result
-</td>
-<td></td>
-</tr>
-
-<tr>
-<td>
-4
-</td>
-<td>
-click outside the Premium Food modal with Premium Food modal open
-</td>
-<td>
-Premium Food modal remains open
-</td>
-<td>
-<i>same</i> as Expected Result
-</td>
-<td></td>
-</tr>
-
-<tr>
-<td>
-5
-</td>
-<td>
-scroll in Premium Food modal
-</td>
-<td>
-Premium Food modal scrolls
-</td>
-<td>
-<i>same</i> as Expected Result
-</td>
-<td></td>
-</tr>
-
-<tr>
-<td>
-6
-</td>
-<td>
-Drag normal food out of modal and drop on pet with at least 20 coins
-</td>
-<td>
-Pet transits into eating state, coins decrease by 20, happiness increases by 25, total happiness gained increases by 25 under Devour Food category
-</td>
-<td>
-<i>same</i> as Expected Result
-</td>
-<td></td>
-</tr>
-
-<tr>
-<td>
-7
-</td>
-<td>
-Drag favourite food out of modal and drop on pet with at least 20 coins
-</td>
-<td>
-Pet transits into eating state, coins decrease by 20, happiness increases by 35, total happiness gained increases by 35 under Devour Food category
-</td>
-<td>
-<i>same</i> as Expected Result
-</td>
-<td></td>
-</tr>
-</table>
+|    |                                       **Test Case**                                      |                                                                                             **Expected Result**                                                                                            |     **Actual Result**     | **Remarks** |
+|:--:|:----------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------:|-------------|
+| 1  | click Shop button in home                                                                | Premium Food modal is shown<br>![Shop Test 1](../gifs/shop/shop1.gif "Shop Test 1")                                                                                                                        | _same_ as Expected Result |             |
+| 2  | click Shop button in home while Food modal is open                                       | Food modal closes and Premium Food modal is shown<br>![Shop Test 2](../gifs/shop/shop2.gif "Shop Test 2")                                                                                                  | _same_ as Expected Result |             |
+| 3  | click exit button in Premium Food modal                                                  | Premium Food modal closes<br>![Shop Test 3](../gifs/shop/shop3.gif "Shop Test 3")                                                                                                                          | _same_ as Expected Result |             |
+| 4  | click outside the Premium Food modal with Premium Food modal open                        | Premium Food modal remains open<br>![Shop Test 4](../gifs/shop/shop4.gif "Shop Test 4")                                                                                                                    | _same_ as Expected Result |             |
+| 5  | scroll in Premium Food modal                                                             | Premium Food modal scrolls<br>![Shop Test 5](../gifs/shop/shop5.gif "Shop Test 5")                                                                                                                         | _same_ as Expected Result |             |
+| 6  | drag premium food out of modal and drop on pet with less than 20 coins                   | Insufficient Coins Error window appears and disappears after a while<br>![Shop Test 6](../gifs/shop/shop6.gif "Shop Test 6")                                                                               | _same_ as Expected Result |             |
+| 7  | drag premium food out of modal and drop on pet with at least 20 coins                    | Pet transits into eating state, coins decrease by 20, happiness increases by 25, total happiness gained increases by 25 under Devour Food category<br>![Shop Test 7](../gifs/shop/shop7.gif "Shop Test 7") | _same_ as Expected Result |             |
+| 8  | drag favourite premium food out of modal and drop on pet with at least 20 coins          | Pet transits into eating state, coins decrease by 20, happiness increases by 35, total happiness gained increases by 35 under Devour Food category<br>![Shop Test 8](../gifs/shop/shop8.gif "Shop Test 8") | _same_ as Expected Result |             |
+| 9  | click pet button while Premium Food modal is open                                        | Premium Food modal changes to Pet modal<br>![Shop Test 9](../gifs/shop/shop9.gif "Shop Test 9")                                                                                                            | _same_ as Expected Result |             |
+| 10 | click food button while Pet modal is open                                                | Pet modal changes to Premium Food modal<br>![Shop Test 10](../gifs/shop/shop10.gif "Shop Test 10")                                                                                                         | _same_ as Expected Result |             |
+| 11 | click on unlocked Rabbit button                                                          | New Pet window appears<br>![Shop Test 11](../gifs/shop/shop11.gif "Shop Test 11")                                                                                                                          | _same_ as Expected Result |             |
+| 12 | click on locked Cat button with less than 100 coins                                      | Insufficient Coins Error window appears<br>![Shop Test 12](../gifs/shop/shop12.gif "Shop Test 12")                                                                                                         | _same_ as Expected Result |             |
+| 13 | click on locked Cat button with at least 100 coins                                       | Cat button is no longer greyed out and coins decrease by 100<br>![Shop Test 13](../gifs/shop/shop13.gif "Shop Test 13")                                                                                    | _same_ as Expected Result |             |
+| 14 | click on Rabbit button, then click on Adopt a new pet button while current pet is Rabbit | Happiness of rabbit changes to 50<br>![Shop Test 14](../gifs/shop/shop14.gif "Shop Test 14")                                                                                                               | _same_ as Expected Result |             |
+| 15 | click on Rabbit button, then click on Visit old pet button while current pet is Rabbit   | Happiness of rabbit remains the same<br>![Shop Test 15](../gifs/shop/shop15.gif "Shop Test 15")                                                                                                            | _same_ as Expected Result |             |
+| 16 | click on Cat button, then click on Adopt a new pet button while current pet is Rabbit    | Pet changes to Cat and happiness of cat changes to 50<br>![Shop Test 16](../gifs/shop/shop8.gif "Shop Test 16")                                                                                            | _same_ as Expected Result |             |
+| 17 | click on Cat button, then click on Visit old pet button while current pet is Rabbit      | Pet changes to Cat and happiness of cat remains the same<br>![Shop Test 17](../gifs/shop/shop8.gif "Shop Test 17")                                                                                         | _same_ as Expected Result |             |
 
 ## User Testing
 
