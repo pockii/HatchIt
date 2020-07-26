@@ -37,7 +37,7 @@ REQUEST
 </td>
 <td>
 
-```json
+```jsonc
 {
   "name": "username", // string, required
   "tasks": [
@@ -285,7 +285,7 @@ REQUEST
 </td>
 <td>
 
-```json
+```jsonc
 {
   "name": "username", // string, required
   "tasks": [
@@ -623,7 +623,7 @@ REQUEST
 </td>
 <td>
 
-```json
+```jsonc
 {
   "name": "username", // string, required
   // task object, required
@@ -835,7 +835,7 @@ REQUEST
 </td>
 <td>
 
-```json
+```jsonc
 {
   "name": "username", // string, required
   // task object, required
@@ -1082,7 +1082,7 @@ REQUEST
 </td>
 <td>
 
-```json
+```jsonc
 {
   "name": "username", // string, required
   "task_id": "5eec9bec89bca61d07109a04" // string, required
@@ -1303,7 +1303,7 @@ REQUEST
 </td>
 <td>
 
-```json
+```jsonc
 {
   "name": "username", // string, required
   "task_id": "5ef7137f28fc33012ea63479", // string, optional
@@ -1525,7 +1525,7 @@ REQUEST
 </td>
 <td>
 
-```json
+```jsonc
 {
   "name": "username", // string, required
   "task_id": "5eec9bec89bca61d07109a02", // string, required
@@ -1769,7 +1769,7 @@ REQUEST
 </td>
 <td>
 
-```json
+```jsonc
 {
   "name": "username", // string, required
   "task_id": "5eec9bec89bca61d07109a02", // string, required

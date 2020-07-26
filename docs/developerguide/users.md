@@ -32,7 +32,7 @@ REQUEST
 </td>
 <td>
 
-```json
+```jsonc
 {
   "name": "username", // string, required
   "password": "password", // string, required
@@ -181,7 +181,7 @@ REQUEST
 </td>
 <td>
 
-```json
+```jsonc
 {
   "name": "username", // string, required
   "password": "password" // string, required
@@ -353,7 +353,7 @@ REQUEST
 </td>
 <td>
 
-```json
+```jsonc
 {
   "name": "username", // string, required
   "coins": 40, // integer > 0, optional

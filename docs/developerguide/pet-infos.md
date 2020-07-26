@@ -32,7 +32,7 @@ REQUEST
 </td>
 <td>
 
-```json
+```jsonc
 {
   "name": "name", // string, required
   "pets": [
@@ -195,9 +195,9 @@ REQUEST
 </td>
 <td>
 
-```json
+```jsonc
 {
-  "name": "username", // string, required
+  "name": "name", // string, required
   // pet object, required
   "pet": {
     "pet": "p2", // string, required
@@ -414,9 +414,9 @@ REQUEST
 </td>
 <td>
 
-```json
+```jsonc
 {
-  "name": "username", // string, required
+  "name": "name", // string, required
   // pet object, required
   "pet": {
     "pet": "p2", // string, required
