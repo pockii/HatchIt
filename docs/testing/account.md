@@ -53,13 +53,16 @@
 
   ```json
   {
-    "date": "2020-06-27T02:34:37.850Z",
+    "date": "2020-07-24T22:19:23.048Z",
     "coins": 0,
-    "happiness": 50,
+    "petId": 0,
     "totalHappinessGained": 0,
+    "happinessGained": 0,
     "tasks": 0,
     "subTasks": 0,
     "dateGuessed": "1970-01-01T00:00:00.000Z",
+    "dateRescued": "1970-01-01T00:00:00.000Z",
+    "bestTimeRescued": 10,
     "_id": "5ef6c04c4b2b6000cfbf319f",
     "name": "name",
     "password": "$2a$10$.eOW7FxcKZhpPoz0sfxiceMxsGvJHK2hmSWSiW1yNG5yIn4TIpuVK",
@@ -77,49 +80,6 @@
   <tr>
   <td>
   2
-  </td>
-  <td>
-  POST - http://localhost:5000/api/users/register
-  </td>
-  <td>
-
-  ```json
-  {
-    "name": "name",
-    "password": "password",
-    "password2": "password"
-  }
-  ```
-
-  </td>
-  <td>
-
-  ```json
-  {
-    "date": "2020-06-27T02:34:37.850Z",
-    "coins": 0,
-    "happiness": 50,
-    "totalHappinessGained": 0,
-    "tasks": 0,
-    "subTasks": 0,
-    "dateGuessed": "1970-01-01T00:00:00.000Z",
-    "_id": "5ef6c04c4b2b6000cfbf319f",
-    "name": "name",
-    "password": "$2a$10$.eOW7FxcKZhpPoz0sfxiceMxsGvJHK2hmSWSiW1yNG5yIn4TIpuVK",
-    "__v": 0
-  }
-  ```
-
-  </td>
-  <td>
-  <i>same</i> as Expected Result
-  </td>
-  <td></td>
-  </tr>
-
-  <tr>
-  <td>
-  3
   </td>
   <td>
   POST - http://localhost:5000/api/users/register
@@ -152,7 +112,7 @@
 
   <tr>
   <td>
-  4
+  3
   </td>
   <td>
   POST - http://localhost:5000/api/users/register
@@ -186,7 +146,7 @@
 
   <tr>
   <td>
-  5
+  4
   </td>
   <td>
   Test Case: POST - http://localhost:5000/api/users/login
@@ -220,7 +180,7 @@
 
   <tr>
   <td>
-  6
+  5
   </td>
   <td>
   POST - http://localhost:5000/api/users/login
@@ -253,7 +213,7 @@
 
   <tr>
   <td>
-  7
+  6
   </td>
   <td>
   POST - http://localhost:5000/api/users/login
@@ -286,7 +246,7 @@
 
   <tr>
   <td>
-  8
+  7
   </td>
   <td>
   POST - http://localhost:5000/api/users/login
@@ -318,7 +278,7 @@
 
   <tr>
   <td>
-  9
+  8
   </td>
   <td>
   POST - http://localhost:5000/api/happinessbreakdown/
@@ -372,7 +332,7 @@
 
   <tr>
   <td>
-  10
+  9
   </td>
   <td>
   POST - http://localhost:5000/api/happinessbreakdown/
@@ -421,7 +381,7 @@
 
   <tr>
   <td>
-  11
+  10
   </td>
   <td>
   POST - http://localhost:5000/api/happinessbreakdown/
@@ -450,7 +410,7 @@
 
   <tr>
   <td>
-  12
+  11
   </td>
   <td>
   POST - http://localhost:5000/api/happinessbreakdown/event
@@ -487,7 +447,7 @@
 
   <tr>
   <td>
-  13
+  12
   </td>
   <td>
   POST - http://localhost:5000/api/happinessbreakdown/event
@@ -523,7 +483,7 @@
 
   <tr>
   <td>
-  14
+  13
   </td>
   <td>
   POST - http://localhost:5000/api/happinessbreakdown/event
@@ -562,7 +522,7 @@
 
   <tr>
   <td>
-  15
+  14
   </td>
   <td>
   POST - http://localhost:5000/api/happinessbreakdown/event
@@ -594,7 +554,7 @@
 
   <tr>
   <td>
-  16
+  15
   </td>
   <td>
   POST - http://localhost:5000/api/happinessbreakdown/event
@@ -615,7 +575,7 @@
 
   ```json
   {
-    "message": "Cannot add event of user withusername namefawf. Maybe happinessBreakdown was not found!"
+    "message": "Cannot add event of user with username namefad. Maybe happinessBreakdown was not found!"
   }
   ```
 
@@ -628,11 +588,11 @@
 
   <tr>
   <td>
-  17
+  16
   </td>
   <td>
   POST - http://localhost:5000/api/happinessbreakdown/event
-  (directly after test 13)
+  (directly after test 12)
   </td>
   <td>
 
@@ -663,11 +623,11 @@
 
   <tr>
   <td>
-  18
+  17
   </td>
   <td>
   PUT - http://localhost:5000/api/h6appinessbreakdown/event
-  (directly after test 9)
+  (directly after test 8)
   </td>
   <td>
 
@@ -701,7 +661,7 @@
 
   <tr>
   <td>
-  19
+  18
   </td>
   <td>
   PUT - http://localhost:5000/api/happinessbreakdown/event
@@ -740,7 +700,7 @@
 
   <tr>
   <td>
-  20
+  19
   </td>
   <td>
   PUT - http://localhost:5000/api/happinessbreakdown/event
@@ -772,10 +732,10 @@
 
   <tr>
   <td>
-  21
+  20
   </td>
   <td>
-  PUT - http://localhost:5000/api/h6appinessbreakdown/event
+  PUT - http://localhost:5000/api/happinessbreakdown/event
   </td>
   <td>
 
@@ -794,7 +754,7 @@
 
   ```json
   {
-    "message": "Cannot update event of user withusername namefawf. Maybe happinessBreakdown was not found!"
+    "message": "Cannot update event of user with username namefawf. Maybe happinessBreakdown was not found!"
   }
   ```
 
@@ -807,10 +767,10 @@
 
   <tr>
   <td>
-  22
+  21
   </td>
   <td>
-  PUT - http://localhost:5000/api/h6appinessbreakdown/event
+  PUT - http://localhost:5000/api/happinessbreakdown/event
   </td>
   <td>
 
@@ -829,7 +789,7 @@
 
 ```json
 {
-  "message": "Cannot update event of user withusername namefawf. Event was not found."
+  "message": "Cannot update event of user with username name. Event was not found."
 }
 ```
 
@@ -840,11 +800,545 @@
 <td></td>
 </tr>
 
+ <tr>
+  <td>
+  22
+  </td>
+  <td>
+  POST - http://localhost:5000/api/petinfos
+  </td>
+  <td>
+
+```json
+{
+  "name": "name",
+  "pets": [
+    {
+      "pet": "Rabbit"
+    }
+  ]
+}
+```
+
+</td>
+<td>
+
+```json
+{
+    "_id": "5f1d780b0553ad1a9b8cf3bb",
+    "name": "name",
+    "pets": [
+        {
+            "happiness": 50,
+            "unlocked": false,
+            "_id": "5f1d780b0553ad1a9b8cf3bc",
+            "pet": "Rabbit"
+        }
+    ],
+    "__v": 0
+}
+```
+
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+  <td>
+  23
+  </td>
+  <td>
+  POST - http://localhost:5000/api/petinfos
+  </td>
+  <td>
+
+```json
+{
+  "name": "",
+  "pets": [
+    {
+      "pet": "",
+      "happiness": -3,
+      "unlocked": "yes"
+    },
+    {
+      "pet": ""
+    }
+  ]
+}
+```
+
+</td>
+<td>
+
+```json
+{
+    "name": "Name is required",
+    "pets": [
+        {
+            "pet": "Name of pet is required",
+            "happiness": "Happiness is invalid",
+            "unlocked": "Unlocked is invalid"
+        },
+        {
+            "pet": "Name of pet is required"
+        }
+    ]
+}
+```
+
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+  <td>
+  24
+  </td>
+  <td>
+  POST - http://localhost:5000/api/petinfos
+  </td>
+  <td>
+
+```json
+{
+  "name": ""
+}
+```
+
+</td>
+<td>
+
+```json
+{
+    "name": "Name is required",
+    "pets": "Pets is required"
+}
+```
+
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+  <td>
+  25
+  </td>
+  <td>
+  POST - http://localhost:5000/api/petinfos/pet
+  </td>
+  <td>
+
+```json
+{
+  "name": "name",
+  "pet": {
+    "pet": "Cat",
+    "happiness": 32,
+    "unlocked": true
+
+  }
+}
+```
+
+</td>
+<td>
+
+```json
+{
+    "happiness": 32,
+    "unlocked": true,
+    "_id": "5f1d7e800553ad1a9b8cf3bd",
+    "pet": "Cat"
+}
+```
+
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+  <td>
+  26
+  </td>
+  <td>
+  POST - http://localhost:5000/api/petinfos/pet
+  </td>
+  <td>
+
+```json
+{
+  "name": "",
+  "pet": {
+    "pet": "",
+    "happiness": 120,
+    "unlocked": 0
+
+  }
+}
+```
+
+</td>
+<td>
+
+```json
+{
+    "name": "Name is required",
+    "pet": {
+        "pet": "Name of pet is required",
+        "happiness": "Happiness is invalid",
+        "unlocked": "Unlocked is invalid"
+    }
+}
+```
+
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+  <td>
+  27
+  </td>
+  <td>
+  POST - http://localhost:5000/api/petinfos/pet
+  </td>
+  <td>
+
+```json
+{
+  "name": ""
+}
+```
+
+</td>
+<td>
+
+```json
+{
+    "name": "Name is required",
+    "pet": "Pet is required"
+}
+```
+
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+  <td>
+  28
+  </td>
+  <td>
+  POST - http://localhost:5000/api/petinfos/pet
+  </td>
+  <td>
+
+```json
+{
+  "name": "namefad",
+  "pet": {
+    "pet": "Rabbit"
+  }
+}
+```
+
+</td>
+<td>
+
+```json
+{
+    "message": "Cannot add pet of user with username namefad. Maybe petInfo was not found!"
+}
+```
+
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+  <td>
+  29
+  </td>
+  <td>
+  POST - http://localhost:5000/api/petinfos/pet
+  (directly after test 22)
+  </td>
+  <td>
+
+```json
+{
+  "name": "name",
+  "pet": {
+    "pet": "Rabbit"
+  }
+}
+```
+
+</td>
+<td>
+
+```json
+{
+    "message": "Cannot add pet of user with username name. Pet already exists!"
+}
+```
+
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+  <td>
+  30
+  </td>
+  <td>
+  PUT - http://localhost:5000/api/petinfos/pet
+  (directly after test 22)
+  </td>
+  <td>
+
+```json
+{
+  "name": "name",
+  "pet": {
+    "pet": "Rabbit",
+    "happiness": 10,
+    "unlocked": true
+  }
+}
+```
+
+</td>
+<td>
+
+```json
+{
+    "happiness": 10,
+    "unlocked": true,
+    "_id": "5f1d780b0553ad1a9b8cf3bc",
+    "pet": "Rabbit"
+}
+```
+
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+  <td>
+  31
+  </td>
+  <td>
+  PUT - http://localhost:5000/api/petinfos/pet
+  </td>
+  <td>
+
+```json
+{
+  "name": "",
+  "pet": {
+    "pet": "",
+    "happiness": "a",
+    "unlocked": "tru"
+  }
+}
+```
+
+</td>
+<td>
+
+```json
+{
+    "name": "Name is required",
+    "pet": {
+        "pet": "Name of pet is required",
+        "happiness": "Happiness for pet is invalid",
+        "unlocked": "Unlocked for pet is invalid"
+    }
+}
+```
+
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+  <td>
+  32
+  </td>
+  <td>
+  PUT - http://localhost:5000/api/petinfos/pet
+  </td>
+  <td>
+
+```json
+{
+  "name": "name",
+  "pet": {
+    "pet": "Rabbit",
+    "happiness": 20
+  }
+}
+```
+
+</td>
+<td>
+
+```json
+{
+    "pet": {
+        "unlocked": "Unlocked for pet is invalid"
+    }
+}
+```
+
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+  <td>
+  33
+  </td>
+  <td>
+  PUT - http://localhost:5000/api/petinfos/pet
+  </td>
+  <td>
+
+```json
+{
+  "name": ""
+}
+```
+
+</td>
+<td>
+
+```json
+{
+    "name": "Name is required",
+    "pet": "Pet is required"
+}
+```
+
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+  <td>
+  34
+  </td>
+  <td>
+  PUT - http://localhost:5000/api/petinfos/pet
+  </td>
+  <td>
+
+  ```json
+  {
+    "name": "namefawf",
+    "pet": {
+      "pet": "Rabbit",
+      "happiness": 10,
+      "unlocked": true
+    }
+  }
+  ```
+
+  </td>
+  <td>
+
+  ```json
+  {
+    "message": "Cannot update pet of user with username namefawf. Maybe petInfo was not found!"
+  }
+  ```
+
+  </td>
+  <td>
+  <i>same</i> as Expected Result
+  </td>
+  <td></td>
+  </tr>
+
+<tr>
+  <td>
+  35
+  </td>
+  <td>
+  PUT - http://localhost:5000/api/petinfos/pet
+  </td>
+  <td>
+
+  ```json
+  {
+    "name": "name",
+    "pet": {
+      "pet": "Dog",
+      "happiness": 10,
+      "unlocked": true
+    }
+  }
+  ```
+
+  </td>
+  <td>
+
+  ```json
+  {
+    "message": "Cannot update pet of user with username name. Pet was not found."
+  
+  ```
+
+  </td>
+  <td>
+  <i>same</i> as Expected Result
+  </td>
+  <td></td>
+  </tr>
+
 </table>
 
 ## Unit Testing
 
-(with Redux DevTools and dummy postHappinessBreakdown button)
+(with Redux DevTools, dummy postHappinessBreakdown and postPetInfo button)
 
 <table>
 <thead>
@@ -1073,11 +1567,14 @@ Expected Redux State:
       id: '5ef7223428fc33012ea63480',
       name: 'username',
       coins: 0,
-      happiness: 50,
+      petId: 0,
       totalHappinessGained: 0,
+      happinessGained: 0,
       tasks: 0,
       subTasks: 0,
       dateGuessed: '1970-01-01T00:00:00.000Z',
+      dateRescued: '1970-01-01T00:00:00.000Z',
+      bestTimeRescued: 10,
       iat: 1593255130,
       exp: 1624812056
     },
@@ -1285,18 +1782,20 @@ Expected Redux State:
 {
   auth: {
     isAuthenticated: true,
-    user: {
-      date: '2020-07-04T10:33:09.759Z',
+     user: {
+      id: '5ef7223428fc33012ea63480',
+      name: 'username',
       coins: 0,
-      happiness: 49,
+      petId: 0,
       totalHappinessGained: 0,
+      happinessGained: 0,
       tasks: 0,
       subTasks: 0,
       dateGuessed: '1970-01-01T00:00:00.000Z',
-      _id: '5f005b6eeedd2a3a1ccbbb48',
-      name: 'name',
-      password: '$2a$10$fZ7dHWchQdRm7Szw70TnC.3bTOU6Be9bxt5Cq3YZCqDl8D6TBtedG',
-      __v: 0
+      dateRescued: '1970-01-01T00:00:00.000Z',
+      bestTimeRescued: 10,
+      iat: 1593255130,
+      exp: 1624812056
     },
     loading: false,
     updated: true,
@@ -1336,7 +1835,6 @@ Expected Redux State:
       '5f005b71eedd2a3a1ccbbb4d',
       '5f005b71eedd2a3a1ccbbb4e',
       '5f005b71eedd2a3a1ccbbb4f',
-      '5f005b71eedd2a3a1ccbbb50'
     ],
     events: {
       '5f005b71eedd2a3a1ccbbb4c': {
@@ -1358,11 +1856,137 @@ Expected Redux State:
   totalHappinessGained: 0,
   _id: '5f005b71eedd2a3a1ccbbb4f',
   event: 'Play Guess'
+      }
+    },
+    postedHappinessBreakdown: true,
+    postedHappinessEvent: false,
+    updatedHappinessEvent: false,
+  },
+  petInfo: {
+    petIdArr: [
+      '5f1daabeb8b8061f14e1e336',
+      '5f1daabeb8b8061f14e1e337'
+    ],
+    pets: {
+      '5f1daabeb8b8061f14e1e336': {
+        happiness: 49,
+        unlocked: true,
+        _id: '5f1daabeb8b8061f14e1e336',
+        pet: 'Rabbit'
       },
-      '5f005b71eedd2a3a1ccbbb50': {
+      '5f1daabeb8b8061f14e1e337': {
+        pet: 'Cat',
+        happiness: 50,
+        unlocked: false,
+        _id: '5f1daabeb8b8061f14e1e337'
+      }
+    },
+    postedPetInfo: true,
+    postedPet: false,
+    updatedPet: false
+  },
+  _persist: {
+    version: -1,
+    rehydrated: true
+  }
+}
+```
+
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+<td>
+10
+</td>
+<td>
+click on postPetInfo button
+</td>
+<td>
+Expected Redux State:
+
+```javascript
+{
+  auth: {
+    isAuthenticated: true,
+     user: {
+      id: '5ef7223428fc33012ea63480',
+      name: 'username',
+      coins: 0,
+      petId: 0,
+      totalHappinessGained: 0,
+      happinessGained: 0,
+      tasks: 0,
+      subTasks: 0,
+      dateGuessed: '1970-01-01T00:00:00.000Z',
+      dateRescued: '1970-01-01T00:00:00.000Z',
+      bestTimeRescued: 10,
+      iat: 1593255130,
+      exp: 1624812056
+    },
+    loading: false,
+    updated: true,
+  },
+  errors: {},
+  todo: {
+    tasks: {
+      '0': {
+  deadline: '2020-07-07T10:33:09.805Z',
+  level: '2',
+  _id: '5f005b71eedd2a3a1ccbbb4a',
+  id: '0',
+  description: 'My first todo!',
+  subTasks: []
+      }
+    },
+    todo: {
+      _id: '5f005b71eedd2a3a1ccbbb49',
+      name: 'name',
+      tasks: [
+  '0'
+      ],
+      __v: 0
+    },
+    postedTodo: true,
+    postedTask: false,
+    postedSubTask: false,
+    updatedTodo: false,
+    updatedTask: false,
+    updatedSubTask: false,
+    deletedTask: false,
+    deletedSubTask: false
+  },
+  happinessBreakdown: {
+    eventIdArr: [
+      '5f005b71eedd2a3a1ccbbb4c',
+      '5f005b71eedd2a3a1ccbbb4d',
+      '5f005b71eedd2a3a1ccbbb4e',
+      '5f005b71eedd2a3a1ccbbb4f',
+    ],
+    events: {
+      '5f005b71eedd2a3a1ccbbb4c': {
   totalHappinessGained: 0,
-  _id: '5f005b71eedd2a3a1ccbbb50',
-  event: 'Play Rescue'
+  _id: '5f005b71eedd2a3a1ccbbb4c',
+  event: 'Devour Food'
+      },
+      '5f005b71eedd2a3a1ccbbb4d': {
+  totalHappinessGained: 0,
+  _id: '5f005b71eedd2a3a1ccbbb4d',
+  event: 'Complete Todo'
+      },
+      '5f005b71eedd2a3a1ccbbb4e': {
+  totalHappinessGained: 0,
+  _id: '5f005b71eedd2a3a1ccbbb4e',
+  event: 'Complete Sub Todo'
+      },
+      '5f005b71eedd2a3a1ccbbb4f': {
+  totalHappinessGained: 0,
+  _id: '5f005b71eedd2a3a1ccbbb4f',
+  event: 'Play Guess'
       }
     },
     postedHappinessBreakdown: true,
@@ -1413,7 +2037,7 @@ Remarks
 click Account button in home
 </td>
 <td>
-Username, Coins, Happiness Level, Total Happiness Gained, Total Todos Completed, Total Sub Todos Completed and Date Guessed is shown
+Username, Coins, Happiness Level, Total Happiness Gained, Total Todos Completed, Total Sub Todos Completed, Date Guessed, Date Rescued and Best Time for Rescue Minigame is shown
 </td>
 <td>
 <i>same</i> as Expected Result
