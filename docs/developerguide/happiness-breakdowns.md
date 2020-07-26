@@ -32,7 +32,7 @@ REQUEST
 </td>
 <td>
 
-```json
+```jsonc
 {
   "name": "username", // string, required
   "events": [
@@ -201,7 +201,7 @@ REQUEST
 </td>
 <td>
 
-```json
+```jsonc
 {
   "name": "username", // string, required
   // event object, required
@@ -420,7 +420,7 @@ REQUEST
 </td>
 <td>
 
-```json
+```jsonc
 {
   "name": "username", // string, required
   // event object, required
