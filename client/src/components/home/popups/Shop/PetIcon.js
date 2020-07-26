@@ -91,6 +91,7 @@ class PetIcon extends Component {
                         class="w-full h-full self-center"
                     >
                             <img class="w-full h-full px-2"
+                                draggable="false"
                                 src={this.props.imgsrc}
                                 alt={this.props.name}>
                             </img>
