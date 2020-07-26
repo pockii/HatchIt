@@ -2038,6 +2038,7 @@ click Account button in home
 </td>
 <td>
 Username, Coins, Happiness Level, Total Happiness Gained, Total Todos Completed, Total Sub Todos Completed, Date Guessed, Date Rescued and Best Time for Rescue Minigame is shown
+![Account Test 1](./gifs/account/account1.gif "Account Test 1")
 </td>
 <td>
 <i>same</i> as Expected Result
@@ -2050,10 +2051,11 @@ Username, Coins, Happiness Level, Total Happiness Gained, Total Todos Completed,
 2
 </td>
 <td>
-click Account button while Account modal is open
+click exit button in Account modal
 </td>
 <td>
 Account modal closes
+![Account Test 2](./gifs/account/account2.gif "Account Test 2")
 </td>
 <td>
 <i>same</i> as Expected Result
@@ -2066,10 +2068,11 @@ Account modal closes
 3
 </td>
 <td>
-click exit button in Account modal
+click esc in Account modal
 </td>
 <td>
 Account modal closes
+![Account Test 3](./gifs/account/account3.gif "Account Test 3")
 </td>
 <td>
 <i>same</i> as Expected Result
@@ -2082,7 +2085,8 @@ Account modal closes
 4
 </td>
 <td>
-click esc in Account modal
+click outside the Account modal with Account modal open
+![Account Test4](./gifs/account/account4.gif "Account Test 4")
 </td>
 <td>
 Account modal closes
@@ -2098,10 +2102,11 @@ Account modal closes
 5
 </td>
 <td>
-click outside the Account modal with Account modal open
+scroll in Account modal
 </td>
 <td>
-Account modal closes
+Account modal scrolls
+![Account Test 5](./gifs/account/account5.gif "Account Test 5")
 </td>
 <td>
 <i>same</i> as Expected Result
@@ -2114,10 +2119,11 @@ Account modal closes
 6
 </td>
 <td>
-scroll in Account modal
+click Logout button in home
 </td>
 <td>
-Account modal scrolls
+redirected to Sign In page
+![Account Test 6](./gifs/account/account6.gif "Account Test 6")
 </td>
 <td>
 <i>same</i> as Expected Result
@@ -2130,23 +2136,8 @@ Account modal scrolls
 7
 </td>
 <td>
-click Logout button in home
-</td>
-<td>
-redirected to Sign In page
-</td>
-<td>
-<i>same</i> as Expected Result
-</td>
-<td></td>
-</tr>
-
-<tr>
-<td>
-8
-</td>
-<td>
 click HappinessBreakdown button in Account modal
+![Account Test 7](./gifs/account/account7.gif "Account Test 7")
 </td>
 <td>
 HappinessBreakdown modal is shown
@@ -2159,13 +2150,31 @@ HappinessBreakdown modal is shown
 
 <tr>
 <td>
-9
+8
 </td>
 <td>
 click exit button in HappinessBreakdown modal
 </td>
 <td>
 HappinessBreakdown modal closes and Account modal is shown
+![Account Test 8](./gifs/account/account8.gif "Account Test 8")
+</td>
+<td>
+<i>same</i> as Expected Result
+</td>
+<td></td>
+</tr>
+
+<tr>
+<td>
+9
+</td>
+<td>
+click esc in HappinessBreakdown modal
+</td>
+<td>
+HappinessBreakdown modal closes and Account modal is shown
+![Account Test 9](./gifs/account/account9.gif "Account Test 9")
 </td>
 <td>
 <i>same</i> as Expected Result
@@ -2178,10 +2187,11 @@ HappinessBreakdown modal closes and Account modal is shown
 10
 </td>
 <td>
-click esc in HappinessBreakdown modal
+click outside the HappinessBreakdown modal with HappinessBreakdown modal open
 </td>
 <td>
 HappinessBreakdown modal closes and Account modal is shown
+![Account Test 10](./gifs/account/account10.gif "Account Test 10")
 </td>
 <td>
 <i>same</i> as Expected Result
@@ -2194,23 +2204,8 @@ HappinessBreakdown modal closes and Account modal is shown
 11
 </td>
 <td>
-click outside the HappinessBreakdown modal with HappinessBreakdown modal open
-</td>
-<td>
-HappinessBreakdown modal closes and Account modal is shown
-</td>
-<td>
-<i>same</i> as Expected Result
-</td>
-<td></td>
-</tr>
-
-<tr>
-<td>
-12
-</td>
-<td>
 Complete tasks repeatedly until maximum happiness state is reached
+![Account Test 11](./gifs/account/account11.gif "Account Test 11")
 </td>
 <td>
 HappinessBreakdown modal is shown
