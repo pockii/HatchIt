@@ -417,5 +417,8 @@ cat's button in shop is greyed out
 | 17 | click on Cat button, then click on Visit old pet button while current pet is Rabbit      | Pet changes to Cat and happiness of cat remains the same<br>![Shop Test 17](../gifs/shop/shop17.gif "Shop Test 17")                                                                                         | _same_ as Expected Result |             |
 
 ## User Testing
-
-(_coming soon_)
+| User | Feedback                                                                                                                                                                                                                                      | Solutions (if any)                                             |
+|------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
+| 1    | I had a lot of fun trying to figure out which one is the pet's favourite food! I really like this feature because it gives me incentive to earn money to get all the pets!                                                                    |                                                                |
+| 2    | It's really cute, but I think that the pricing should be much steeper so that the users have to grind to obtain a new pet.                                                                                                                    | Increase the price of the new pet types to 500 instead of 100. |
+| 3    | The user interface for this is quite intuitive and I like that there are error messages to tell me that I have insufficient coins. Maybe if this was an actual app, you guys can consider changing the food/pets in the store weekly/monthly. |                                                                |
