@@ -391,7 +391,7 @@ happiness level decreases by 10
 click decrementHappiness button repeatedly until happiness decreases to 0
 </td>
 <td>
-happiness level decreases to 0, coins decrease to 0
+happiness level decreases to 0, coins decrease to 0, pet transits into broken hearted state
 </td>
 <td>
 <i>same</i> as Expected Result
@@ -424,4 +424,9 @@ Fix: Compare <code>prevProps</code> and <code>this.props</code>, only increase c
 |   | Test Case                                        | Expected Result                                                                                                                                                                                                                                     | Actual Result           | Remarks                                                                                                        |
 |---|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------|----------------------------------------------------------------------------------------------------------------|
 | 1 | Refresh the page after a change in happiness     | Happiness level remains the same<br>![Happiness Test 1](../gifs/happiness/happiness1.gif "Happiness Test 1")                                                                                                                                            | same as Expected Result | Actual Result(before fix): previous changes are lost <br>Fix: Add redux-persist to persist auth of redux state |
-| 2 | Feed pet until happiness gained increases to 100 | Happiness gained increases to at least 100, total happiness gained increases, coins increase by 100 and pet transits into maximum happiness state if happiness level is 100<br>![Happiness Test 2](../gifs/happiness/happiness2.gif "Happiness Test 2") | same as Expected Result |                                                                                                                |
+| 2 | Feed pet until happiness gained increases to 100 | Happiness gained increases to at least 100, total happiness gained increases, coins increase by 100 and pet transits into maximum happiness state if happiness level is 100<br>![Happiness Test 2](../gifs/happiness/happiness2.gif "Happiness Test 2") | same as Expected Result |    
+| 3 | pet's happiness reaches 0                         | Pet's state becomes brokenhearted<br>![Happiness Test 3](../gifs/happiness/happiness3.gif "Happiness Test 3") | _same_ as expected |         |
+| 4 | pet's happiness exceeds 0, but is lower than 34   | Pet's state becomes sad<br>![Happiness Test 4](../gifs/happiness/happiness4.gif "Happiness Test 4")           | _same_ as expected |         |
+| 5 | pet's happiness exceeds 34, but is lower than 67  | Pet's state becomes normal<br>![Happiness Test 5](../gifs/happiness/happiness5.gif "Happiness Test 5")        | _same_ as expected |         |
+| 6 | pet's happiness exceeds 67, but is lower than 100 | ![Happiness Test 6](../gifs/happiness/happiness6.gif "Happiness Test 6")                                      | _same_ as expected |         |
+| 7 | pet's happiness reaches 100                       | Pet's state become max happiness<br>![Happiness Test 7](../gifs/happiness/happiness7.gif "Happiness Test 7")  | _same_ as expected |         |                                                                                                        |
