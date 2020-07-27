@@ -46,8 +46,7 @@ Since the happiness level of the pet is constantly decreasing, the user needs to
 - Petting
   - Pet is normally in a “general” state
   - Pet will do an action(e.g. jump/rollover) and transit into a “reaction” state when the user double clicks
-    ![Petting Low Happiness](./gifs/userguide/petting_low_happiness.gif "Petting Low Happiness")
-    ![Petting High Happiness](./gifs/userguide/petting_high_happiness.gif "Petting High Happiness")
+    ![Petting](./gifs/userguide/petting.gif "Petting")
 - Feeding
   - General food options are displayed (e.g. Cookie, Burger, Chocolate, Donut, Pizza, Watermelon)
   - User can drag their choice of food to the pet, pet transits into a “eating” state
