@@ -5,6 +5,7 @@
   - [Automated Testing](#automated-testing)
   - [Unit Testing](#unit-testing)
   - [Integrated Testing](#integrated-testing)
+  - [User Testing] (#user-testing)
 
 ## Automated Testing
 
@@ -2023,3 +2024,10 @@ Expected Redux State:
 | 9  | click esc in HappinessBreakdown modal                                         | HappinessBreakdown modal closes and Account modal is shown <br>![Account Test 9](../gifs/account/account9.gif "Account Test 9")                                                                                                                         | same as Expected Result   |             |
 | 10 | click outside the HappinessBreakdown modal with HappinessBreakdown modal open | HappinessBreakdown modal closes and Account modal is shown <br>![Account Test 10](../gifs/account/account10.gif "Account Test 10")                                                                                                                      | same as Expected Result   |             |
 | 11 | Complete tasks repeatedly until maximum happiness state is reached            | Complete tasks repeatedly until happiness gained is more than 100 <br>![Account Test 11](../gifs/account/account11.gif "Account Test 11")                                                                                                              | same as Expected Result   |             |
+
+## User Testing
+| User | Feedback                                                                                                                                                                                            | Solutions (if any) |
+|------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| 1    | It's a neat feature and the statistics of how much tasks and subtasks completed is really helpful. The happiness breakdown looks really cool and I will probably check on it to see what I've done. |                    |
+| 2    | I really like being able to see the statistics, especially the pie chart showing me what I've done.                                                                                                 |                    |
+| 3    | Knowing how much I've done is quite motivational! I also like that you store the dates when the minigames played so I know when I last played.                                                      |                    |
