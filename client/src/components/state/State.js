@@ -99,7 +99,7 @@ export default class State extends Component {
                 return this.#sad_state[this.props.petId];
             case (this.props.happiness <= 66):
                 return this.#normal_state[this.props.petId];
-            case (this.props.happines <= 99):
+            case (this.props.happiness <= 99):
                 return this.#happy_state[this.props.petId];
             case (this.props.happiness === 100):
                 return this.#max_state[this.props.petId];
