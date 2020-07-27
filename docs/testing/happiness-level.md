@@ -174,6 +174,154 @@
   </td>
   <td></td>
   </tr>
+  
+  <tr>
+  <td>
+  5
+  </td>
+  <td>
+  PUT - http://localhost:5000/api/petinfos/pet
+  </td>
+  <td>
+
+  ```json
+  {
+    "name": "name",
+    "pet": {
+      "pet": "Rabbit",
+      "happiness": 5,
+      "unlocked": true
+    }
+  }
+  ```
+
+  </td>
+  <td>
+
+  ```json
+  {
+    "happiness": 5,
+    "unlocked": true,
+    "_id": "5f1d780b0553ad1a9b8cf3bc",
+    "pet": "Rabbit"
+  }
+  ```
+
+  </td>
+  <td>
+  <i>same</i> as Expected Result
+  </td>
+  <td></td>
+  </tr>
+  
+  <tr>
+  <td>
+   6
+  </td>
+  <td>
+  PUT - http://localhost:5000/api/petinfos/pet
+  </td>
+  <td>
+
+  ```json
+  {
+    "name": ""
+  }
+  ```
+
+  </td>
+  <td>
+
+  ```json
+  {
+    "name": "Name is required",
+    "pet": "Pet is required"
+  }
+  ```
+
+  </td>
+  <td>
+  <i>same</i> as Expected Result
+  </td>
+  <td></td>
+  </tr>
+  
+  <tr>
+  <td>
+  7
+  </td>
+  <td>
+  PUT - http://localhost:5000/api/petinfos/pet
+  </td>
+  <td>
+
+  ```json
+  {
+  "name": "name",
+  "pet":
+    {
+      "pet": "Rabbit",
+      "happiness": -31,
+      "unlocked": "true"
+    }
+  }
+  ```
+
+  </td>
+  <td>
+
+  ```json
+  {
+    "pet": {
+        "happiness": "Happiness for pet is invalid"
+    }
+  }
+  ```
+
+  </td>
+  <td>
+  <i>same</i> as Expected Result
+  </td>
+  <td></td>
+  </tr>
+
+  <tr>
+  <td>
+  8
+  </td>
+  <td>
+  PUT - http://localhost:5000/api/petinfos/pet
+  </td>
+  <td>
+
+  ```json
+  {
+  "name": "nameegkq",
+  "pet":
+    {
+      "pet": "Rabbit",
+      "happiness": 31,
+      "unlocked": "true"
+    }
+  }
+  ```
+
+  </td>
+  <td>
+
+  ```json
+  {
+    "message": "Cannot update pet of user with username nameegkq. Maybe petInfo was not found!"
+  }
+  ```
+
+  </td>
+  <td>
+  <i>same</i> as Expected Result
+  </td>
+  <td></td>
+  </tr>
+  
   </table>
 
 ## Unit Testing
@@ -243,7 +391,7 @@ happiness level decreases by 10
 click decrementHappiness button repeatedly until happiness decreases to 0
 </td>
 <td>
-happiness level decreases to 0, coins decrease to 0
+happiness level decreases to 0, coins decrease to 0, pet transits into broken hearted state
 </td>
 <td>
 <i>same</i> as Expected Result
@@ -256,7 +404,7 @@ happiness level decreases to 0, coins decrease to 0
 4
 </td>
 <td>
-click decrementHappiness button repeatedly as happiness increases to 100
+click incrementHappiness button repeatedly as happiness increases to 100
 </td>
 <td>
 happiness level increases to 100, total happiness gained increases, coins increase by 100, pet transits into maximum happiness state
@@ -266,64 +414,19 @@ happiness level increases to 100, total happiness gained increases, coins increa
 </td>
 <td>
 Actual Result(before fix): coins increase by 100 repeatedly after happiness level reaches 100
-Fix: Compare <code>prevProps</code> and <code>this.props</code>, only increase coins when happiness level is not previously 100
+Fix: Compare <code>prevProps</code> and <code>this.props</code>, only increase coins when happiness gained is more than 100
 </td>
 </tr>
 </table>
 
 ## Integrated Testing
 
-<table>
-<thead>
-<tr>
-<th></th>
-<th>
-Test Case
-</th>
-<th>
-Expected Result
-</th>
-<th>
-Actual Result
-</th>
-<th>
-Remarks
-</th>
-</tr>
-</thead>
-
-<tr>
-<td>
-1
-</td>
-<td>
-happiness level remains the same
-</td>
-<td>
-Refresh page after change in happiness
-</td>
-<td>
-<i>same</i> as Expected Result
-</td>
-<td>
-Actual Result(before fix): previous changes are lost
-Fix: Add redux-persist to persist auth of redux state
-</td>
-</tr>
-
-<tr>
-<td>
-2
-</td>
-<td>
-In Food modal, feed pet multiple times until happiness level increases to 100
-</td>
-<td>
-happiness level increases to 100, total happiness gained increases, coins increase by 100, pet transits into maximum happiness state
-</td>
-<td>
-<i>same</i> as Expected Result
-</td>
-<td></td>
-</tr>
-</table>
+|   | Test Case                                        | Expected Result                                                                                                                                                                                                                                     | Actual Result           | Remarks                                                                                                        |
+|---|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------|----------------------------------------------------------------------------------------------------------------|
+| 1 | Refresh the page after a change in happiness     | Happiness level remains the same<br>![Happiness Test 1](../gifs/happiness/happiness1.gif "Happiness Test 1")                                                                                                                                            | same as Expected Result | Actual Result(before fix): previous changes are lost <br>Fix: Add redux-persist to persist auth of redux state |
+| 2 | Feed pet until happiness gained increases to 100 | Happiness gained increases to at least 100, total happiness gained increases, coins increase by 100 and pet transits into maximum happiness state if happiness level is 100<br>![Happiness Test 2](../gifs/happiness/happiness2.gif "Happiness Test 2") | same as Expected Result |    
+| 3 | pet's happiness reaches 0                         | Pet's state becomes brokenhearted<br>![Happiness Test 3](../gifs/happiness/happiness3.gif "Happiness Test 3") | _same_ as expected |         |
+| 4 | pet's happiness exceeds 0, but is lower than 34   | Pet's state becomes sad<br>![Happiness Test 4](../gifs/happiness/happiness4.gif "Happiness Test 4")           | _same_ as expected |         |
+| 5 | pet's happiness exceeds 34, but is lower than 67  | Pet's state becomes normal<br>![Happiness Test 5](../gifs/happiness/happiness5.gif "Happiness Test 5")        | _same_ as expected |         |
+| 6 | pet's happiness exceeds 67, but is lower than 100 | ![Happiness Test 6](../gifs/happiness/happiness6.gif "Happiness Test 6")                                      | _same_ as expected |         |
+| 7 | pet's happiness reaches 100                       | Pet's state become max happiness<br>![Happiness Test 7](../gifs/happiness/happiness7.gif "Happiness Test 7")  | _same_ as expected |         |                                                                                                        |
