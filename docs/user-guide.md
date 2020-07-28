@@ -62,8 +62,8 @@ Since the happiness level of the pet is constantly decreasing, the user needs to
 - “Rescue” minigame (only available once per day)
   - Pet is trapped in a box, pet transits into a panic state
   - Getting pet out of box → aggressive clicking
-  - Time limit → if you don’t rescue your pet on time: happiness level of pet decreases
-  - Success → increases the pet’s happiness level
+  - Time limit → if you don’t rescue your pet on time: user loses some coins
+  - Success → user gets some coins
     ![Rescue](./gifs/userguide/rescue.gif "Rescue")
 
 These personal pet interactions allow for the user to have a stronger connection with the virtual pet, emulating a real pet. This bond can then serve as a strong motivator for the user to be productive to keep their pets happy.
