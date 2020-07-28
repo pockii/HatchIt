@@ -5,6 +5,7 @@
   - [Automated Testing](#automated-testing)
   - [Unit Testing](#unit-testing)
   - [Integrated Testing](#integrated-testing)
+  - [User Testing](#user-testing)
 
 ## Automated Testing
 
@@ -2439,3 +2440,10 @@ Fix: Error arises due to insufficent space in the task, there is no droppable ar
 </td>
 </tr>
 </table>
+
+## User Testing
+| User | Feedback                                                                                                                                                                                                                                                                 | Solutions (if any)                                                               |
+|------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| 1    | I really like the subtasks because it's not very readily offered in many todolist applications.                                                                                                                                                                          |                                                                                  |
+| 2    | The website version of the todo list feature is really laggy, but the local machine works great! I really enjoy it and I like that I am able to drag it around for organisation.                                                                                                      | Instead of having the description change be onChange, make it a form submission. |
+| 3    | The changing colours is a nice visual indication that the tasks are almost due, but I prefer it if there were different colours or options to tag the tasks as other colours. Also, it would be nice to have the checkmark outside of the box so that it's more intuitive! | Redesign the user interface to make it more intuitive                            |

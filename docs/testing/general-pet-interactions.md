@@ -4,6 +4,7 @@
   - [Automated Testing](#automated-testing)
   - [Unit Testing](#unit-testing)
   - [Integrated Testing](#integrated-testing)
+  - [User Testing](#user-testing)
 
 ## Automated Testing
 
@@ -467,3 +468,10 @@ PUT - http://localhost:5000/api/users/userdata
 | 17 | Click on pet while in Night mode                                | Pet reacts and changes back to normal/max happiness state<br>![Pet Test 17](../gifs/pet/pet17.gif "Pet Test 17")                           | same as Expected Result |                                                                                                                                                                                             |
 | 18 | Disable Night mode                                              | Pet's state changes back from sleeping state<br>![Pet Test 18](../gifs/pet/pet18.gif "Pet Test 18")                                        | same as Expected Result |                                                                                                                                                                                             |
 | 19 | Click Rescue button, play the game, click Home and refresh      | Rescue button should remain greyed out and Rescue page is not rendered when clicked<br>![Pet Test 19](../gifs/pet/pet19.gif "Pet Test 19") | same as Expected Result |                                                                                                                                                                                             |
+
+## User Testing
+| User | Feedback                                                                                                                                                                    | Solutions (if any)                                                              |
+|------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
+| 1    | I love that the minigame renews everyday as it gives me incentive to come back!                                                                                             |                                                                                 |
+| 2    | The rescue minigame is very cute, but I didn't realise how it worked until I read the user guide. It will be great if there were more instructions for the rescue minigame! | Add instructions for the rescue minigame                                        |
+| 3    | I really enjoy feeding the pet, although it's very easy to abuse. The minigames are really cute!                                                                            | Limit the amount of happiness the pet can gain per day from eating normal food. |

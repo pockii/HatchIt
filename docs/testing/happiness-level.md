@@ -4,6 +4,7 @@
   - [Automated Testing](#automated-testing)
   - [Unit Testing](#unit-testing)
   - [Integrated Testing](#integrated-testing)
+  - [User Testing] (#user-testing)
 
 ## Automated Testing
 
@@ -429,4 +430,11 @@ Fix: Compare <code>prevProps</code> and <code>this.props</code>, only increase c
 | 4 | pet's happiness exceeds 0, but is lower than 34   | Pet's state becomes sad<br>![Happiness Test 4](../gifs/happiness/happiness4.gif "Happiness Test 4")           | _same_ as expected |         |
 | 5 | pet's happiness exceeds 34, but is lower than 67  | Pet's state becomes normal<br>![Happiness Test 5](../gifs/happiness/happiness5.gif "Happiness Test 5")        | _same_ as expected |         |
 | 6 | pet's happiness exceeds 67, but is lower than 100 | ![Happiness Test 6](../gifs/happiness/happiness6.gif "Happiness Test 6")                                      | _same_ as expected |         |
-| 7 | pet's happiness reaches 100                       | Pet's state become max happiness<br>![Happiness Test 7](../gifs/happiness/happiness7.gif "Happiness Test 7")  | _same_ as expected |         |                                                                                                        |
+| 7 | pet's happiness reaches 100                       | Pet's state become max happiness<br>![Happiness Test 7](../gifs/happiness/happiness7.gif "Happiness Test 7")  | _same_ as expected |         |             
+
+## User Testing
+| User | Feedback                                                                                                                                                                           | Solutions (if any) |
+|------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| 1    | I love it, it's super cute! Seeing the pet sad gives me incentive to try to keep the happiness level up.                                                                           |                    |
+| 2    | It makes me feel rewarded and it's quite responsive! It's fun to discover the different animations the pet has.                                                                    |                    |
+| 3    | I didn't know I will lose all my coins when the pet's happiness reaches 0, which is a pretty huge punishment. I will definitely go back more often to keep the pet's happiness up. |                    |                                                                                           |

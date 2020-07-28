@@ -5,7 +5,7 @@
   - [Open-Closed Principle](#open-closed-principle)
   - [Interface Segregation Principle](#interface-segregation-principle)
   - [Dependency Inversion Principle](#dependency-inversion-principle)
-  - [Separation of Concerns Principle](#separation-of concerns-principle)
+  - [Separation of Concerns Principle](#separation-of-concerns-principle)
   
 ## Single Responsibility Principle
 

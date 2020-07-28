@@ -3,6 +3,7 @@
 - Table of Contents
   - [Unit Testing](#unit-testing)
   - [Integrated Testing](#integrated-testing)
+  - [User Testing](#user-testing)
 
 ## Unit Testing
 
@@ -24,3 +25,10 @@
 | 8  | click on Guess during Night mode        | Nothing happens<br>![Night Mode Test 8](../gifs/night/night8.gif "Night Mode Test 8")                                                                             | _same_ as Expected Result |             |
 | 9  | click on Rescue during Night mode       | Nothing happens<br>![Night Mode Test 9](../gifs/night/night9.gif "Night Mode Test 9")                                                                             |                           |             |
 | 10 | click on Logout during Night mode       | Logged out and sent back to Login page<br>![Night Mode Test 10](../gifs/night/night10.gif "Night Mode Test 10")                                                   | _same_ as Expected Result |             |
+
+## User Testing
+| User | Feedback                                                                                                                    | Solutions (if any)                                                            |
+|------|-----------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
+| 1    | It's a thoughtful feature, but it can be easily abused by users who just use it to grind coins without fear of losing them. | Maybe limit the amount of coins that can possibly be gained during night mode |
+| 2    | I really like it, it makes the app much less stressful! Also, I find it really cute that you can wake up the pet.           |                                                                               |
+| 3    | I get why it exists but it also takes away some of the motivation (losing happiness and coins) of the app.                  |                                                                               |
