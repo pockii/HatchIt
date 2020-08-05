@@ -6,7 +6,7 @@ import { getStyle } from "./TodoHelper";
 import TaskItemClone from './TaskItemClone';
 
 class TaskClone extends Component {
-    #style = "rounded-lg h-auto relative flex flex-col bg-purple-100";
+    #style = "text-darkblue rounded-lg h-auto relative flex flex-col bg-purple-100";
     
     render() {
         return (

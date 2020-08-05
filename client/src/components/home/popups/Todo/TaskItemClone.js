@@ -11,7 +11,7 @@ export default function TaskItemClone(props) {
     } = props;
     return (
         <div class={style}>
-            <div class="p-2 absolute left-0 inline-flex flex justify-around">
+            <div class="pl-2 pt-2 pr-2 absolute left-0 flex justify-around">
                 <div class="p1-1 pt-1 pb-1 pr-2">
                     <DatePicker
                         dateFormat="dd/MM/yyyy"
@@ -43,8 +43,7 @@ export default function TaskItemClone(props) {
                 </div>
             </div>
 
-            <div class="p-2 absolute right-0 inline-flex flex justify-around">
-                <div class="flex flex-row text-darkblue">
+            <div class="p-2 absolute right-0 flex flex-row flex justify-around">
                     <svg 
                         class="w-8 fill-current"
                         viewBox="0 0 96 96" 
@@ -66,15 +65,18 @@ export default function TaskItemClone(props) {
                             <path d="M48 10C27.0071 9.99393 9.98408 27.0071 9.978 48 9.97193 68.9929 26.9851 86.0159 47.978 86.022 68.9709 86.0281 85.9939 69.0149 86 48.022 86 48.018 86 48.014 86 48.01 86.011 27.0287 69.0113 10.011 48.03 10 48.02 10 48.01 10 48 10ZM48 84.021C28.1117 84.0271 11.9841 67.9093 11.978 48.021 11.9719 28.1327 28.0897 12.0051 47.978 11.999 67.8663 11.9929 83.9939 28.1107 84 47.999 84 48.0037 84 48.0083 84 48.013 83.9802 67.8888 67.8758 83.9981 48 84.024Z"/><path d="M62.041 32.557 47.998 46.6 33.955 32.557 32.541 33.971 46.584 48.014 32.541 62.057 33.955 63.471 47.998 49.428 62.041 63.471 63.455 62.057 49.412 48.014 63.455 33.971 62.041 32.557Z"/>                                
                         </g>
                     </svg>
-                </div>
             </div>
-                    
-            <div class="p-2"> 
-                <br/>
-                <br/>
-                    <div class="appearance-none p-2 w-full tezt-darkblue text-center sm:text-xs md:text-sm lg:text-base xl:text-lg leading-tight bg-transparent rounded-lg border border-transparent focus:border-darkblue">
-                        {description} 
-                    </div>
+
+            <div class="whitespace-pre"> </div>
+            <div class="whitespace-pre"> </div>
+
+            <div class="block p-2 flex flex-row">
+                <div class="appearance-none p-2 w-full text-center sm:text-xs md:text-sm lg:text-base xl:text-lg leading-tight bg-transparent rounded-lg border border-transparent focus:border-darkblue">
+                    {description}
+                </div>
+                <div class="bg-teal-100 p-2 border border-darkblue rounded-lg">
+                    Save
+                </div>
             </div>
         </div>
     );

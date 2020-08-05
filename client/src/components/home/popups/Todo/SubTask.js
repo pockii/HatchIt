@@ -37,7 +37,7 @@ class SubTask extends Component {
 
     handleLevelChange(event) {
         const newSubTask = cloneSubTask(this.props.todo.subTasks[this.props.subTaskId]);
-        newSubTask.level = event.target.value;;
+        newSubTask.level = event.target.value;
         this.props.updateSubTask({
             name: this.props.auth.user.name,
             task_id: this.props.todo.tasks[newSubTask.taskId]._id,
@@ -45,9 +45,9 @@ class SubTask extends Component {
         });   
     }
 
-    handleDescriptionChange(event) {
+    handleDescriptionChange(description) {
         const newSubTask = cloneSubTask(this.props.todo.subTasks[this.props.subTaskId]);
-        newSubTask.description = event.target.value;;
+        newSubTask.description = description;
         this.props.updateSubTask({
             name: this.props.auth.user.name,
             task_id: this.props.todo.tasks[newSubTask.taskId]._id,

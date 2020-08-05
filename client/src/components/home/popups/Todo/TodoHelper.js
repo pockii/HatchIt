@@ -55,9 +55,9 @@ export function updateTaskId(task, newId) {
 }
 
 export function getStyle(deadline) {
-    const style = ["border border-darkblue rounded-lg h-auto relative flex flex-col bg-lightpinkwindowbg", 
-    "border border-darkblue rounded-lg h-auto relative flex flex-col bg-pinkwindowbg", 
-    "border border-darkblue rounded-lg h-auto relative flex flex-col bg-darkpinkwindowbg"];
+    const style = ["text-darkblue border border-darkblue rounded-lg h-auto relative flex flex-col bg-lightpinkwindowbg", 
+    "text-darkblue border border-darkblue rounded-lg h-auto relative flex flex-col bg-pinkwindowbg", 
+    "text-darkblue border border-darkblue rounded-lg h-auto relative flex flex-col bg-darkpinkwindowbg"];
 
     const deadlineDate = new Date(deadline);
     const currDate = new Date();

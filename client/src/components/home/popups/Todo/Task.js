@@ -19,7 +19,7 @@ import TaskItemClone from './TaskItemClone';
 import SubTasks from './SubTasks';
 
 class Task extends Component {
-    #style = "border border-darkblue rounded-lg h-auto relative flex flex-col bg-purple-100";
+    #style = "text-darkblue border border-darkblue rounded-lg h-auto relative flex flex-col bg-purple-100";
 
     constructor(props) {
         super(props);
@@ -48,9 +48,9 @@ class Task extends Component {
         });
     }
 
-    handleDescriptionChange(event) {
+    handleDescriptionChange(description) {
         const newTask = cloneAndDenormalizeTask(this.props.todo.tasks, this.props.todo.subTasks, this.props.taskId);
-        newTask.description = event.target.value;
+        newTask.description = description;
         this.props.updateTask({
             name: this.props.auth.user.name,
             task: newTask
