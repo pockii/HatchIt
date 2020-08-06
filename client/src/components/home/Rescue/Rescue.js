@@ -74,7 +74,7 @@ class Rescue extends Component {
                          <p class="whitespace-pre text-blue-700"> {this.state.timeLeft} </p> seconds left  
                     </div>
         } else if (this.state.timeLeft === 10) {
-            return <p /> 
+            return <p class="flex justify-center text-xl"> Click repeatedly on your stuck pet to rescue it! </p> 
         } else if (this.state.timeLeft > 0) {
             return <p class="flex justify-center text-xl"> 
                         Congratulations, you've saved your pet with {this.state.timeLeft} seconds left! <br />

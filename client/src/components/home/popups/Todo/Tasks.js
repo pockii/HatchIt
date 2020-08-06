@@ -9,8 +9,7 @@ export default class Tasks extends PureComponent {
                         key={taskId} 
                         taskId ={taskId} 
                         index={index} 
-                        onTodoExitClick={this.props.onTodoExitClick}
-                        todoCallBack={this.props.todoCallBack}
+                        updateCompletedTask={this.props.updateCompletedTask}
                         isNight={this.props.isNight}
                         incrementHappiness={this.props.incrementHappiness}
                         />;

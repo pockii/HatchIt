@@ -23,8 +23,10 @@ class Todo extends Component {
         super(props);
         this.state = {
             todoSeen: false,
+            completedTask: false
         };
         this.onTodoExitClick = this.onTodoExitClick.bind(this);
+        this.updateCompletedTask = this.updateCompletedTask.bind(this);
     }
 
     componentDidMount() {
@@ -44,7 +46,8 @@ class Todo extends Component {
     };
 
     onTodoExitClick = () => {
-        this.setState( { todoSeen: false } );
+        this.props.todoCallBack(this.state.completedTask);
+        this.setState({ todoSeen: false, completedTask: false });
     };
 
     onAddTaskClick = () => {
@@ -61,6 +64,10 @@ class Todo extends Component {
             name: this.props.auth.user.name,
             subTask: newSubTask
         });
+    }
+
+    updateCompletedTask() {
+        this.setState( {completedTask: true} );
     }
 
     render() {
@@ -120,8 +127,7 @@ class Todo extends Component {
 
                     <div class="px-10 h-8/10">
                         <List 
-                            onTodoExitClick={this.onTodoExitClick} 
-                            todoCallBack={this.props.todoCallBack}
+                            updateCompletedTask={this.updateCompletedTask}
                             isNight={this.props.isNight} 
                             incrementHappiness={this.props.incrementHappiness} 
                         />

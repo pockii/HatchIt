@@ -80,8 +80,7 @@ class SubTask extends Component {
         }
         
         this.onDeleteSubTaskClick();
-        this.props.todoCallBack(true);
-        this.props.onTodoExitClick();
+        this.props.updateCompletedTask();
     }
 
     render() {

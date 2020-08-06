@@ -88,8 +88,7 @@ class Task extends Component {
         }
 
         this.onDeleteTaskClick();
-        this.props.todoCallBack(true);
-        this.props.onTodoExitClick();
+        this.props.updateCompletedTask();
     }
 
     render() {
@@ -146,8 +145,7 @@ class Task extends Component {
                                     >
                                         <SubTasks 
                                             subTasks={this.props.todo.tasks[this.props.taskId].subTasks} 
-                                            todoCallBack={this.props.todoCallBack}
-                                            onTodoExitClick={this.props.onTodoExitClick}
+                                            updateCompletedTask={this.props.updateCompletedTask}
                                             isNight={this.props.isNight} 
                                             incrementHappiness={this.props.incrementHappiness}
                                         />

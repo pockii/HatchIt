@@ -107,7 +107,10 @@ export default class ShopWindow extends Component {
                             class="inline-block"
                             onClick={() => this.changeWindow()}>
                                 {this.displayButton()}
-                        </button>    
+                        </button>   
+                        {this.state.foodWindowSeen ? 
+                            <span class="pl-16 ml-1 sm:text-base md:text-sm lg:text-md xl:text-lg">Drag food to your pet to feed it!</span> 
+                            : null}
                     </div>                  
                 </div> 
                 {this.state.foodWindowSeen ? 
