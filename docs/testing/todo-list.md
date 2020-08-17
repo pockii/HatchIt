@@ -1957,7 +1957,7 @@ Difficulty level of task changes to Difficult
 11
 </td>
 <td>
-click on description of a task and edit description
+click on description of a task, edit description and click save
 </td>
 <td>
 Description of task changes and is saved
@@ -2140,7 +2140,7 @@ Difficulty level of subTask changes to Difficult
 22
 </td>
 <td>
-click on description of a subTask and edit description
+click on description of a subTask, edit description and click save
 (after test 2)
 </td>
 <td>
